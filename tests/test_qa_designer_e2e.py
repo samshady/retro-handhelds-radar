@@ -101,6 +101,21 @@ async def run_tests():
         else:
             record_fail("Vertical filter", f"Unexpected count {vert_count}")
 
+        # Capability filter tests (PortMaster and Native PICO-8)
+        await page.click("button[data-filter='portmaster']")
+        port_count = await page.locator("#handheldGrid article").count()
+        if port_count > 0 and port_count < 15:
+            record_pass(f"PortMaster 64-bit filter isolated {port_count} compatible devices")
+        else:
+            record_fail("PortMaster filter", f"Unexpected count {port_count}")
+
+        await page.click("button[data-filter='pico8']")
+        pico_count = await page.locator("#handheldGrid article").count()
+        if pico_count > 0 and pico_count < 15:
+            record_pass(f"Native PICO-8 filter isolated {pico_count} compatible devices")
+        else:
+            record_fail("PICO-8 filter", f"Unexpected count {pico_count}")
+
         # Reset filter
         await page.click("button[data-filter='all']")
         all_count = await page.locator("#handheldGrid article").count()
@@ -109,15 +124,17 @@ async def run_tests():
         else:
             record_fail("Reset filter", f"Count was {all_count}")
 
-        # Sort test
+        # Sort tests (Price and Emulation Ceiling)
         await page.select_option("#sortSelect", "price-asc")
         first_price = await page.locator("#handheldGrid article:first-child .text-emerald-400").first.text_content()
         await page.select_option("#sortSelect", "price-desc")
         desc_price = await page.locator("#handheldGrid article:first-child .text-emerald-400").first.text_content()
-        if first_price and desc_price:
-            record_pass(f"Sort dropdown operates smoothly (cheapest: {first_price.strip()} vs highest: {desc_price.strip()})")
+        await page.select_option("#sortSelect", "emu-desc")
+        top_emu_title = await page.locator("#handheldGrid article:first-child h3").first.text_content()
+        if first_price and desc_price and top_emu_title:
+            record_pass(f"Sort dropdown operates smoothly (price range & top emu chip: {top_emu_title.strip()})")
         else:
-            record_fail("Sort dropdown", "Failed to sort cards by price")
+            record_fail("Sort dropdown", "Failed to sort cards by metric")
 
         print("\n=== Category 3: Boundary & Search Attack Patterns ===")
         # Search for exact model (Anbernic RG28XX is uniquely named)
@@ -160,12 +177,36 @@ async def run_tests():
         else:
             record_fail("Modal data", "Modal title empty")
 
+        # Benchmark pips rendered in modal
+        chip_pips = await page.locator("#modalChipPips span").count()
+        if chip_pips >= 5:
+            record_pass(f"Modal benchmark scoring rendered {chip_pips} retro LED gauge pips")
+        else:
+            record_fail("Modal benchmark pips", f"Expected >=5 pips, got {chip_pips}")
+
+        # Review links and buying advice in modal
+        review_links = await page.locator("#modalReviewLinks a").count()
+        buying_advice_text = await page.locator("#modalBuyingAdvice").text_content()
+        if review_links >= 1 and buying_advice_text and len(buying_advice_text) > 10:
+            record_pass(f"Modal populated with video review link and buying logistics advice")
+        else:
+            record_fail("Modal review and advice", f"Review links={review_links}, advice={buying_advice_text}")
+
         # Verified stores links in modal
         store_links = await page.locator("#modalStoresContainer a").count()
         if store_links >= 2:
             record_pass(f"Modal verified stores populated with {store_links} live retailer links")
         else:
             record_fail("Modal stores", f"Expected >=2 store links, found {store_links}")
+
+        # Negative constraint: Zero meta jargon / AI narrator copy
+        body_text = await page.inner_text("body")
+        meta_phrases = ["bloated javascript", "clean standalone html", "as an ai", "sam created this"]
+        detected_meta = [p for p in meta_phrases if p in body_text.lower()]
+        if not detected_meta:
+            record_pass("Strict negative constraint verified: zero robotic meta phrases in UI copy")
+        else:
+            record_fail("Negative constraint", f"Detected forbidden meta phrases: {detected_meta}")
 
         # Close via ESC key (Keyboard accessibility)
         await page.keyboard.press("Escape")
@@ -175,6 +216,17 @@ async def run_tests():
             record_pass("Escape key cleanly dismisses detail drawer")
         else:
             record_fail("ESC dismiss", "Modal remained open")
+
+        # CRT Scanlines Toggle test
+        has_crt_before = await page.evaluate("() => document.body.classList.contains('crt-mode')")
+        await page.click("#crtToggleBtn")
+        has_crt_after = await page.evaluate("() => document.body.classList.contains('crt-mode')")
+        await page.click("#crtToggleBtn")
+        has_crt_restored = await page.evaluate("() => document.body.classList.contains('crt-mode')")
+        if not has_crt_before and has_crt_after and not has_crt_restored:
+            record_pass("CRT Scanline mode button toggles body.crt-mode state accurately")
+        else:
+            record_fail("CRT mode toggle", f"Before={has_crt_before}, After={has_crt_after}, Restored={has_crt_restored}")
 
         # Table toggle view
         await page.click("#viewToggleBtn")

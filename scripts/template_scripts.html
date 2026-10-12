@@ -42,16 +42,36 @@
     const modalPros = document.getElementById('modalPros');
     const modalCons = document.getElementById('modalCons');
     const modalStoresContainer = document.getElementById('modalStoresContainer');
+    const modalChipPips = document.getElementById('modalChipPips');
+    const modalEmuPips = document.getElementById('modalEmuPips');
+    const modalPicoPips = document.getElementById('modalPicoPips');
+    const modalPortPips = document.getElementById('modalPortPips');
+    const modalReviewChannel = document.getElementById('modalReviewChannel');
+    const modalReviewTitle = document.getElementById('modalReviewTitle');
+    const modalReviewLinks = document.getElementById('modalReviewLinks');
+    const modalBuyingAdvice = document.getElementById('modalBuyingAdvice');
+    const crtToggleBtn = document.getElementById('crtToggleBtn');
 
     function fmtPrice(val) {
       if (!val) return 'N/A';
       return '€' + Number(val).toFixed(2);
     }
 
+    function renderRetroPips(score, maxScore = 5, activeColor = 'bg-amber-400') {
+      let pips = '';
+      for (let i = 1; i <= maxScore; i++) {
+        const active = i <= (score || 0);
+        pips += `<span class="w-2.5 h-1.5 rounded-[1px] ${active ? activeColor : 'bg-studio-800 border border-studio-border/60'} inline-block"></span>`;
+      }
+      return `<div class="flex items-center gap-1">${pips} <span class="text-xs font-mono font-bold text-slate-300 ml-1 num-tabular">${score || 0}/${maxScore}</span></div>`;
+    }
+
     function getFilteredAndSorted() {
       let filtered = HANDHELDS_DATA.filter(item => {
-        // Form factor
+        // Form factor & capability filters
         if (activeFilter !== 'all') {
+          if (activeFilter === 'portmaster' && (item.portmaster_score || 0) < 4) return false;
+          if (activeFilter === 'pico8' && (item.pico8_score || 0) < 4) return false;
           if (activeFilter === 'Vertical' && item.form_factor !== 'Vertical') return false;
           if (activeFilter === 'Horizontal' && item.form_factor !== 'Horizontal') return false;
           if (activeFilter === 'Clamshell' && item.form_factor !== 'Clamshell') return false;
@@ -69,6 +89,8 @@
             item.resolution.toLowerCase().includes(q) ||
             item.recommended_os.toLowerCase().includes(q) ||
             item.emulation_ceiling.toLowerCase().includes(q) ||
+            (item.portmaster_tier && item.portmaster_tier.toLowerCase().includes(q)) ||
+            (item.pico8_tier && item.pico8_tier.toLowerCase().includes(q)) ||
             item.tagline.toLowerCase().includes(q)
           );
           if (!matches) return false;
@@ -79,8 +101,12 @@
 
       // Sorting
       filtered.sort((a, b) => {
-        if (currentSort === 'price-asc') return a.price_eur_ali_1111 - b.price_eur_ali_1111;
-        if (currentSort === 'price-desc') return b.price_eur_ali_choice - a.price_eur_ali_choice;
+        if (currentSort === 'price-asc') return (a.price_eur_ali_1111 || 0) - (b.price_eur_ali_1111 || 0);
+        if (currentSort === 'price-desc') return (b.price_eur_ali_choice || 0) - (a.price_eur_ali_choice || 0);
+        if (currentSort === 'emu-desc') return (b.emulation_score || 0) - (a.emulation_score || 0) || (a.price_eur_ali_choice - b.price_eur_ali_choice);
+        if (currentSort === 'chip-desc') return (b.chip_score || 0) - (a.chip_score || 0) || (a.price_eur_ali_choice - b.price_eur_ali_choice);
+        if (currentSort === 'pico-desc') return (b.pico8_score || 0) - (a.pico8_score || 0) || (a.price_eur_ali_choice - b.price_eur_ali_choice);
+        if (currentSort === 'port-desc') return (b.portmaster_score || 0) - (a.portmaster_score || 0) || (a.price_eur_ali_choice - b.price_eur_ali_choice);
         if (currentSort === 'name-asc') return a.name.localeCompare(b.name);
         if (currentSort === 'res-desc') return (b.ppi || 0) - (a.ppi || 0);
         return 0;
@@ -141,23 +167,29 @@
               </p>
             </div>
 
-            <!-- Specs Matrix (High-legibility 12px text, no nested card boxes) -->
-            <div class="grid grid-cols-2 gap-x-3 gap-y-2 text-xs font-mono pt-3 border-t border-studio-border">
-              <div>
-                <span class="text-slate-400 block text-xs">Chipset</span>
-                <span class="text-slate-200 font-medium truncate block">${item.chipset}</span>
+            <!-- Retro Benchmark Scoring Matrix (5-Pip LED Bars) -->
+            <div class="space-y-1.5 text-xs font-mono pt-3 border-t border-studio-border">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-400">Emulation Ceiling</span>
+                ${renderRetroPips(item.emulation_score, 5, 'bg-amber-400')}
               </div>
-              <div>
-                <span class="text-slate-400 block text-xs">Display</span>
-                <span class="text-slate-200 font-medium truncate block">${item.display} (${item.aspect_ratio})</span>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-400">Chipset Muscle</span>
+                ${renderRetroPips(item.chip_score, 5, 'bg-sky-400')}
               </div>
-              <div>
-                <span class="text-slate-400 block text-xs">Ceiling</span>
-                <span class="text-amber-400 font-medium truncate block">${item.emulation_ceiling.split(',')[0]}</span>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-400">PICO-8 Support</span>
+                ${renderRetroPips(item.pico8_score, 5, 'bg-purple-400')}
               </div>
-              <div>
-                <span class="text-slate-400 block text-xs">Recommended OS</span>
-                <span class="text-emerald-400 font-medium truncate block">${item.recommended_os}</span>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-400">PortMaster 64-bit</span>
+                ${renderRetroPips(item.portmaster_score, 5, 'bg-emerald-400')}
+              </div>
+
+              <!-- Quick Hardware Strip -->
+              <div class="grid grid-cols-2 gap-2 pt-2 border-t border-studio-border/50 text-[11px] text-slate-300">
+                <span class="truncate"><i class="fa-solid fa-microchip text-slate-500 mr-1"></i>${item.chipset}</span>
+                <span class="truncate"><i class="fa-solid fa-tv text-slate-500 mr-1"></i>${item.display} (${item.aspect_ratio})</span>
               </div>
             </div>
           </div>
@@ -170,11 +202,17 @@
                 ${fmtPrice(item.price_eur_ali_choice)} <span class="text-xs font-normal text-amber-400">(${fmtPrice(item.price_eur_ali_1111)})</span>
               </div>
             </div>
-            <div class="flex items-center gap-2 shrink-0">
+            <div class="flex items-center gap-1.5 shrink-0">
+              ${item.review_url ? `
+                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5 transition" title="Watch ${item.review_channel} Review">
+                  <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
+                  <span class="hidden sm:inline">Review</span>
+                </a>
+              ` : ''}
               ${(item.verified_stores && item.verified_stores.length > 0) ? `
                 <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-3 py-1.5 rounded-xl bg-amber-400 text-black hover:bg-amber-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm" title="View deals on ${item.verified_stores[0].name}">
                   <i class="fa-solid fa-cart-shopping text-xs"></i>
-                  <span>Offers</span>
+                  <span>Deals</span>
                 </a>
               ` : ''}
               <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[40px] px-3 py-1.5 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-1.5 transition">
@@ -205,15 +243,21 @@
             <img src="${item.image || 'assets/images/' + item.id + '.jpg'}" alt="" class="w-8 h-8 rounded object-contain bg-studio-950 border border-studio-border p-0.5 shrink-0" onerror="this.style.display='none'">
             <span>${item.name}</span>
           </td>
-          <td class="py-3 px-3 text-slate-400">${item.form_factor}</td>
-          <td class="py-3 px-3 text-slate-300">${item.display} (${item.resolution})</td>
-          <td class="py-3 px-3 text-slate-300">${item.chipset}</td>
-          <td class="py-3 px-3 text-amber-400">${item.emulation_ceiling}</td>
-          <td class="py-3 px-3 text-emerald-400">${item.recommended_os}</td>
+          <td class="py-3 px-3 text-slate-300">${item.display} (${item.aspect_ratio})</td>
+          <td class="py-3 px-3">${renderRetroPips(item.chip_score, 5, 'bg-sky-400')}</td>
+          <td class="py-3 px-3">${renderRetroPips(item.emulation_score, 5, 'bg-amber-400')}</td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-[11px] font-bold ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span></td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-[11px] font-bold ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span></td>
           <td class="py-3 px-3 text-emerald-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_choice)}</td>
           <td class="py-3 px-3 text-amber-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_1111)}</td>
           <td class="py-3 px-3 text-right">
-            <div class="flex items-center justify-end gap-2">
+            <div class="flex items-center justify-end gap-1.5">
+              ${item.review_url ? `
+                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-2 py-1 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-300 border border-studio-border font-mono text-xs inline-flex items-center gap-1" title="Watch ${item.review_channel} Review">
+                  <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
+                  <span>Review</span>
+                </a>
+              ` : ''}
               ${(item.verified_stores && item.verified_stores.length > 0) ? `
                 <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-2.5 py-1 rounded-lg bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center gap-1 shadow-sm">
                   <i class="fa-solid fa-cart-shopping text-xs"></i>
@@ -260,6 +304,11 @@
       modalControls.textContent = item.controls;
       modalBattery.textContent = item.battery;
 
+      if (modalChipPips) modalChipPips.innerHTML = renderRetroPips(item.chip_score, 5, 'bg-sky-400');
+      if (modalEmuPips) modalEmuPips.innerHTML = renderRetroPips(item.emulation_score, 5, 'bg-amber-400');
+      if (modalPicoPips) modalPicoPips.innerHTML = renderRetroPips(item.pico8_score, 5, 'bg-purple-400') + (item.pico8_tier ? `<span class="text-[10px] text-slate-400 font-mono block mt-0.5">${item.pico8_tier}</span>` : '');
+      if (modalPortPips) modalPortPips.innerHTML = renderRetroPips(item.portmaster_score, 5, 'bg-emerald-400') + (item.portmaster_tier ? `<span class="text-[10px] text-slate-400 font-mono block mt-0.5">${item.portmaster_tier}</span>` : '');
+
       modalPros.innerHTML = '';
       (item.pros || []).forEach(p => {
         const li = document.createElement('li');
@@ -274,11 +323,40 @@
         modalCons.appendChild(li);
       });
 
+      if (modalReviewChannel) modalReviewChannel.textContent = `${item.review_channel || 'Retro Game Corps'} Review`;
+      if (modalReviewTitle) modalReviewTitle.textContent = item.review_title || `${item.name} In-Depth Overview`;
+      if (modalReviewLinks) {
+        let linksHtml = '';
+        if (item.review_url) {
+          linksHtml += `
+            <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-3 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/40 text-xs font-mono font-bold inline-flex items-center gap-1.5 shadow-sm">
+              <i class="fa-brands fa-youtube text-rose-400"></i>
+              <span>Watch Video Review</span>
+            </a>
+          `;
+        }
+        if (item.guide_url && item.guide_url !== 'https://retrogamecorps.com/') {
+          linksHtml += `
+            <a href="${item.guide_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-3 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-200 border border-studio-border text-xs font-mono font-bold inline-flex items-center gap-1.5">
+              <i class="fa-solid fa-book-open text-emerald-400"></i>
+              <span>Written Setup Guide</span>
+            </a>
+          `;
+        }
+        modalReviewLinks.innerHTML = linksHtml;
+      }
+      if (modalBuyingAdvice) {
+        modalBuyingAdvice.textContent = item.buying_advice || 'Check AliExpress Choice for lowest delivered pricing under €150 with prepaid IOSS VAT.';
+      }
+
       if (modalStoresContainer) {
         modalStoresContainer.innerHTML = (item.verified_stores || []).map(store => `
-          <a href="${store.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-3.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-800 text-slate-200 border border-studio-border text-xs font-mono font-semibold transition flex items-center gap-2">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-amber-400"></i>
-            <span>${store.name}</span>
+          <a href="${store.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-3.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-800 text-slate-200 border border-studio-border text-xs font-mono font-semibold transition flex items-center justify-between gap-2 grow sm:grow-0">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-amber-400"></i>
+              <span>${store.name}</span>
+            </span>
+            ${store.badge ? `<span class="px-1.5 py-0.5 rounded text-[10px] bg-studio-900 text-emerald-400 border border-studio-border font-medium">${store.badge}</span>` : ''}
           </a>
         `).join('');
       }
@@ -377,6 +455,31 @@
           closeModal();
         }
       });
+      // CRT Scanline Mode Toggle with localStorage persistence
+      try {
+        const savedCrt = localStorage.getItem('retro_crt_mode');
+        if (savedCrt === 'enabled') {
+          document.body.classList.add('crt-mode');
+          if (crtToggleBtn) crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+        }
+      } catch (e) {
+        // Handle localStorage disabled/sandboxed environments gracefully
+      }
+
+      if (crtToggleBtn) {
+        crtToggleBtn.addEventListener('click', () => {
+          const isCrt = document.body.classList.toggle('crt-mode');
+          try {
+            if (isCrt) {
+              localStorage.setItem('retro_crt_mode', 'enabled');
+              crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+            } else {
+              localStorage.setItem('retro_crt_mode', 'disabled');
+              crtToggleBtn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+            }
+          } catch (e) {}
+        });
+      }
 
       updateUI();
     });

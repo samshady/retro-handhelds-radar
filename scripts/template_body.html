@@ -17,13 +17,21 @@
       </div>
 
       <nav class="flex items-center space-x-2 shrink-0">
+        <button type="button" id="crtToggleBtn" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5" title="Toggle retro CRT scanlines overlay">
+          <i class="fa-solid fa-tv text-amber-400"></i>
+          <span class="hidden sm:inline">CRT Mode</span>
+        </button>
         <button type="button" id="viewToggleBtn" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-2">
           <i id="viewIcon" class="fa-solid fa-table-list text-amber-400"></i>
           <span id="viewText" class="hidden sm:inline">Compare Table</span>
         </button>
         <a href="#setup-guide" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5">
           <i class="fa-solid fa-book-open text-emerald-400"></i>
-          <span class="hidden md:inline">Setup &amp; ROM Guide</span>
+          <span class="hidden md:inline">Setup Guide</span>
+        </a>
+        <a href="#retailer-guide" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5">
+          <i class="fa-solid fa-truck-fast text-amber-400"></i>
+          <span class="hidden lg:inline">Where to Buy</span>
         </a>
         <a href="#firmware-guide" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5">
           <i class="fa-solid fa-microchip text-sky-400"></i>
@@ -97,6 +105,10 @@
             <select id="sortSelect" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 border border-studio-border text-xs font-mono text-slate-200 focus:outline-none focus:border-amber-400 cursor-pointer">
               <option value="price-asc">Price: Lowest First</option>
               <option value="price-desc">Price: Highest First</option>
+              <option value="emu-desc">Emulation Tier: Highest First</option>
+              <option value="chip-desc">Chipset Muscle: Strongest First</option>
+              <option value="pico-desc">PICO-8: Native Splore First</option>
+              <option value="port-desc">PortMaster: 64-bit Ready First</option>
               <option value="name-asc">Name: A to Z</option>
               <option value="res-desc">Resolution: Sharpest</option>
             </select>
@@ -106,13 +118,14 @@
 
       <!-- Filter Pills (Scroll container with vertical headroom so no pill gets cut off) -->
       <div class="filter-scroll-container flex items-center gap-2 text-xs font-mono">
-        <span class="text-slate-400 text-xs shrink-0 font-medium">Form Factor:</span>
-        <button data-filter="all" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-amber-400 text-black font-bold border-amber-400 shrink-0">All Devices</button>
+        <span class="text-slate-400 text-xs shrink-0 font-medium">Filter:</span>
+        <button data-filter="all" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-amber-400 text-black font-bold border-amber-400 shrink-0">All 15 Handhelds</button>
+        <button data-filter="portmaster" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-gamepad text-emerald-400 mr-1.5"></i>PortMaster 64-bit</button>
+        <button data-filter="pico8" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-cube text-purple-400 mr-1.5"></i>Native PICO-8</button>
         <button data-filter="Vertical" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Vertical</button>
         <button data-filter="Horizontal" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Horizontal</button>
         <button data-filter="Clamshell" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Clamshell</button>
         <button data-filter="Square" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">1:1 Square</button>
-        <button data-filter="Pocket Micro" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Pocket Micro</button>
       </div>
     </div>
   </section>
@@ -135,14 +148,14 @@
         <thead class="border-b border-studio-border text-slate-400 font-mono">
           <tr>
             <th class="py-3 px-3">Device</th>
-            <th class="py-3 px-3">Form</th>
-            <th class="py-3 px-3">Display</th>
-            <th class="py-3 px-3">Chipset</th>
+            <th class="py-3 px-3">Screen</th>
+            <th class="py-3 px-3">Chip Muscle</th>
             <th class="py-3 px-3">Emulation Ceiling</th>
-            <th class="py-3 px-3">Recommended OS</th>
+            <th class="py-3 px-3">PICO-8</th>
+            <th class="py-3 px-3">PortMaster</th>
             <th class="py-3 px-3">Ali Choice</th>
-            <th class="py-3 px-3">11.11 Sale</th>
-            <th class="py-3 px-3 text-right">Action</th>
+            <th class="py-3 px-3">11.11 Promo</th>
+            <th class="py-3 px-3 text-right">Offers &amp; Specs</th>
           </tr>
         </thead>
         <tbody id="comparisonTableBody" class="divide-y divide-studio-border/50 font-mono">
@@ -421,6 +434,67 @@
         </div>
       </div>
     </div>
+
+    <!-- Module 6: Where to Buy in Europe & NA (The Real Shipping & VAT Breakdown) -->
+    <div id="retailer-guide" class="studio-card rounded-2xl p-6 mt-6 space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-lg bg-emerald-400/10 text-emerald-300 border border-emerald-400/20 flex items-center justify-center text-sm">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg text-white">6. Purchasing Logistics &amp; EU / NA Reality Check</h3>
+        </div>
+        <span class="text-xs font-mono px-2 py-0.5 rounded bg-studio-800 text-emerald-400">Import &amp; VAT Guide</span>
+      </div>
+
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Cheap retro handhelds are manufactured in Shenzhen and sold through three main channels. Knowing which channel to pick avoids unexpected customs handling fees, fake listings, and exorbitant retailer markups.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+        <!-- Channel 1: AliExpress Choice -->
+        <div class="bg-studio-950 p-4 rounded-xl border border-studio-border space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-amber-300 font-bold">1. AliExpress Choice</span>
+            <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-400/15 text-amber-300">Best Price</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            Consolidated air logistics with 7 to 10 day delivery. In the EU, orders under €150 have VAT collected at checkout via the official <span class="text-white font-semibold">IOSS scheme</span>. Packages pass through European customs without courier brokerage fees.
+          </p>
+          <div class="text-[11px] text-emerald-400 font-semibold pt-1">
+            Best for: Sub-€60 budget beaters, seasonal sales (11.11, Choice Day).
+          </div>
+        </div>
+
+        <!-- Channel 2: Brand Official Direct -->
+        <div class="bg-studio-950 p-4 rounded-xl border border-studio-border space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-sky-300 font-bold">2. Brand Direct (Anbernic / Powkiddy)</span>
+            <span class="text-[11px] px-1.5 py-0.5 rounded bg-sky-400/15 text-sky-300">Color Exclusives</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            Direct from manufacturers (anbernic.com, powkiddy.com, keepretro.com). Advertised base price looks low, but standard 4PX shipping adds <span class="text-white font-semibold">$12 to $15</span> per order with 12 to 20 day delivery. In the EU, occasional missing IOSS can trigger a €6 post handling fee.
+          </p>
+          <div class="text-[11px] text-sky-300 font-semibold pt-1">
+            Best for: Launch-day preorders, limited edition shell colors.
+          </div>
+        </div>
+
+        <!-- Channel 3: Amazon Local & DroiX -->
+        <div class="bg-studio-950 p-4 rounded-xl border border-studio-border space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-purple-300 font-bold">3. Amazon DE &amp; DroiX EU</span>
+            <span class="text-[11px] px-1.5 py-0.5 rounded bg-purple-400/15 text-purple-300">Warranty &amp; Speed</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            Amazon DE and DroiX carry warehouse stock locally in Europe with 1 to 3 day delivery. Prices carry a <span class="text-white font-semibold">25% to 50% markup</span> over AliExpress, but provide full 30-day no-hassle return windows and statutory EU 2-year warranty protection.
+          </p>
+          <div class="text-[11px] text-purple-300 font-semibold pt-1">
+            Best for: Gifts, quick deadlines, hinge-check risk on RG35XX SP.
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- FIRMWARE GUIDE SECTION -->
@@ -535,6 +609,32 @@
         </div>
       </div>
 
+      <!-- Retro Benchmark Grading Scores (1 to 5) -->
+      <div class="bg-studio-950 p-4 rounded-xl border border-studio-border space-y-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold text-amber-300 uppercase tracking-wider">Benchmark Scoring (1 to 5)</span>
+          <span class="text-xs font-mono text-slate-400">RGC Benchmark Scale</span>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+          <div>
+            <span class="text-slate-400 block text-xs">Chipset Power</span>
+            <div id="modalChipPips" class="mt-1"></div>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-xs">Emulation Ceiling</span>
+            <div id="modalEmuPips" class="mt-1"></div>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-xs">PICO-8 Capability</span>
+            <div id="modalPicoPips" class="mt-1"></div>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-xs">PortMaster 64-bit</span>
+            <div id="modalPortPips" class="mt-1"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- Pros / Cons -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-3 border-t border-studio-border">
         <div class="space-y-1.5">
@@ -551,6 +651,30 @@
           </div>
           <ul id="modalCons" class="space-y-1 text-slate-300 list-disc list-inside"></ul>
         </div>
+      </div>
+
+      <!-- Independent Video Review & Guide -->
+      <div id="modalReviewSection" class="p-3.5 rounded-xl bg-studio-950 border border-studio-border space-y-2 mt-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i class="fa-brands fa-youtube text-rose-500 text-sm"></i>
+            <span class="text-xs font-mono font-bold text-white uppercase tracking-wider" id="modalReviewChannel">Retro Game Corps Review</span>
+          </div>
+          <span class="text-[11px] font-mono text-emerald-400 font-semibold">Verified Authority</span>
+        </div>
+        <p id="modalReviewTitle" class="text-xs text-slate-300 font-medium"></p>
+        <div class="flex flex-wrap items-center gap-2 pt-1" id="modalReviewLinks">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Purchasing Advice & Logistics Reality -->
+      <div class="p-3.5 rounded-xl bg-studio-950 border border-studio-border space-y-1.5 mt-3">
+        <div class="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-300">
+          <i class="fa-solid fa-truck-fast"></i>
+          <span>Where to Buy &amp; Shipping Reality</span>
+        </div>
+        <p id="modalBuyingAdvice" class="text-xs text-slate-300 leading-relaxed"></p>
       </div>
 
       <!-- Verified Stores & Live Offers -->
@@ -572,11 +696,14 @@
   <!-- FOOTER -->
   <footer class="border-t border-studio-border bg-studio-950 mt-16 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
-      <div>
-        <span>Retro Handhelds Radar</span> • <span>Curated Sub-€100 Catalog</span>
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-gamepad text-amber-400"></i>
+        <span class="text-white font-semibold">Retro Handhelds Radar</span>
+        <span>•</span>
+        <span>Independent Sub-€100 Field Guide</span>
       </div>
-      <div>
-        Clean standalone HTML • No bloated JavaScript frameworks • Built with verified product data
+      <div class="text-slate-400">
+        Prices tracked across AliExpress Choice, Amazon DE, and official direct storefronts.
       </div>
     </div>
   </footer>

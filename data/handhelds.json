@@ -38,20 +38,37 @@
       "Noticeable warmth during heavy sessions"
     ],
     "verdict": "The crispest pocket vertical screen under €70 for pure D-pad gaming.",
+    "review_title": "TrimUI Brick Review: Worth Every Penny",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=F1fHemFCi3I",
+    "guide_url": "https://retrogamecorps.com/2024/12/09/my-simple-trimui-brick-setup/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "AliExpress Choice offers the lowest street price (€48 to €58 with free 8-day delivery and prepaid EU IOSS VAT). KeepRetro direct is a solid secondary option if specific shell colors sell out on AliExpress.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-TrimUI-Brick.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=TrimUI+Brick"
+        "name": "KeepRetro Direct",
+        "badge": "Official Partner",
+        "url": "https://www.keepretro.com/search?q=TrimUI+Brick"
       },
       {
-        "name": "KeepRetro Direct",
-        "url": "https://www.keepretro.com/search?q=TrimUI+Brick"
+        "name": "Amazon DE",
+        "badge": "Prime / 30-Day Return",
+        "url": "https://www.amazon.de/s?k=TrimUI+Brick"
       }
-    ]
+    ],
+    "chip_score": 3,
+    "emulation_score": 3,
+    "pico8_score": 4,
+    "pico8_tier": "Native Standalone (Offline)",
+    "portmaster_score": 3,
+    "portmaster_tier": "Lightweight C Ports",
+    "display_score": 5,
+    "display_tier": "1024x768 400 PPI (Razor Sharp 4:3)"
   },
   {
     "id": "anbernic-rg35xx-h",
@@ -92,20 +109,42 @@
       "Stock microSD cards must be replaced immediately"
     ],
     "verdict": "The most versatile all-around horizontal handheld under €70.",
+    "review_title": "Anbernic RG35XX H/Plus Review: So Good (Now)",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=1u4bY8X0i-U",
+    "guide_url": "https://retrogamecorps.com/2024/06/07/anbernic-rg35xx-family-starter-guide/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "AliExpress Choice lands this at €45 to €54 shipped. Anbernic.com lists $49, but adds $12 to $15 4PX shipping fees plus potential local post handling fees in the EU.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-Anbernic-RG35XX-H.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=Anbernic+RG35XX+H"
+        "name": "Anbernic Official",
+        "badge": "Brand Direct",
+        "url": "https://anbernic.com/products/rg35xx-h"
       },
       {
-        "name": "Anbernic Official",
-        "url": "https://anbernic.com/search?q=RG35XX-H"
+        "name": "DroiX EU",
+        "badge": "2-Yr EU Warranty",
+        "url": "https://droix.net/product/anbernic-rg35xx-h/"
+      },
+      {
+        "name": "Amazon DE",
+        "badge": "Prime Delivery",
+        "url": "https://www.amazon.de/s?k=Anbernic+RG35XX+H"
       }
-    ]
+    ],
+    "chip_score": 3,
+    "emulation_score": 4,
+    "pico8_score": 5,
+    "pico8_tier": "Native Splore (Wi-Fi Online)",
+    "portmaster_score": 5,
+    "portmaster_tier": "Full 64-bit Dual Stick (Celeste, Stardew)",
+    "display_score": 4,
+    "display_tier": "640x480 4:3 IPS (Pocket Horizontal)"
   },
   {
     "id": "anbernic-rg35xx-sp",
@@ -146,20 +185,42 @@
       "No analog sticks"
     ],
     "verdict": "The definitive Game Boy Advance and classic RPG machine.",
+    "review_title": "RG35XXSP Review: King Clamshell",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=0M1fYSOhwZ4",
+    "guide_url": "https://retrogamecorps.com/2024/06/07/anbernic-rg35xx-family-starter-guide/",
+    "best_store": "AliExpress Choice (or Amazon DE for return coverage)",
+    "buying_advice": "AliExpress Choice is the best value (€52 to €62 shipped). Amazon DE is worth the extra €20 if you want 30-day no-questions return coverage for hinge tolerance or clicky button preference.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-Anbernic-RG35XX-SP.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=Anbernic+RG35XX+SP"
+        "name": "Anbernic Official",
+        "badge": "Brand Direct",
+        "url": "https://anbernic.com/products/rg35xxsp"
       },
       {
-        "name": "Anbernic Official",
-        "url": "https://anbernic.com/search?q=RG35XX-SP"
+        "name": "DroiX EU",
+        "badge": "2-Yr EU Warranty",
+        "url": "https://droix.net/product/anbernic-rg35xx-sp/"
+      },
+      {
+        "name": "Amazon DE",
+        "badge": "Hassle-Free Return",
+        "url": "https://www.amazon.de/s?k=Anbernic+RG35XX+SP"
       }
-    ]
+    ],
+    "chip_score": 3,
+    "emulation_score": 4,
+    "pico8_score": 5,
+    "pico8_tier": "Native Splore (Wi-Fi Online)",
+    "portmaster_score": 4,
+    "portmaster_tier": "Full 64-bit D-Pad Optimized",
+    "display_score": 4,
+    "display_tier": "640x480 4:3 IPS (GBA SP Clamshell)"
   },
   {
     "id": "miyoo-mini-plus",
@@ -200,20 +261,42 @@
       "No hardware RTC, syncs time via Wi-Fi NTP"
     ],
     "verdict": "The best first retro handheld on the market thanks to OnionOS.",
+    "review_title": "Miyoo Mini Plus Starter Guide",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=R2j9r6E_X5I",
+    "guide_url": "https://retrogamecorps.com/2022/05/15/miyoo-mini-v2-guide/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "Buy via verified AliExpress Choice or Miyoo Official Store on AliExpress for €45 to €54. KeepRetro direct is reliable if you want bundled storage cases.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-Miyoo-Mini-Plus.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=Miyoo+Mini+Plus"
+        "name": "KeepRetro Direct",
+        "badge": "Official Partner",
+        "url": "https://www.keepretro.com/products/miyoo-mini-plus"
       },
       {
-        "name": "KeepRetro Direct",
-        "url": "https://www.keepretro.com/search?q=Miyoo+Mini+Plus"
+        "name": "DroiX EU",
+        "badge": "2-Yr EU Warranty",
+        "url": "https://droix.net/product/miyoo-mini-plus/"
+      },
+      {
+        "name": "Amazon DE",
+        "badge": "Prime Delivery",
+        "url": "https://www.amazon.de/s?k=Miyoo+Mini+Plus"
       }
-    ]
+    ],
+    "chip_score": 2,
+    "emulation_score": 3,
+    "pico8_score": 3,
+    "pico8_tier": "Fake08 (Emulated, Offline Carts)",
+    "portmaster_score": 2,
+    "portmaster_tier": "32-bit Classic Ports Only",
+    "display_score": 4,
+    "display_tier": "640x480 4:3 IPS (Laminated Vertical)"
   },
   {
     "id": "trimui-smart-pro",
@@ -253,20 +336,37 @@
       "Classic 4:3 titles show pillarbox side borders"
     ],
     "verdict": "The top sub-€60 choice for anyone who wants a big screen and PSP.",
+    "review_title": "TrimUI Smart Pro Updated Review: Incredible Value!",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=603Kv4x66P0",
+    "guide_url": "https://retrogamecorps.com/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "AliExpress Choice routinely discounts this to €42 to €49 during sales with free shipping and prepaid VAT. Amazon DE charges €75+ for identical hardware.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-TrimUI-Smart-Pro.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=TrimUI+Smart+Pro"
+        "name": "KeepRetro Direct",
+        "badge": "Official Partner",
+        "url": "https://www.keepretro.com/search?q=TrimUI+Smart+Pro"
       },
       {
-        "name": "KeepRetro Direct",
-        "url": "https://www.keepretro.com/search?q=TrimUI+Smart+Pro"
+        "name": "Amazon DE",
+        "badge": "Prime / 30-Day Return",
+        "url": "https://www.amazon.de/s?k=TrimUI+Smart+Pro"
       }
-    ]
+    ],
+    "chip_score": 3,
+    "emulation_score": 4,
+    "pico8_score": 4,
+    "pico8_tier": "Native Standalone (Custom 1:1 Borders)",
+    "portmaster_score": 4,
+    "portmaster_tier": "CrossMix 64-bit Widescreen Ports",
+    "display_score": 5,
+    "display_tier": "1280x720 16:9 IPS (Widescreen PSP & GBA)"
   },
   {
     "id": "powkiddy-rgb30",
@@ -307,20 +407,37 @@
       "D-pad false diagonals out of the box (benefits from tape mod)"
     ],
     "verdict": "The ultimate dedicated device for PICO-8 and square format gaming.",
+    "review_title": "$90 and Amazing for Retro Emulation (RGB30 Review)",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=F38l1R1951o",
+    "guide_url": "https://retrogamecorps.com/2023/10/27/powkiddy-rgb30-starter-guide/",
+    "best_store": "AliExpress Choice (or Powkiddy Direct with discount codes)",
+    "buying_advice": "AliExpress Choice price is €64 to €75. Powkiddy direct sometimes offers $10 coupons, but check shipping times. Amazon DE markups reach €110+.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-Powkiddy-RGB30.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=Powkiddy+RGB30"
+        "name": "Powkiddy Official",
+        "badge": "Brand Direct",
+        "url": "https://powkiddy.com/products/powkiddy-rgb30"
       },
       {
-        "name": "Powkiddy Official",
-        "url": "https://powkiddy.com/search?q=RGB30"
+        "name": "Amazon DE",
+        "badge": "Prime / 30-Day Return",
+        "url": "https://www.amazon.de/s?k=Powkiddy+RGB30"
       }
-    ]
+    ],
+    "chip_score": 4,
+    "emulation_score": 4,
+    "pico8_score": 5,
+    "pico8_tier": "Native Splore Benchmark (1:1 Perfection)",
+    "portmaster_score": 5,
+    "portmaster_tier": "Full 64-bit PortMaster (ArkOS)",
+    "display_score": 5,
+    "display_tier": "720x720 1:1 IPS (PICO-8, GB, GBC, Arcade)"
   },
   {
     "id": "anbernic-rg40xx-h",
@@ -361,20 +478,37 @@
       "Wider body than the RG35XX H"
     ],
     "verdict": "The best 4:3 horizontal device if you prioritize comfort and bigger text.",
+    "review_title": "Anbernic RG40XX H: Big Screen!",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=CZct4QPctd4",
+    "guide_url": "https://retrogamecorps.com/2024/06/07/anbernic-rg35xx-family-starter-guide/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "Choice sales bring this 4.0-inch handheld down to €56 to €68. Direct from Anbernic costs more after adding shipping fees.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-Anbernic-RG40XX-H.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=Anbernic+RG40XX+H"
+        "name": "Anbernic Official",
+        "badge": "Brand Direct",
+        "url": "https://anbernic.com/products/rg40xx-h"
       },
       {
-        "name": "Anbernic Official",
-        "url": "https://anbernic.com/search?q=RG40XX-H"
+        "name": "Amazon DE",
+        "badge": "Prime Delivery",
+        "url": "https://www.amazon.de/s?k=Anbernic+RG40XX+H"
       }
-    ]
+    ],
+    "chip_score": 3,
+    "emulation_score": 4,
+    "pico8_score": 5,
+    "pico8_tier": "Native Splore (Wi-Fi Online)",
+    "portmaster_score": 5,
+    "portmaster_tier": "Full 64-bit Dual Stick (Celeste, Stardew)",
+    "display_score": 5,
+    "display_tier": "4.0\" 640x480 Big-Screen 4:3 Comfort"
   },
   {
     "id": "anbernic-rg28xx",
@@ -415,20 +549,37 @@
       "Small buttons can feel cramped for large hands"
     ],
     "verdict": "The ultimate everyday carry micro handheld to keep in your pocket.",
+    "review_title": "Anbernic RG28XX Review: Tiny but Mighty",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=k-a8jM1P04s",
+    "guide_url": "https://retrogamecorps.com/2024/06/07/anbernic-rg35xx-family-starter-guide/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "AliExpress Choice frequently discounts this micro console to €36 to €44. Paying €65 on Amazon makes little sense for a pocket beater.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-Anbernic-RG28XX.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=Anbernic+RG28XX"
+        "name": "Anbernic Official",
+        "badge": "Brand Direct",
+        "url": "https://anbernic.com/products/rg28xx"
       },
       {
-        "name": "Anbernic Official",
-        "url": "https://anbernic.com/search?q=RG28XX"
+        "name": "Amazon DE",
+        "badge": "Prime Delivery",
+        "url": "https://www.amazon.de/s?k=Anbernic+RG28XX"
       }
-    ]
+    ],
+    "chip_score": 3,
+    "emulation_score": 4,
+    "pico8_score": 4,
+    "pico8_tier": "Native Standalone (Offline)",
+    "portmaster_score": 3,
+    "portmaster_tier": "D-Pad Lightweight Ports",
+    "display_score": 3,
+    "display_tier": "2.83\" 640x480 4:3 IPS (Pocket Micro)"
   },
   {
     "id": "anbernic-rg35xx-plus",
@@ -469,20 +620,37 @@
       "Rear triggers require adjustment on long sessions"
     ],
     "verdict": "A reliable modern Game Boy style vertical with modern wireless.",
+    "review_title": "Anbernic RG35XX Plus: Better in Every Way",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=48y5nS9R6sE",
+    "guide_url": "https://retrogamecorps.com/2024/06/07/anbernic-rg35xx-family-starter-guide/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "AliExpress Choice offers the lowest price with zero shipping surprise (€46 to €55). Anbernic official direct has slower 4PX delivery and higher courier fees.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-Anbernic-RG35XX-Plus.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=Anbernic+RG35XX+Plus"
+        "name": "Anbernic Official",
+        "badge": "Brand Direct",
+        "url": "https://anbernic.com/products/rg35xx-plus"
       },
       {
-        "name": "Anbernic Official",
-        "url": "https://anbernic.com/search?q=RG35XX-PLUS"
+        "name": "Amazon DE",
+        "badge": "Prime / 30-Day Return",
+        "url": "https://www.amazon.de/s?k=Anbernic+RG35XX+Plus"
       }
-    ]
+    ],
+    "chip_score": 3,
+    "emulation_score": 4,
+    "pico8_score": 5,
+    "pico8_tier": "Native Splore (Wi-Fi Online)",
+    "portmaster_score": 4,
+    "portmaster_tier": "Full 64-bit D-Pad Optimized",
+    "display_score": 4,
+    "display_tier": "640x480 4:3 IPS (Classic DMG Vertical)"
   },
   {
     "id": "miyoo-a30",
@@ -522,20 +690,37 @@
       "A33 processor tops out at PS1"
     ],
     "verdict": "The best tiny horizontal tribute to the Game Boy Micro era.",
+    "review_title": "Miyoo A30 Review: The Next Miyoo Mini?",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=uCskj9Yk83U",
+    "guide_url": "https://retrogamecorps.com/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "Prices plummeted to €28 to €36 on AliExpress Choice, making it a stellar pocket travel beater. Pair with Spruce OS immediately.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-Miyoo-A30.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=Miyoo+A30"
+        "name": "KeepRetro Direct",
+        "badge": "Official Partner",
+        "url": "https://www.keepretro.com/products/miyoo-a30"
       },
       {
-        "name": "KeepRetro Direct",
-        "url": "https://www.keepretro.com/search?q=Miyoo+A30"
+        "name": "Amazon DE",
+        "badge": "Prime Delivery",
+        "url": "https://www.amazon.de/s?k=Miyoo+A30"
       }
-    ]
+    ],
+    "chip_score": 2,
+    "emulation_score": 3,
+    "pico8_score": 3,
+    "pico8_tier": "Fake08 on spruceOS",
+    "portmaster_score": 2,
+    "portmaster_tier": "32-bit Classic Ports Only",
+    "display_score": 3,
+    "display_tier": "2.8\" 640x480 4:3 IPS (Game Boy Micro Style)"
   },
   {
     "id": "batlexp-g350",
@@ -575,20 +760,37 @@
       "Plastic shell and budget shoulder button feel"
     ],
     "verdict": "An ultra-affordable dual-stick vertical for tight budgets.",
+    "review_title": "BATLEXP G350 Review: Anbernic Quality, Bargain Price",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=Hm6TXHfnrfN",
+    "guide_url": "https://joeysretrohandhelds.com/",
+    "best_store": "AliExpress Choice / LitNXT Direct",
+    "buying_advice": "Available on AliExpress Choice and LitNXT for €28 to €38. Delivers RK3326 chip muscle at half the price of legacy Anbernic devices.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
-        "url": "https://www.aliexpress.com/w/wholesale-BatleXP-G350.html"
+        "badge": "Best Value (IOSS VAT)",
+        "url": "https://www.aliexpress.com/w/wholesale-Batlexp-G350.html"
+      },
+      {
+        "name": "LitNXT Direct",
+        "badge": "Direct Partner",
+        "url": "https://www.litnxt.com/search?q=Batlexp+G350"
       },
       {
         "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=BatleXP+G350"
-      },
-      {
-        "name": "AliExpress Direct",
-        "url": "https://www.aliexpress.com/w/wholesale-BatleXP-G350.html"
+        "badge": "Prime Delivery",
+        "url": "https://www.amazon.de/s?k=Batlexp+G350"
       }
-    ]
+    ],
+    "chip_score": 3,
+    "emulation_score": 3,
+    "pico8_score": 3,
+    "pico8_tier": "Fake08 (ArkOS, USB Dongle Wi-Fi)",
+    "portmaster_score": 4,
+    "portmaster_tier": "ArkOS 64-bit Dual Stick Ports",
+    "display_score": 4,
+    "display_tier": "640x480 4:3 IPS (Vertical with Dual Sticks)"
   },
   {
     "id": "r36s",
@@ -628,20 +830,32 @@
       "No onboard Wi-Fi"
     ],
     "verdict": "The undisputed king of the sub-€30 bargain bin for tinkerers.",
+    "review_title": "I Can't Believe This is Only $40: R36S Review",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=FAyapwE_e-4",
+    "guide_url": "https://joeysretrohandhelds.com/guides/r36s-setup-guide/",
+    "best_store": "AliExpress Choice (High-Rated Store Only)",
+    "buying_advice": "Purchase strictly from high-rated Choice sellers with 1,000+ sold to ensure you receive a genuine clone rather than a downgraded board.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
-        "url": "https://www.aliexpress.com/w/wholesale-R36S.html"
+        "badge": "Best Value (1000+ Sold)",
+        "url": "https://www.aliexpress.com/w/wholesale-R36S-Retro-Handheld.html"
       },
       {
         "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=R36S"
-      },
-      {
-        "name": "Choice Verified Store",
-        "url": "https://www.aliexpress.com/w/wholesale-R36S-Retro-Handheld.html"
+        "badge": "Prime / Easy Return",
+        "url": "https://www.amazon.de/s?k=R36S+Retro+Handheld"
       }
-    ]
+    ],
+    "chip_score": 3,
+    "emulation_score": 3,
+    "pico8_score": 3,
+    "pico8_tier": "Fake08 (ArkOS, USB Dongle Wi-Fi)",
+    "portmaster_score": 4,
+    "portmaster_tier": "ArkOS 64-bit Dual Stick Ports",
+    "display_score": 4,
+    "display_tier": "640x480 4:3 IPS (Budget King Vertical)"
   },
   {
     "id": "konkr-pocket-block",
@@ -681,20 +895,32 @@
       "No analog sticks"
     ],
     "verdict": "The most powerful processor inside a vertical form factor under €100.",
+    "review_title": "KONKR Pocket Block: High-Res 960x720 Vertical Monster",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/results?search_query=KONKR+Pocket+Block+review",
+    "guide_url": "https://retrogamecorps.com/",
+    "best_store": "AliExpress Choice / Official Direct",
+    "buying_advice": "AliExpress Choice has the best street price at €74 to €88 with free shipping. Powerful A523 processor easily handles full PSP and Dreamcast.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-KONKR-Pocket-Block.html"
       },
       {
         "name": "Amazon DE",
+        "badge": "Prime Delivery",
         "url": "https://www.amazon.de/s?k=KONKR+Pocket+Block"
-      },
-      {
-        "name": "AliExpress Direct",
-        "url": "https://www.aliexpress.com/w/wholesale-KONKR-Pocket-Block.html"
       }
-    ]
+    ],
+    "chip_score": 5,
+    "emulation_score": 5,
+    "pico8_score": 4,
+    "pico8_tier": "Android Native PICO-8 / Web Splore",
+    "portmaster_score": 3,
+    "portmaster_tier": "Android Ports & APKs (No Linux PortMaster)",
+    "display_score": 4,
+    "display_tier": "3.33\" 960x720 4:3 High-Res Vertical"
   },
   {
     "id": "powkiddy-v90",
@@ -733,20 +959,37 @@
       "Requires manual software shutdown before closing the physical power switch"
     ],
     "verdict": "A fun, dirt-cheap GBA clamshell beater device for everyday bags.",
+    "review_title": "Still My Favorite $40 Handheld! PowKiddy V90 Black Edition Review",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=Zt_3RkUuK-4",
+    "guide_url": "https://retrogamecorps.com/2021/02/01/review-powkiddy-v90/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "At €24 to €29 on AliExpress Choice with free delivery, it is an unbeatable impulse purchase. Never buy on Amazon where sellers charge €49.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
         "url": "https://www.aliexpress.com/w/wholesale-Powkiddy-V90.html"
       },
       {
-        "name": "Amazon DE",
-        "url": "https://www.amazon.de/s?k=Powkiddy+V90"
+        "name": "Powkiddy Official",
+        "badge": "Brand Direct",
+        "url": "https://powkiddy.com/products/powkiddy-v90"
       },
       {
-        "name": "Powkiddy Official",
-        "url": "https://powkiddy.com/search?q=V90"
+        "name": "Amazon DE",
+        "badge": "Prime Delivery",
+        "url": "https://www.amazon.de/s?k=Powkiddy+V90"
       }
-    ]
+    ],
+    "chip_score": 1,
+    "emulation_score": 2,
+    "pico8_score": 1,
+    "pico8_tier": "Unsupported",
+    "portmaster_score": 1,
+    "portmaster_tier": "Unsupported",
+    "display_score": 3,
+    "display_tier": "3.0\" 320x240 4:3 GBA Clamshell"
   },
   {
     "id": "data-frog-sf2000",
@@ -786,19 +1029,31 @@
       "Very basic chip not capable of PS1"
     ],
     "verdict": "The ultimate sub-€20 impulse buy for casual 8-bit and 16-bit gaming.",
+    "review_title": "The $25 Handheld Everyone is Talking About",
+    "review_channel": "Retro Game Corps",
+    "review_url": "https://www.youtube.com/watch?v=GwBX26eMQqq",
+    "guide_url": "https://retrogamecorps.com/",
+    "best_store": "AliExpress Choice (Data Frog Official Store)",
+    "buying_advice": "Always buy through AliExpress Choice where it costs €14 to €18 with free delivery. Amazon listings priced at €35 to €45 are pure dropshipping markups.",
     "verified_stores": [
       {
         "name": "AliExpress Choice",
+        "badge": "Best Value (€14-€18)",
         "url": "https://www.aliexpress.com/w/wholesale-Data-Frog-SF2000.html"
       },
       {
         "name": "Amazon DE",
+        "badge": "Prime Delivery",
         "url": "https://www.amazon.de/s?k=Data+Frog+SF2000"
-      },
-      {
-        "name": "Data Frog Direct",
-        "url": "https://www.aliexpress.com/w/wholesale-Data+Frog+Data+Frog+SF2000.html"
       }
-    ]
+    ],
+    "chip_score": 1,
+    "emulation_score": 1,
+    "pico8_score": 1,
+    "pico8_tier": "Unsupported",
+    "portmaster_score": 1,
+    "portmaster_tier": "Unsupported",
+    "display_score": 2,
+    "display_tier": "3.0\" 640x480 4:3 IPS (Budget Controller Form)"
   }
 ]
