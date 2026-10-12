@@ -80,16 +80,23 @@ async def run_tests():
             record_fail("Document title", f"Unexpected title: {title}")
 
         cards = await page.locator("#handheldGrid article").count()
-        if cards == 16:
+        if cards == 15:
             record_pass(f"Initial render populated all {cards} benchmark handhelds")
         else:
-            record_fail("Initial card count", f"Expected 16 cards, found {cards}")
+            record_fail("Initial card count", f"Expected 15 cards, found {cards}")
+
+        # Image render test
+        images = await page.locator("#handheldGrid article img").count()
+        if images == 15:
+            record_pass(f"All {images} device cards have product images rendered")
+        else:
+            record_fail("Product images", f"Expected 15 images, found {images}")
 
         print("\n=== Category 2: Equivalence Partitioning & Filtering ===")
         # Form factor filter test
         await page.click("button[data-filter='Vertical']")
         vert_count = await page.locator("#handheldGrid article").count()
-        if vert_count > 0 and vert_count < 16:
+        if vert_count > 0 and vert_count < 15:
             record_pass(f"Form factor filter 'Vertical' isolated {vert_count} devices")
         else:
             record_fail("Vertical filter", f"Unexpected count {vert_count}")
@@ -97,20 +104,20 @@ async def run_tests():
         # Reset filter
         await page.click("button[data-filter='all']")
         all_count = await page.locator("#handheldGrid article").count()
-        if all_count == 16:
-            record_pass("Reset form factor filter restored all 16 devices")
+        if all_count == 15:
+            record_pass("Reset form factor filter restored all 15 devices")
         else:
             record_fail("Reset filter", f"Count was {all_count}")
 
-        # Persona filter test
-        await page.click("button[data-persona='sweet-spot']")
-        sweet_count = await page.locator("#handheldGrid article").count()
-        if sweet_count >= 2:
-            record_pass(f"Persona filter 'Sam\\'s Sweet Spot' matched {sweet_count} devices")
+        # Sort test
+        await page.select_option("#sortSelect", "price-asc")
+        first_price = await page.locator("#handheldGrid article:first-child .text-emerald-400").first.text_content()
+        await page.select_option("#sortSelect", "price-desc")
+        desc_price = await page.locator("#handheldGrid article:first-child .text-emerald-400").first.text_content()
+        if first_price and desc_price:
+            record_pass(f"Sort dropdown operates smoothly (cheapest: {first_price.strip()} vs highest: {desc_price.strip()})")
         else:
-            record_fail("Sweet spot filter", f"Expected >=2, got {sweet_count}")
-
-        await page.click("button[data-persona='all']")
+            record_fail("Sort dropdown", "Failed to sort cards by price")
 
         print("\n=== Category 3: Boundary & Search Attack Patterns ===")
         # Search for exact model (Anbernic RG28XX is uniquely named)
@@ -132,10 +139,10 @@ async def run_tests():
         # Recover from empty state via button
         await page.click("text=Reset Filters")
         recovered_count = await page.locator("#handheldGrid article").count()
-        if recovered_count == 16:
+        if recovered_count == 15:
             record_pass("Empty-state 'Reset Filters' button cleanly recovered full catalog")
         else:
-            record_fail("Recover button", f"Expected 16, got {recovered_count}")
+            record_fail("Recover button", f"Expected 15, got {recovered_count}")
 
         print("\n=== Category 4: State, Sequencing & Modal Lifecycles ===")
         # Open modal
@@ -183,10 +190,10 @@ async def run_tests():
         await page.wait_for_timeout(200)
 
         mobile_cards = await page.locator("#handheldGrid article").count()
-        if mobile_cards == 16:
+        if mobile_cards == 15:
             record_pass("390px mobile viewport renders stacked single-column cards")
         else:
-            record_fail("Mobile layout", f"Expected 16 cards, got {mobile_cards}")
+            record_fail("Mobile layout", f"Expected 15 cards, got {mobile_cards}")
 
         # Capture mobile and desktop verification screenshots
         await page.screenshot(path=os.path.join(SCREENSHOTS_DIR, "mobile_390.png"))

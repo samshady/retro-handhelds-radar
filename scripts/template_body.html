@@ -1,317 +1,574 @@
-  <!-- Site Navigation Header -->
-  <header class="border-b border-cat-surface0/80 bg-cat-mantle/90 backdrop-blur-md sticky top-0 z-40">
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-studio-950/95 backdrop-blur-md border-b border-studio-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cat-mauve to-cat-blue flex items-center justify-center text-cat-crust font-display font-extrabold text-xl shadow-md">
-          🕹️
-        </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="font-display font-bold text-xl sm:text-2xl text-cat-text tracking-tight">Retro Handhelds Radar</span>
-            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-semibold bg-cat-mauve/15 text-cat-mauve border border-cat-mauve/30">2026 Edition</span>
+      <div class="flex items-center space-x-3 min-w-0">
+        <a href="#" class="flex items-center space-x-3 group min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-amber-400 text-black flex items-center justify-center font-display font-extrabold text-lg shadow-sm group-hover:bg-amber-300 transition shrink-0">
+            <i class="fa-solid fa-gamepad"></i>
           </div>
-          <p class="text-xs text-cat-subtext0 hidden sm:block">Curated European buyer's benchmarks, PortMaster guides, and custom firmware ratings</p>
-        </div>
-      </div>
-      
-      <div class="flex items-center gap-2.5">
-        <button id="viewToggleBtn" class="tactile-btn min-h-[44px] px-3.5 py-2 rounded-xl bg-cat-surface0 hover:bg-cat-surface1 text-xs font-mono text-cat-text border border-cat-surface1 flex items-center gap-2" aria-label="Toggle between grid and comparison table">
-          <span id="viewIcon">📊</span>
-          <span id="viewText" class="hidden sm:inline">Compare Table</span>
-        </button>
-        <a href="#firmware-guide" class="tactile-btn min-h-[44px] px-3.5 py-2 rounded-xl bg-cat-surface0 hover:bg-cat-surface1 text-xs font-mono text-cat-subtext1 border border-cat-surface1 flex items-center gap-1.5" title="Custom Firmware Guide">
-          <span>⚡</span>
-          <span class="hidden md:inline">Firmware Guide</span>
+          <div class="min-w-0">
+            <div class="flex items-center space-x-2">
+              <span class="text-lg sm:text-xl font-display font-extrabold tracking-tight text-white group-hover:text-amber-300 transition truncate">Retro Handhelds Radar</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded-md bg-studio-800 text-amber-300 border border-studio-border font-semibold shrink-0">Sub-€100 Catalog</span>
+            </div>
+            <p class="hidden sm:block text-xs text-slate-400 font-normal truncate">Curated budget retro consoles, screen aspect ratios, and custom firmware benchmarks</p>
+          </div>
         </a>
       </div>
+
+      <nav class="flex items-center space-x-2 shrink-0">
+        <button type="button" id="viewToggleBtn" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-2">
+          <i id="viewIcon" class="fa-solid fa-table-list text-amber-400"></i>
+          <span id="viewText" class="hidden sm:inline">Compare Table</span>
+        </button>
+        <a href="#setup-guide" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5">
+          <i class="fa-solid fa-book-open text-emerald-400"></i>
+          <span class="hidden md:inline">Setup &amp; ROM Guide</span>
+        </a>
+        <a href="#firmware-guide" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5">
+          <i class="fa-solid fa-microchip text-sky-400"></i>
+          <span class="hidden md:inline">Firmware</span>
+        </a>
+      </nav>
     </div>
   </header>
 
-  <!-- Hero & Curator Perspective -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6">
-    <div class="bg-gradient-to-r from-cat-mantle via-cat-base to-cat-mantle border border-cat-surface0/80 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-lg">
-      <div class="max-w-3xl space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cat-blue/10 text-cat-blue border border-cat-blue/20">
-          <span>🇪🇺</span>
-          <span>Verified for German and EU Delivery: VAT, Choice Days, and 11.11 Sales</span>
+  <!-- HERO SECTION: TIGHT, SCANNABLE, PRODUCT-FIRST -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+    <div class="studio-card rounded-2xl p-6 sm:p-7 relative overflow-hidden">
+      <div class="max-w-3xl space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-amber-400/10 text-amber-300 border border-amber-400/20">
+          <i class="fa-solid fa-tag"></i>
+          <span>Under €100 / $100 Benchmark Collection (2026)</span>
         </div>
-        <h1 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-cat-text leading-tight">
-          Stop scrolling AliExpress clones. Here is what actually matters in your hands.
+        <h1 class="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-white leading-tight">
+          Every capable budget handheld benchmarked for screen ratio, custom OS, and real street prices.
         </h1>
-        <p class="text-sm sm:text-base text-cat-subtext0 leading-relaxed">
-          I built this radar to cut through marketing hype. Whether you want a foolproof sub-€50 gift for a friend (with OnionOS save-state switching) or a sharp 4:3 machine for yourself up to PS1 and PortMaster, every device here is benchmarked on screen aspect ratio, true custom OS maturity, tactile button switches, and realistic European street pricing.
+        <p class="text-sm text-slate-300 leading-relaxed">
+          From €18 pocket beaters to 1024x768 high-res vertical screens and widescreen PSP machines. Compare actual display geometry, PortMaster indie support, and true custom firmware options below.
         </p>
       </div>
 
-      <!-- Quick Stats Strip (Flattened with border dividers per impeccable) -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 mt-6 border-t border-cat-surface0/60 font-mono text-xs">
-        <div class="space-y-1">
-          <div class="text-cat-subtext0 text-xs">Personal Top Pick (&lt;€70)</div>
-          <div class="text-cat-mauve font-bold text-sm">TrimUI Brick / RG35XX H</div>
+      <!-- Quick Benchmark Stats Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-5 mt-5 border-t border-studio-border font-mono text-xs">
+        <div>
+          <span class="text-slate-400 block text-xs">Top Sub-€70 Overall</span>
+          <span class="text-amber-400 font-bold text-sm">TrimUI Brick / RG35XX H</span>
         </div>
-        <div class="space-y-1">
-          <div class="text-cat-subtext0 text-xs">Best Beginner Gift (&lt;€50)</div>
-          <div class="text-cat-green font-bold text-sm">Miyoo Mini+ (OnionOS)</div>
+        <div>
+          <span class="text-slate-400 block text-xs">Best Sub-€50 Vertical</span>
+          <span class="text-emerald-400 font-bold text-sm">Miyoo Mini+ (OnionOS)</span>
         </div>
-        <div class="space-y-1">
-          <div class="text-cat-subtext0 text-xs">PICO-8 & Square Native</div>
-          <div class="text-cat-peach font-bold text-sm">Powkiddy RGB30 (1:1 720p)</div>
+        <div>
+          <span class="text-slate-400 block text-xs">1:1 Square & PICO-8</span>
+          <span class="text-sky-400 font-bold text-sm">Powkiddy RGB30 (720p)</span>
         </div>
-        <div class="space-y-1">
-          <div class="text-cat-subtext0 text-xs">Widescreen PSP Value</div>
-          <div class="text-cat-blue font-bold text-sm">TrimUI Smart Pro (5" 720p)</div>
+        <div>
+          <span class="text-slate-400 block text-xs">5" 720p Widescreen</span>
+          <span class="text-purple-400 font-bold text-sm">TrimUI Smart Pro (€55)</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Filter & Search Controls Bar -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sticky top-[69px] z-30 bg-cat-crust/95 backdrop-blur-md">
-    <div class="space-y-3">
-      <!-- Search input and form factor filters -->
+  <!-- CONTROLS & FILTER BAR (GENEROUS PADDING, ZERO CUTOFF) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sticky top-[69px] z-30 bg-studio-950/95 backdrop-blur-md border-b border-studio-border/60">
+    <div class="space-y-2.5">
+      <!-- Search bar and View Filters -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
         <div class="relative flex-1">
-          <span class="absolute inset-y-0 left-3.5 flex items-center text-cat-overlay0 pointer-events-none text-sm">🔍</span>
+          <span class="absolute inset-y-0 left-3.5 flex items-center text-slate-400 pointer-events-none text-sm">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
           <input 
             type="text" 
             id="searchInput" 
-            placeholder="Search by device, chipset, OS (e.g. muOS, OnionOS, TrimUI, H700, 1024x768)..." 
-            class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-cat-mantle border border-cat-surface0 text-cat-text placeholder-cat-overlay0 text-sm focus:outline-none focus:border-cat-mauve transition-colors"
+            placeholder="Search by device, chipset, OS (e.g. TrimUI, muOS, H700, 1024x768, PICO-8)..." 
+            class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-studio-900 border border-studio-border text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400 transition"
           >
-          <button id="clearSearchBtn" class="absolute inset-y-0 right-3 flex items-center text-cat-overlay0 hover:text-cat-text text-xs hidden">✕</button>
+          <button id="clearSearchBtn" class="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-white text-xs hidden" aria-label="Clear search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
 
-        <!-- Form factor chips -->
-        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0" id="formFactorFilters">
-          <button data-filter="all" class="form-factor-btn tactile-btn min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-mono font-medium border bg-cat-mauve text-cat-crust border-cat-mauve">All Forms</button>
-          <button data-filter="Vertical" class="form-factor-btn tactile-btn min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-mono font-medium border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-surface1">Vertical</button>
-          <button data-filter="Horizontal" class="form-factor-btn tactile-btn min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-mono font-medium border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-surface1">Horizontal</button>
-          <button data-filter="Clamshell" class="form-factor-btn tactile-btn min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-mono font-medium border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-surface1">Clamshell</button>
-          <button data-filter="Square" class="form-factor-btn tactile-btn min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-mono font-medium border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-surface1">1:1 Square</button>
-          <button data-filter="Micro" class="form-factor-btn tactile-btn min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-mono font-medium border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-surface1">Pocket Micro</button>
+        <div class="flex items-center gap-2">
+          <!-- Sort Selector -->
+          <div class="relative shrink-0">
+            <select id="sortSelect" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 border border-studio-border text-xs font-mono text-slate-200 focus:outline-none focus:border-amber-400 cursor-pointer">
+              <option value="price-asc">Price: Lowest First</option>
+              <option value="price-desc">Price: Highest First</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="res-desc">Resolution: Sharpest</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <!-- Persona quick filter pills -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-mono text-cat-subtext0">
-        <span class="text-cat-overlay0 shrink-0">Use Case:</span>
-        <button data-persona="all" class="persona-btn tactile-btn min-h-[36px] px-3 py-1.5 rounded-lg border bg-cat-surface0 text-cat-text border-cat-surface1">Show All</button>
-        <button data-persona="friend" class="persona-btn tactile-btn min-h-[36px] px-3 py-1.5 rounded-lg border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-green/50">🎁 Friend Gift (&lt;€50)</button>
-        <button data-persona="sweet-spot" class="persona-btn tactile-btn min-h-[36px] px-3 py-1.5 rounded-lg border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-mauve/50">🎯 Sam's Sweet Spot (&lt;€70)</button>
-        <button data-persona="clamshell" class="persona-btn tactile-btn min-h-[36px] px-3 py-1.5 rounded-lg border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-peach/50">📁 GBA Clamshell</button>
-        <button data-persona="pico" class="persona-btn tactile-btn min-h-[36px] px-3 py-1.5 rounded-lg border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-yellow/50">⬛ PICO-8 & Square</button>
-        <button data-persona="widescreen" class="persona-btn tactile-btn min-h-[36px] px-3 py-1.5 rounded-lg border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-blue/50">📺 PSP & 16:9</button>
-        <button data-persona="oled" class="persona-btn tactile-btn min-h-[36px] px-3 py-1.5 rounded-lg border bg-cat-mantle text-cat-subtext0 border-cat-surface0 hover:border-cat-pink/50">✨ OLED & PS2</button>
+      <!-- Filter Pills (Scroll container with vertical headroom so no pill gets cut off) -->
+      <div class="filter-scroll-container flex items-center gap-2 text-xs font-mono">
+        <span class="text-slate-400 text-xs shrink-0 font-medium">Form Factor:</span>
+        <button data-filter="all" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-amber-400 text-black font-bold border-amber-400 shrink-0">All Devices</button>
+        <button data-filter="Vertical" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Vertical</button>
+        <button data-filter="Horizontal" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Horizontal</button>
+        <button data-filter="Clamshell" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Clamshell</button>
+        <button data-filter="Square" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">1:1 Square</button>
+        <button data-filter="Pocket Micro" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Pocket Micro</button>
       </div>
     </div>
   </section>
 
-  <!-- Main Content Grid -->
+  <!-- MAIN CATALOG VIEW -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div id="resultsCount" class="text-xs font-mono text-cat-subtext0 mb-4 flex items-center justify-between">
-      <span>Displaying <span id="matchCount" class="text-cat-mauve font-bold">16</span> devices</span>
-      <span class="text-cat-overlay0">Prices shown reflect typical EU Choice and 11.11 promo levels</span>
+    <div id="resultsCount" class="text-xs font-mono text-slate-400 mb-5 flex items-center justify-between">
+      <span>Showing <span id="matchCount" class="text-amber-400 font-bold">15</span> handhelds under €100</span>
+      <span class="text-slate-500 hidden sm:inline">AliExpress Choice &amp; 11.11 estimated promo pricing</span>
     </div>
 
-    <!-- Bento Grid Container -->
+    <!-- Cards Grid -->
     <div id="handheldGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- Cards rendered deterministically via JavaScript -->
+      <!-- Generated via JavaScript with proper product images -->
     </div>
 
-    <!-- Comparison Table Container (hidden by default) -->
-    <div id="comparisonTableWrapper" class="hidden overflow-x-auto bg-cat-mantle border border-cat-surface0 rounded-2xl shadow-xl p-4">
-      <table class="w-full text-left text-xs text-cat-text">
-        <thead class="border-b border-cat-surface0 text-cat-subtext0 font-mono">
+    <!-- Comparison Table (Hidden by default) -->
+    <div id="comparisonTableWrapper" class="hidden overflow-x-auto studio-card rounded-2xl shadow-xl p-4">
+      <table class="w-full text-left text-xs text-slate-200">
+        <thead class="border-b border-studio-border text-slate-400 font-mono">
           <tr>
             <th class="py-3 px-3">Device</th>
             <th class="py-3 px-3">Form</th>
-            <th class="py-3 px-3">Screen & Aspect</th>
-            <th class="py-3 px-3">Chipset & RAM</th>
+            <th class="py-3 px-3">Display</th>
+            <th class="py-3 px-3">Chipset</th>
             <th class="py-3 px-3">Emulation Ceiling</th>
-            <th class="py-3 px-3">Custom OS</th>
-            <th class="py-3 px-3">Ali Choice (€)</th>
-            <th class="py-3 px-3">11.11 Promo (€)</th>
-            <th class="py-3 px-3">PortMaster</th>
-            <th class="py-3 px-3">Action</th>
+            <th class="py-3 px-3">Recommended OS</th>
+            <th class="py-3 px-3">Ali Choice</th>
+            <th class="py-3 px-3">11.11 Sale</th>
+            <th class="py-3 px-3 text-right">Action</th>
           </tr>
         </thead>
-        <tbody id="comparisonTableBody" class="divide-y divide-cat-surface0/50 font-mono">
+        <tbody id="comparisonTableBody" class="divide-y divide-studio-border/50 font-mono">
           <!-- Rows rendered via JavaScript -->
         </tbody>
       </table>
     </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden py-16 text-center space-y-3 studio-card rounded-2xl">
+      <div class="w-12 h-12 rounded-full bg-studio-800 text-slate-400 mx-auto flex items-center justify-center text-lg">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <p class="text-base font-bold text-white">No handhelds match your active filters</p>
+      <p class="text-xs text-slate-400">Try resetting the form factor or clear the search query.</p>
+      <button type="button" onclick="resetFilters()" class="btn-tactile min-h-[44px] px-4 py-2 rounded-xl bg-amber-400 text-black font-mono text-xs font-bold">Reset Filters</button>
+    </div>
   </main>
 
-  <!-- Curated Knowledge Guides Section -->
-  <section id="firmware-guide" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-cat-surface0">
+  <!-- SETUP, ROMS & EMULATION MASTER GUIDE SECTION -->
+  <section id="setup-guide" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-studio-border">
     <div class="mb-8">
-      <div class="section-stroke text-3xl font-display font-extrabold mb-1">01</div>
-      <h2 class="text-2xl font-display font-bold text-cat-text">Why Firmware is 80% of the Experience</h2>
-      <p class="text-sm text-cat-subtext0 mt-1">Stock SD cards shipped from AliExpress sellers are prone to failing. Here is which OS changes the machine.</p>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20 mb-2">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Field Manual &amp; Setup Standards</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
+        Master Guide: SD Cards, ROM Curation, BIOS &amp; Box Art
+      </h2>
+      <p class="text-sm text-slate-300 mt-2 max-w-3xl leading-relaxed">
+        Setting up a sub-€100 handheld requires a few essential best practices. The stock software and generic SD cards included in the box are prone to rapid corruption. Follow this field workflow inspired by Retro Game Corps to build a clean, reliable retro setup.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <!-- muOS Card -->
-      <div class="bg-cat-mantle border border-cat-surface0 rounded-2xl p-6 space-y-3">
+    <!-- 4 Master Modules Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+      <!-- Module 1: The MicroSD Protocol -->
+      <div class="studio-card rounded-2xl p-6 space-y-4">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cat-mauve/20 text-cat-mauve border border-cat-mauve/30">muOS (MustardOS)</span>
-          <span class="text-xs font-mono text-cat-subtext0">H700 Devices</span>
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-lg bg-amber-400/10 text-amber-300 border border-amber-400/20 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-sd-card"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white">1. The MicroSD Protocol</h3>
+          </div>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-studio-800 text-amber-300">Crucial Step</span>
         </div>
-        <h3 class="font-display font-bold text-lg text-cat-text">Fast Boot and Folder Freedom</h3>
-        <p class="text-xs text-cat-subtext0 leading-relaxed">
-          The de facto champion for Anbernic RG35XX H, SP, Plus, and 40XX. Replaces flashy box-art scraping lag with a lightning-fast 5-second boot, clean directory browser, and native 32-bit/64-bit PortMaster support for Celeste, Stardew Valley, and TMNT Shredder's Revenge.
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Never trust the unbranded black SD card that comes in the box. Manufacturers use bottom-tier NAND flash that corrupts when power drops, destroying save states and partition tables within days.
         </p>
-        <div class="text-[11px] font-mono text-cat-blue pt-2 border-t border-cat-surface0/60">
-          Best with: RG35XX H, RG35XX SP, RG40XX H
+
+        <div class="space-y-2.5 text-xs font-mono">
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-amber-300 font-bold block mb-1">Recommended Cards:</span>
+            <span class="text-slate-300">SanDisk Ultra (A1 / Class 10) or Samsung EVO Select / Plus (A2 / V30). Proven endurance against read/write fatigue.</span>
+          </div>
+
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-emerald-400 font-bold block mb-1">Formatting &amp; Filesystem:</span>
+            <p class="text-slate-300 leading-relaxed">
+              Format your cards to <span class="text-white font-semibold">FAT32</span> using <span class="text-amber-300">GUIFormat</span> (Windows, 32KB cluster size), <span class="text-amber-300">Raspberry Pi Imager</span>, or <span class="text-amber-300">Rufus</span>. FAT32 is universally readable by Linux CFWs, OnionOS, and MinUI.
+            </p>
+          </div>
+
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-sky-300 font-bold block mb-1">Dual-SD Architecture (TF1 vs TF2):</span>
+            <span class="text-slate-300">Use TF1 (16GB to 32GB) strictly for the OS image. Use TF2 (64GB to 256GB) for ROMs, BIOS, and save files. You can reflash your OS anytime without wiping your games.</span>
+          </div>
         </div>
       </div>
 
-      <!-- OnionOS Card -->
-      <div class="bg-cat-mantle border border-cat-surface0 rounded-2xl p-6 space-y-3">
+      <!-- Module 2: ROM Curation & Curated Sets -->
+      <div class="studio-card rounded-2xl p-6 space-y-4">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cat-green/20 text-cat-green border border-cat-green/30">OnionOS</span>
-          <span class="text-xs font-mono text-cat-subtext0">Miyoo Mini / Plus</span>
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-400/10 text-emerald-300 border border-emerald-400/20 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-folder-tree"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white">2. ROM Sets &amp; Disc Compression</h3>
+          </div>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-studio-800 text-emerald-400">Library Standards</span>
         </div>
-        <h3 class="font-display font-bold text-lg text-cat-text">The Game Switcher Miracle</h3>
-        <p class="text-xs text-cat-subtext0 leading-relaxed">
-          Tap the middle button and cycle through your last 10 games like iOS multitasking cards. OnionOS automatically saves state upon sleep or switching and resumes seamlessly. The reason the Miyoo Mini Plus remains the top beginner gift for friends.
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Do not download messy random packs from torrent sites full of bad dumps and Japanese duplicates. The retro community relies on strict preservation standards and pre-curated sets.
         </p>
-        <div class="text-[11px] font-mono text-cat-green pt-2 border-t border-cat-surface0/60">
-          Best with: Miyoo Mini Plus
+
+        <div class="space-y-2.5 text-xs font-mono">
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-emerald-400 font-bold block mb-1">The Gold Standards:</span>
+            <ul class="text-slate-300 space-y-1 list-disc list-inside">
+              <li><span class="text-white font-semibold">No-Intro</span>: Bit-perfect hash-verified dumps for cartridge systems (NES, SNES, GBA).</li>
+              <li><span class="text-white font-semibold">Redump</span>: Bit-perfect verified dumps for optical discs (PS1, Sega CD, Saturn).</li>
+              <li><span class="text-white font-semibold">1G1R (1 Game 1 Region)</span>: Eliminates regional copies so you never see multiple versions of the same title.</li>
+            </ul>
+          </div>
+
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-amber-300 font-bold block mb-1">Pre-Curated Community Packs:</span>
+            <span class="text-slate-300">Look up <span class="text-white font-semibold">Tiny Best Set: GO!</span> (tailored for Miyoo Mini and RG35XX, sized in 32GB/64GB/128GB tiers with pre-scraped art) or <span class="text-white font-semibold">Done Set 2</span>. Find verified repositories on the r/roms Megathread and Internet Archive.</span>
+          </div>
+
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-sky-300 font-bold block mb-1">CHD Format &amp; Multi-Disc Playlists (.m3u):</span>
+            <p class="text-slate-300 leading-relaxed">
+              Convert optical discs (.bin/.cue) to <span class="text-white font-semibold">.chd</span> using chdman. This shrinks file sizes by 40% to 60% with zero loss in quality. For multi-disc games, place discs in a <span class="text-slate-400 font-mono">.hidden/</span> folder and create a single <span class="text-amber-300 font-mono">Game.m3u</span> playlist file.
+            </p>
+          </div>
         </div>
       </div>
 
-      <!-- NextUI / CrossMix Card -->
-      <div class="bg-cat-mantle border border-cat-surface0 rounded-2xl p-6 space-y-3">
+      <!-- Module 3: BIOS & Emulator Cores -->
+      <div class="studio-card rounded-2xl p-6 space-y-4">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cat-peach/20 text-cat-peach border border-cat-peach/30">CrossMix & NextUI</span>
-          <span class="text-xs font-mono text-cat-subtext0">TrimUI Ecosystem</span>
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-lg bg-sky-400/10 text-sky-300 border border-sky-400/20 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white">3. Essential BIOS &amp; Emulation Cores</h3>
+          </div>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-studio-800 text-sky-400">Core Selection</span>
         </div>
-        <h3 class="font-display font-bold text-lg text-cat-text">Modern Polish & Standalone Cores</h3>
-        <p class="text-xs text-cat-subtext0 leading-relaxed">
-          Transforms the TrimUI Brick and Smart Pro. Unlocks high-performance standalone PSP and Dreamcast emulators, adds customizable FN hotkeys, beautiful retro cover art, and cleans up input lag completely.
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+          BIOS files are the official system firmware required for emulators to boot games authentically. Place these case-sensitive files directly inside the <span class="text-amber-300 font-mono">/BIOS/</span> directory of your SD card.
         </p>
-        <div class="text-[11px] font-mono text-cat-peach pt-2 border-t border-cat-surface0/60">
-          Best with: TrimUI Brick, TrimUI Smart Pro
+
+        <div class="space-y-2.5 text-xs font-mono">
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-sky-300 font-bold block mb-1.5">Key BIOS Files Checklist:</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-300">
+              <div><span class="text-white font-semibold">PS1:</span> scph5501.bin (US), scph5502.bin (EU)</div>
+              <div><span class="text-white font-semibold">GBA:</span> gba_bios.bin (intro &amp; timing)</div>
+              <div><span class="text-white font-semibold">NDS:</span> bios7.bin, bios9.bin, firmware.bin</div>
+              <div><span class="text-white font-semibold">Neo Geo:</span> neogeo.zip (arcade system)</div>
+              <div><span class="text-white font-semibold">Sega CD:</span> bios_CD_U.bin, bios_CD_E.bin</div>
+              <div><span class="text-white font-semibold">Dreamcast:</span> dc_boot.bin, dc_flash.bin</div>
+            </div>
+          </div>
+
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-amber-300 font-bold block mb-1">Core &amp; Standalone Selection Guide:</span>
+            <ul class="text-slate-300 space-y-1.5 leading-relaxed">
+              <li><span class="text-white font-semibold">GBA:</span> Use <span class="text-emerald-400 font-semibold">mGBA</span> for authentic color palettes; switch to <span class="text-amber-300 font-semibold">gpSP</span> on low-power chips like SF2000.</li>
+              <li><span class="text-white font-semibold">PS1:</span> <span class="text-emerald-400 font-semibold">PCSX-ReARMed</span> is the standard dynarec core on ARM processors under €100.</li>
+              <li><span class="text-white font-semibold">Nintendo DS:</span> Always choose <span class="text-emerald-400 font-semibold">Drastic Standalone</span>. Runs at full 60 FPS even on 1.2GHz CPUs with touch screen toggle.</li>
+              <li><span class="text-white font-semibold">PSP:</span> Always choose <span class="text-emerald-400 font-semibold">PPSSPP Standalone</span> over the RetroArch core for Vulkan acceleration and stutter-free audio.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 4: Box Art Scraping & Memory Safety -->
+      <div class="studio-card rounded-2xl p-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-lg bg-purple-400/10 text-purple-300 border border-purple-400/20 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-images"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white">4. Box Art Scraping &amp; VRAM Safety</h3>
+          </div>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-studio-800 text-purple-400">Avoid Crashes</span>
+        </div>
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Adding box art makes your game collection look stunning, but cheap handhelds have only 512MB to 1GB of total RAM. Loading large uncompressed images will cause launcher lag, menu stutter, or out-of-memory kernel crashes.
+        </p>
+
+        <div class="space-y-2.5 text-xs font-mono">
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-purple-300 font-bold block mb-1">Recommended Scraping Tools:</span>
+            <p class="text-slate-300 leading-relaxed">
+              Use <span class="text-white font-semibold">Skraper (PC)</span> with a free ScreenScraper.fr account to scrape your entire SD card before inserting it. On Wi-Fi handhelds, use the built-in <span class="text-emerald-400 font-semibold">Onion Scraper</span> or EmulationStation scraper.
+            </p>
+          </div>
+
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-amber-300 font-bold block mb-1">The Memory Safety Golden Rule:</span>
+            <p class="text-slate-300 leading-relaxed">
+              Limit box art width to <span class="text-white font-semibold">250px to 400px maximum</span> (never exceed 640px). Pre-scaled images allow the UI launcher to scroll smoothly at 60 frames per second without filling available system memory.
+            </p>
+          </div>
+
+          <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+            <span class="text-emerald-400 font-bold block mb-1">Recommended Media Mix:</span>
+            <span class="text-slate-300">Choose a clean 3D Box + Screenshot mix or 2D Box art. Preserve native aspect ratios (3:2 for GBA, 4:3 for SNES/PS1) to avoid distorted game covers.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Module 5: Universal In-Game Hotkeys Reference Table -->
+    <div class="studio-card rounded-2xl p-6 mt-6 space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-lg bg-amber-400/10 text-amber-300 border border-amber-400/20 flex items-center justify-center text-sm">
+            <i class="fa-solid fa-keyboard"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg text-white">5. Universal In-Game Hotkeys &amp; Shortcuts</h3>
+        </div>
+        <span class="text-xs font-mono px-2 py-0.5 rounded bg-studio-800 text-amber-300">Quick Reference</span>
+      </div>
+
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Community firmwares use a dedicated modifier key: either the central <span class="text-amber-300 font-mono font-semibold">Menu (M / F)</span> button, or the <span class="text-sky-300 font-mono font-semibold">Select</span> button on devices lacking a menu key.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs font-mono text-slate-200">
+          <thead class="border-b border-studio-border text-slate-400">
+            <tr>
+              <th class="py-2.5 px-3">Function</th>
+              <th class="py-2.5 px-3">Dedicated Menu Button (Miyoo, Anbernic)</th>
+              <th class="py-2.5 px-3">Standard RetroArch (Select-Based)</th>
+              <th class="py-2.5 px-3">Description</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-studio-border/50 text-slate-300">
+            <tr>
+              <td class="py-2.5 px-3 font-bold text-white">RetroArch Quick Menu</td>
+              <td class="py-2.5 px-3 text-amber-300">Menu + X (or tap Menu)</td>
+              <td class="py-2.5 px-3 text-sky-300">Select + X</td>
+              <td class="py-2.5 px-3 text-slate-400">Access core options, cheats, shaders, and disc swapping</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-3 font-bold text-white">Save State</td>
+              <td class="py-2.5 px-3 text-amber-300">Menu + R2</td>
+              <td class="py-2.5 px-3 text-sky-300">Select + R2</td>
+              <td class="py-2.5 px-3 text-slate-400">Instantly write freeze-frame state to active slot</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-3 font-bold text-white">Load State</td>
+              <td class="py-2.5 px-3 text-amber-300">Menu + L2</td>
+              <td class="py-2.5 px-3 text-sky-300">Select + L2</td>
+              <td class="py-2.5 px-3 text-slate-400">Restore last saved freeze-frame state</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-3 font-bold text-white">Fast Forward</td>
+              <td class="py-2.5 px-3 text-amber-300">Menu + R1</td>
+              <td class="py-2.5 px-3 text-sky-300">Select + R1</td>
+              <td class="py-2.5 px-3 text-slate-400">Toggle or hold 2x to 4x emulation speed (ideal for RPGs)</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-3 font-bold text-white">Rewind Gameplay</td>
+              <td class="py-2.5 px-3 text-amber-300">Menu + L1</td>
+              <td class="py-2.5 px-3 text-sky-300">Select + L1</td>
+              <td class="py-2.5 px-3 text-slate-400">Rewind recent gameplay seconds in supported cores</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-3 font-bold text-white">Change Save Slot</td>
+              <td class="py-2.5 px-3 text-amber-300">Menu + D-Pad Up / Down</td>
+              <td class="py-2.5 px-3 text-sky-300">Select + D-Pad Up / Down</td>
+              <td class="py-2.5 px-3 text-slate-400">Switch between save slots 0 through 9</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-3 font-bold text-white">Exit Game to OS</td>
+              <td class="py-2.5 px-3 text-amber-300">Menu + Start (or double-tap)</td>
+              <td class="py-2.5 px-3 text-sky-300">Select + Start (press twice)</td>
+              <td class="py-2.5 px-3 text-slate-400">Cleanly exits core and returns to main system menu</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 text-xs font-mono">
+        <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+          <span class="text-emerald-400 font-bold block mb-1">OnionOS GameSwitcher Feature:</span>
+          <span class="text-slate-300">On the Miyoo Mini Plus, a single tap of the Menu button automatically saves your state and brings up an interactive card switcher of your recent games. You can jump between games without loading menus.</span>
+        </div>
+        <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+          <span class="text-sky-300 font-bold block mb-1">MinUI Pure Simplicity:</span>
+          <span class="text-slate-300">MinUI replaces RetroArch menus entirely with a calm, 5-item text popup (Resume, Save, Load, Options, Quit). Perfect for distraction-free gaming without accidental configuration changes.</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Detail Slide-Over Modal -->
-  <div id="detailModal" class="fixed inset-0 z-50 hidden bg-cat-crust/80 backdrop-blur-sm flex justify-end" aria-modal="true" role="dialog">
-    <div id="modalContent" class="w-full max-w-xl bg-cat-mantle border-l border-cat-surface0 h-full overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl transition-transform duration-300 translate-x-full">
-      <div class="flex items-center justify-between pb-4 border-b border-cat-surface0">
+  <!-- FIRMWARE GUIDE SECTION -->
+  <section id="firmware-guide" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-studio-border">
+    <div class="mb-6">
+      <div class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider mb-1">Architecture &amp; Firmware</div>
+      <h2 class="text-2xl font-display font-bold text-white">Why the Custom OS Transforms the Device</h2>
+      <p class="text-sm text-slate-400 mt-1">Stock microSD cards shipped with cheap consoles corrupt quickly. Flashing these community systems gives you instant boot, clean sleep mode, and PortMaster.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="studio-card rounded-2xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-amber-400/15 text-amber-300 border border-amber-400/30">muOS</span>
+          <span class="text-xs font-mono text-slate-400">Allwinner H700</span>
+        </div>
+        <h3 class="font-display font-bold text-base text-white">Folder-First Speed &amp; PortMaster</h3>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          5-second boot time, direct directory navigation with zero scraping delay, and full PortMaster support (Celeste, Stardew Valley). The gold standard for RG35XX H, SP, Plus, and 40XX.
+        </p>
+      </div>
+
+      <div class="studio-card rounded-2xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-emerald-400/15 text-emerald-300 border border-emerald-400/30">OnionOS</span>
+          <span class="text-xs font-mono text-slate-400">Miyoo Mini / Plus</span>
+        </div>
+        <h3 class="font-display font-bold text-base text-white">Game Switcher Multitasking</h3>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          One-touch button switches between your active games with instant state saves. Foolproof, highly polished, and the main reason the Miyoo Mini Plus stays legendary.
+        </p>
+      </div>
+
+      <div class="studio-card rounded-2xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-sky-400/15 text-sky-300 border border-sky-400/30">CrossMix / NextUI</span>
+          <span class="text-xs font-mono text-slate-400">TrimUI Devices</span>
+        </div>
+        <h3 class="font-display font-bold text-base text-white">Standalone Cores &amp; FN Hotkeys</h3>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Unlocks standalone PSP and Dreamcast emulators on the A133P chipset. NextUI adds a clean text launcher to the Brick; CrossMix adds beautiful artwork to the Smart Pro.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL DRAWER MODAL -->
+  <div id="detailModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex justify-end" aria-modal="true" role="dialog">
+    <div id="modalContent" class="w-full max-w-xl bg-studio-900 border-l border-studio-border h-full overflow-y-auto p-6 sm:p-7 space-y-5 shadow-2xl transition-transform duration-300 translate-x-full">
+      <div class="flex items-center justify-between pb-4 border-b border-studio-border">
         <div>
-          <span id="modalFormFactor" class="text-xs font-mono px-2 py-0.5 rounded bg-cat-surface0 text-cat-mauve">Vertical</span>
-          <h3 id="modalTitle" class="text-2xl font-display font-extrabold text-cat-text mt-1">Device Name</h3>
+          <span id="modalFormFactor" class="text-xs font-mono px-2 py-0.5 rounded bg-studio-800 text-amber-300">Vertical</span>
+          <h3 id="modalTitle" class="text-2xl font-display font-extrabold text-white mt-1">Device Name</h3>
         </div>
-        <button id="closeModalBtn" class="tactile-btn min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-cat-surface0 text-cat-subtext0 hover:text-cat-text text-sm">✕</button>
+        <button id="closeModalBtn" class="btn-tactile min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-studio-800 text-slate-300 hover:text-white" aria-label="Close dialog">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
       </div>
 
-      <!-- Tagline and Curator Take (Clean typography layout per impeccable) -->
-      <div class="space-y-3">
-        <p id="modalTagline" class="text-sm font-medium text-cat-mauve italic"></p>
-        <div class="border-l-2 border-cat-blue pl-3 py-1 text-xs sm:text-sm text-cat-subtext1 leading-relaxed">
-          <div class="font-mono text-xs text-cat-blue font-semibold mb-1">Sam's Curator Note:</div>
-          <p id="modalCuratorTake"></p>
-        </div>
+      <!-- Showcase Image in Modal -->
+      <div class="aspect-[16/10] bg-studio-950 rounded-xl overflow-hidden border border-studio-border p-3 flex items-center justify-center">
+        <img id="modalImage" src="assets/images/trimui-brick.jpg" alt="Handheld product photo" class="max-h-full max-w-full object-contain">
       </div>
 
-      <!-- Pricing Matrix (Clean layout per impeccable) -->
-      <div class="space-y-2 pt-2 border-t border-cat-surface0">
-        <h3 class="text-xs font-mono uppercase tracking-wider text-cat-subtext0">European Pricing Radar</h3>
-        <div class="grid grid-cols-3 gap-3 text-center font-mono text-xs">
-          <div>
-            <div class="text-cat-overlay0 text-xs">AliExpress Choice</div>
-            <div id="modalPriceAliChoice" class="text-cat-green font-bold text-sm mt-0.5 num-tabular">€58.00</div>
-          </div>
-          <div>
-            <div class="text-cat-overlay0 text-xs">11.11 Promo Estimate</div>
-            <div id="modalPrice1111" class="text-cat-peach font-bold text-sm mt-0.5 num-tabular">€48.00</div>
-          </div>
-          <div>
-            <div class="text-cat-overlay0 text-xs">EU Retail / Amazon</div>
-            <div id="modalPriceEuRetail" class="text-cat-subtext0 font-bold text-sm mt-0.5 num-tabular">€75.00</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Specs Grid (Clean layout per impeccable) -->
-      <div class="space-y-2 pt-2 border-t border-cat-surface0">
-        <h3 class="text-xs font-mono uppercase tracking-wider text-cat-subtext0">Hardware & Capabilities</h3>
-        <div class="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-mono">
-          <div>
-            <div class="text-cat-overlay0 text-xs">Display</div>
-            <div id="modalDisplay" class="text-cat-text mt-0.5">3.2" 1024x768 (4:3)</div>
-          </div>
-          <div>
-            <div class="text-cat-overlay0 text-xs">Chipset & RAM</div>
-            <div id="modalChipset" class="text-cat-text mt-0.5">Allwinner A133P / 1GB</div>
-          </div>
-          <div>
-            <div class="text-cat-overlay0 text-xs">Emulation Ceiling</div>
-            <div id="modalCeiling" class="text-cat-text mt-0.5">PS1 (Some N64/DC)</div>
-          </div>
-          <div>
-            <div class="text-cat-overlay0 text-xs">PortMaster Support</div>
-            <div id="modalPortMaster" class="text-cat-text mt-0.5">Yes</div>
-          </div>
-          <div>
-            <div class="text-cat-overlay0 text-xs">Battery Life</div>
-            <div id="modalBattery" class="text-cat-text mt-0.5">4 to 5 hours</div>
-          </div>
-          <div>
-            <div class="text-cat-overlay0 text-xs">Weight</div>
-            <div id="modalWeight" class="text-cat-text mt-0.5">159g</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Custom Firmware List -->
+      <!-- Tagline & Verdict -->
       <div class="space-y-2">
-        <h4 class="text-xs font-mono uppercase tracking-wider text-cat-subtext0">Supported Custom Operating Systems</h4>
-        <div id="modalFirmwareList" class="flex flex-wrap gap-1.5 text-xs font-mono"></div>
+        <p id="modalTagline" class="text-sm text-amber-300 font-medium"></p>
+        <p id="modalVerdict" class="text-xs text-slate-300 bg-studio-950 p-3 rounded-xl border border-studio-border leading-relaxed"></p>
       </div>
 
-      <!-- Pros and Cons (Clean bordered sections per impeccable) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-2 border-t border-cat-surface0">
+      <!-- Pricing Summary -->
+      <div class="grid grid-cols-3 gap-2 text-center font-mono text-xs">
+        <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+          <div class="text-slate-400 text-xs">Ali Choice</div>
+          <div id="modalPriceAliChoice" class="text-emerald-400 font-bold text-sm mt-0.5 num-tabular">€58.00</div>
+        </div>
+        <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+          <div class="text-slate-400 text-xs">11.11 Sale</div>
+          <div id="modalPrice1111" class="text-amber-400 font-bold text-sm mt-0.5 num-tabular">€48.00</div>
+        </div>
+        <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
+          <div class="text-slate-400 text-xs">EU Retail</div>
+          <div id="modalPriceRetail" class="text-slate-300 font-bold text-sm mt-0.5 num-tabular">€75.00</div>
+        </div>
+      </div>
+
+      <!-- Detailed Specs -->
+      <div class="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-mono pt-3 border-t border-studio-border">
+        <div>
+          <span class="text-slate-400 block text-xs">Screen &amp; Res</span>
+          <span id="modalDisplay" class="text-white font-medium"></span>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-xs">Chipset &amp; RAM</span>
+          <span id="modalChipset" class="text-white font-medium"></span>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-xs">Emulation Ceiling</span>
+          <span id="modalCeiling" class="text-amber-400 font-medium"></span>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-xs">PortMaster</span>
+          <span id="modalPortMaster" class="text-emerald-400 font-medium"></span>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-xs">Controls</span>
+          <span id="modalControls" class="text-slate-300 font-medium"></span>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-xs">Battery</span>
+          <span id="modalBattery" class="text-slate-300 font-medium"></span>
+        </div>
+      </div>
+
+      <!-- Pros / Cons -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-3 border-t border-studio-border">
         <div class="space-y-1.5">
-          <div class="font-mono text-cat-green font-bold flex items-center gap-1">
-            <span>✓</span> What Stands Out
+          <div class="font-mono text-emerald-400 font-bold flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Key Strengths</span>
           </div>
-          <ul id="modalPros" class="space-y-1 text-cat-subtext1 list-disc list-inside"></ul>
+          <ul id="modalPros" class="space-y-1 text-slate-300 list-disc list-inside"></ul>
         </div>
         <div class="space-y-1.5">
-          <div class="font-mono text-cat-red font-bold flex items-center gap-1">
-            <span>✗</span> Quirks & Compromises
+          <div class="font-mono text-rose-400 font-bold flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Compromises</span>
           </div>
-          <ul id="modalCons" class="space-y-1 text-cat-subtext1 list-disc list-inside"></ul>
+          <ul id="modalCons" class="space-y-1 text-slate-300 list-disc list-inside"></ul>
         </div>
       </div>
 
-      <!-- Community Reviewer Consensus -->
-      <div class="pt-2 border-t border-cat-surface0 text-xs">
-        <div class="font-mono text-cat-peach font-semibold mb-1">Reviewer Consensus:</div>
-        <p id="modalReviewerVerdict" class="text-cat-subtext0 leading-relaxed"></p>
-      </div>
-
-      <div class="pt-2">
-        <button id="modalDoneBtn" class="tactile-btn w-full min-h-[44px] py-3 rounded-xl bg-cat-mauve text-cat-crust font-display font-bold text-sm shadow-md">
-          Back to Radar
+      <div class="pt-3">
+        <button type="button" id="modalDoneBtn" class="btn-tactile w-full min-h-[44px] py-3 rounded-xl bg-amber-400 text-black font-display font-bold text-sm shadow-md">
+          Close Spec Sheet
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="border-t border-cat-surface0 bg-cat-mantle mt-16 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-cat-subtext0">
+  <!-- FOOTER -->
+  <footer class="border-t border-studio-border bg-studio-950 mt-16 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
       <div>
-        <span>Retro Handhelds Radar</span> • <span>Curated by Sam Shady</span>
+        <span>Retro Handhelds Radar</span> • <span>Curated Sub-€100 Catalog</span>
       </div>
       <div>
-        Built with static JSON compilation, zero bloated external frameworks, and strict accessibility standards.
+        Clean standalone HTML • No bloated JavaScript frameworks • Built with verified product data
       </div>
     </div>
   </footer>

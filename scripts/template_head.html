@@ -1,116 +1,127 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Retro Handhelds Radar (2026) | Sam's Buyer's Guide & Spec Matrix</title>
-  <meta name="description" content="A curated European buyer's guide, live price radar, and specification matrix for retro gaming handhelds, custom firmwares (muOS, OnionOS, CrossMix), and PortMaster support.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Retro Handhelds Radar: Sub-€100 Buyer's Guide &amp; Spec Matrix (2026)</title>
+  
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   
-  <!-- Typography per sam-web-design: Bricolage Grotesque (display) + Inter (body) + JetBrains Mono (specs) -->
+  <!-- Font pairing: Bricolage Grotesque (display/headings) + Inter (body) + JetBrains Mono (data/specs) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS via CDN -->
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            display: ['"Bricolage Grotesque"', 'sans-serif'],
-            sans: ['Inter', 'sans-serif'],
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['"Bricolage Grotesque"', '"Inter"', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            // Catppuccin Mocha theme tokens per sam-web-design
-            cat: {
-              crust: '#11111b',
-              mantle: '#181825',
-              base: '#1e1e2e',
-              surface0: '#313244',
-              surface1: '#45475a',
-              surface2: '#585b70',
-              overlay0: '#6c7086',
-              text: '#cdd6f4',
-              subtext0: '#a6adc8',
-              subtext1: '#bac2de',
-              mauve: '#cba6f7',
-              pink: '#f5c2e7',
-              red: '#f38ba8',
-              peach: '#fab387',
-              yellow: '#f9e2af',
-              green: '#a6e3a1',
-              teal: '#94e2d5',
-              sky: '#89dceb',
-              blue: '#89b4fa',
-              lavender: '#b4befe',
+            // Dark studio palette matching iem-radar
+            studio: {
+              950: '#0e0f13',
+              900: '#14151b',
+              850: '#1a1c24',
+              800: '#222530',
+              700: '#2d3140',
+              600: '#3e4357',
+              border: '#2a2e3d'
             }
           }
         }
       }
     }
   </script>
-
+  
   <style>
-    /* Tactile physics & accessibility guards per sam-web-design */
-    .tactile-btn {
-      transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    body {
+      background-color: #0e0f13;
+      color: #e2e8f0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Typography scale */
+    h1 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.25rem; line-height: 2.5rem; }
+    h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.75rem; line-height: 2rem; }
+    h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.25rem; line-height: 1.5rem; }
+
+    /* Tactile studio card physics matching iem-radar */
+    .studio-card {
+      background-color: #14151b;
+      border: 1px solid #2a2e3d;
+      padding: 1.25rem;
+      border-radius: 1rem;
+      transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .studio-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.5);
+      border-color: #3e4357;
+    }
+
+    .btn-tactile {
+      transition: transform 0.12s ease, background-color 0.15s ease, border-color 0.15s ease;
       touch-action: manipulation;
     }
-    .tactile-btn:hover {
-      transform: translateY(-2px);
+    .btn-tactile:hover {
+      transform: translateY(-1px);
     }
-    .tactile-btn:active {
+    .btn-tactile:active {
       transform: scale(0.97);
     }
-    .card-hover {
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+
+    /* Tabular numeric figures for prices & spec columns */
+    .num-tabular {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1;
     }
-    .card-hover:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.45);
+
+    /* Prevent clipping when pills are highlighted */
+    .filter-scroll-container {
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-top: 4px;
+      padding-bottom: 4px;
     }
+    .filter-scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
       }
     }
-    /* Explicit Typography Scale per impeccable */
-    h1 { font-size: 2.75rem; line-height: 1.15; }
-    h2 { font-size: 1.85rem; line-height: 1.25; }
-    h3 { font-size: 1.35rem; line-height: 1.35; }
-    h4 { font-size: 1.1rem; line-height: 1.4; }
-    body, p { font-size: 1rem; line-height: 1.55; }
-    
-    /* Tabular numeric figures for prices & spec columns */
-    .num-tabular {
-      font-variant-numeric: tabular-nums;
-    }
-    /* Hollow section header stroke */
-    .section-stroke {
-      -webkit-text-stroke: 1.5px #cba6f7;
-      color: transparent;
-      font-variant-numeric: tabular-nums;
-    }
+
     /* Custom scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
       height: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #181825;
+      background: #0e0f13;
     }
     ::-webkit-scrollbar-thumb {
-      background: #45475a;
+      background: #2a2e3d;
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #585b70;
+      background: #3e4357;
     }
   </style>
 </head>
-<body class="bg-cat-crust text-cat-text font-sans antialiased selection:bg-cat-mauve selection:text-cat-crust min-h-screen">
+<body class="bg-studio-950 text-slate-200 font-sans antialiased selection:bg-amber-400 selection:text-black min-h-screen">
