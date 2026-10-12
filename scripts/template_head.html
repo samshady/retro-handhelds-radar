@@ -46,6 +46,10 @@
   </script>
   
   <style>
+    :root {
+      --header-height: 73px;
+    }
+
     body {
       background-color: #0e0f13;
       color: #e2e8f0;
@@ -93,8 +97,10 @@
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      padding-top: 4px;
-      padding-bottom: 4px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      scroll-padding: 0.75rem;
+      -webkit-overflow-scrolling: touch;
     }
     .filter-scroll-container::-webkit-scrollbar {
       display: none;

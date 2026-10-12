@@ -46,6 +46,10 @@
   </script>
 
   <style>
+    :root {
+      --header-height: 73px;
+    }
+
     body {
       background-color: #0e0f13;
       color: #e2e8f0;
@@ -93,8 +97,10 @@
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      padding-top: 4px;
-      padding-bottom: 4px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      scroll-padding: 0.75rem;
+      -webkit-overflow-scrolling: touch;
     }
     .filter-scroll-container::-webkit-scrollbar {
       display: none;
@@ -152,14 +158,14 @@
   <header class="sticky top-0 z-40 bg-studio-950/95 backdrop-blur-md border-b border-studio-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
       <div class="flex items-center space-x-3 min-w-0">
-        <a href="#" class="flex items-center space-x-3 group min-w-0">
-          <div class="w-10 h-10 rounded-xl bg-amber-400 text-black flex items-center justify-center font-display font-extrabold text-lg shadow-sm group-hover:bg-amber-300 transition shrink-0">
+        <a href="#" class="flex items-center space-x-3 group min-w-0 min-h-[44px]">
+          <div class="w-11 h-11 rounded-xl bg-amber-400 text-black flex items-center justify-center font-display font-extrabold text-lg shadow-sm group-hover:bg-amber-300 transition shrink-0">
             <i class="fa-solid fa-gamepad"></i>
           </div>
           <div class="min-w-0">
             <div class="flex items-center space-x-2">
-              <span class="text-lg sm:text-xl font-display font-extrabold tracking-tight text-white group-hover:text-amber-300 transition truncate">Retro Handhelds Radar</span>
-              <span class="text-xs font-mono px-2 py-0.5 rounded-md bg-studio-800 text-amber-300 border border-studio-border font-semibold shrink-0">Sub-€100 Catalog</span>
+              <span class="text-base sm:text-xl font-display font-extrabold tracking-tight text-white group-hover:text-amber-300 transition truncate">Retro Handhelds Radar</span>
+              <span class="hidden sm:inline-block text-xs font-mono px-2 py-0.5 rounded-md bg-studio-800 text-amber-300 border border-studio-border font-semibold shrink-0">Sub-€100 Catalog</span>
             </div>
             <p class="hidden sm:block text-xs text-slate-400 font-normal truncate">Curated budget retro consoles, screen aspect ratios, and custom firmware benchmarks</p>
           </div>
@@ -167,23 +173,23 @@
       </div>
 
       <nav class="flex items-center space-x-2 shrink-0">
-        <button type="button" id="crtToggleBtn" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5" title="Toggle retro CRT scanlines overlay">
+        <button type="button" id="crtToggleBtn" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center justify-center gap-1.5" title="Toggle retro CRT scanlines overlay">
           <i class="fa-solid fa-tv text-amber-400"></i>
           <span class="hidden sm:inline">CRT Mode</span>
         </button>
-        <button type="button" id="viewToggleBtn" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-2">
+        <button type="button" id="viewToggleBtn" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-200 border border-studio-border flex items-center justify-center gap-2">
           <i id="viewIcon" class="fa-solid fa-table-list text-amber-400"></i>
           <span id="viewText" class="hidden sm:inline">Compare Table</span>
         </button>
-        <a href="#setup-guide" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5">
+        <a href="#setup-guide" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border hidden sm:flex items-center justify-center gap-1.5">
           <i class="fa-solid fa-book-open text-emerald-400"></i>
           <span class="hidden md:inline">Setup Guide</span>
         </a>
-        <a href="#retailer-guide" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5">
+        <a href="#retailer-guide" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border hidden sm:flex items-center justify-center gap-1.5">
           <i class="fa-solid fa-truck-fast text-amber-400"></i>
           <span class="hidden lg:inline">Where to Buy</span>
         </a>
-        <a href="#firmware-guide" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5">
+        <a href="#firmware-guide" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-300 border border-studio-border hidden sm:flex items-center justify-center gap-1.5">
           <i class="fa-solid fa-microchip text-sky-400"></i>
           <span class="hidden md:inline">Firmware</span>
         </a>
@@ -230,7 +236,7 @@
   </section>
 
   <!-- CONTROLS & FILTER BAR (GENEROUS PADDING, ZERO CUTOFF) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sticky top-[69px] z-30 bg-studio-950/95 backdrop-blur-md border-b border-studio-border/60">
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sticky top-[73px] z-30 bg-studio-950/95 backdrop-blur-md border-b border-studio-border/60">
     <div class="space-y-2.5">
       <!-- Search bar and View Filters -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -242,7 +248,7 @@
             type="text"
             id="searchInput"
             placeholder="Search by device, chipset, OS (e.g. TrimUI, muOS, H700, 1024x768, PICO-8)..."
-            class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-studio-900 border border-studio-border text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400 transition"
+            class="w-full pl-10 pr-10 py-2.5 min-h-[44px] rounded-xl bg-studio-900 border border-studio-border text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400 transition"
           >
           <button id="clearSearchBtn" class="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-white text-xs hidden" aria-label="Clear search">
             <i class="fa-solid fa-xmark"></i>
@@ -269,13 +275,13 @@
       <!-- Filter Pills (Scroll container with vertical headroom so no pill gets cut off) -->
       <div class="filter-scroll-container flex items-center gap-2 text-xs font-mono">
         <span class="text-slate-400 text-xs shrink-0 font-medium">Filter:</span>
-        <button data-filter="all" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-amber-400 text-black font-bold border-amber-400 shrink-0">All 15 Handhelds</button>
-        <button data-filter="portmaster" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-gamepad text-emerald-400 mr-1.5"></i>PortMaster 64-bit</button>
-        <button data-filter="pico8" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-cube text-purple-400 mr-1.5"></i>Native PICO-8</button>
-        <button data-filter="Vertical" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Vertical</button>
-        <button data-filter="Horizontal" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Horizontal</button>
-        <button data-filter="Clamshell" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Clamshell</button>
-        <button data-filter="Square" class="form-filter-btn btn-tactile min-h-[40px] px-3.5 py-1.5 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">1:1 Square</button>
+        <button data-filter="all" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-amber-400 text-black font-bold border-amber-400 shrink-0">All 15 Handhelds</button>
+        <button data-filter="portmaster" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-gamepad text-emerald-400 mr-1.5"></i>PortMaster 64-bit</button>
+        <button data-filter="pico8" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-cube text-purple-400 mr-1.5"></i>Native PICO-8</button>
+        <button data-filter="Vertical" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Vertical</button>
+        <button data-filter="Horizontal" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Horizontal</button>
+        <button data-filter="Clamshell" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Clamshell</button>
+        <button data-filter="Square" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">1:1 Square</button>
       </div>
     </div>
   </section>
@@ -292,26 +298,34 @@
       <!-- Generated via JavaScript with proper product images -->
     </div>
 
-    <!-- Comparison Table (Hidden by default) -->
-    <div id="comparisonTableWrapper" class="hidden overflow-x-auto studio-card rounded-2xl shadow-xl p-4">
-      <table class="w-full text-left text-xs text-slate-200">
-        <thead class="border-b border-studio-border text-slate-400 font-mono">
-          <tr>
-            <th class="py-3 px-3">Device</th>
-            <th class="py-3 px-3">Screen</th>
-            <th class="py-3 px-3">Chip Muscle</th>
-            <th class="py-3 px-3">Emulation Ceiling</th>
-            <th class="py-3 px-3">PICO-8</th>
-            <th class="py-3 px-3">PortMaster</th>
-            <th class="py-3 px-3">Ali Choice</th>
-            <th class="py-3 px-3">11.11 Promo</th>
-            <th class="py-3 px-3 text-right">Offers &amp; Specs</th>
-          </tr>
-        </thead>
-        <tbody id="comparisonTableBody" class="divide-y divide-studio-border/50 font-mono">
-          <!-- Rows rendered via JavaScript -->
-        </tbody>
-      </table>
+    <!-- Comparison View (Hidden by default, transforms to stacked cards on mobile <= 700px) -->
+    <div id="comparisonTableWrapper" class="hidden studio-card rounded-2xl shadow-xl p-4">
+      <!-- Desktop Table (md and above) -->
+      <div class="hidden md:block overflow-x-auto">
+        <table class="w-full text-left text-xs text-slate-200">
+          <thead class="border-b border-studio-border text-slate-400 font-mono">
+            <tr>
+              <th class="py-3 px-3">Device</th>
+              <th class="py-3 px-3">Screen</th>
+              <th class="py-3 px-3">Chip Muscle</th>
+              <th class="py-3 px-3">Emulation Ceiling</th>
+              <th class="py-3 px-3">PICO-8</th>
+              <th class="py-3 px-3">PortMaster</th>
+              <th class="py-3 px-3">Ali Choice</th>
+              <th class="py-3 px-3">11.11 Promo</th>
+              <th class="py-3 px-3 text-right">Offers &amp; Specs</th>
+            </tr>
+          </thead>
+          <tbody id="comparisonTableBody" class="divide-y divide-studio-border/50 font-mono">
+            <!-- Rows rendered via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Stacked Comparison Cards (below md / <= 700px) -->
+      <div id="comparisonMobileCards" class="block md:hidden space-y-3">
+        <!-- Stacked comparison cards rendered via JavaScript -->
+      </div>
     </div>
 
     <!-- Empty State -->
@@ -606,12 +620,12 @@
         <div class="bg-studio-950 p-4 rounded-xl border border-studio-border space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-amber-300 font-bold">1. AliExpress Choice</span>
-            <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-400/15 text-amber-300">Best Price</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-amber-400/15 text-amber-300">Best Price</span>
           </div>
           <p class="text-slate-300 leading-relaxed">
             Consolidated air logistics with 7 to 10 day delivery. In the EU, orders under €150 have VAT collected at checkout via the official <span class="text-white font-semibold">IOSS scheme</span>. Packages pass through European customs without courier brokerage fees.
           </p>
-          <div class="text-[11px] text-emerald-400 font-semibold pt-1">
+          <div class="text-xs text-emerald-400 font-semibold pt-1">
             Best for: Sub-€60 budget beaters, seasonal sales (11.11, Choice Day).
           </div>
         </div>
@@ -620,12 +634,12 @@
         <div class="bg-studio-950 p-4 rounded-xl border border-studio-border space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-sky-300 font-bold">2. Brand Direct (Anbernic / Powkiddy)</span>
-            <span class="text-[11px] px-1.5 py-0.5 rounded bg-sky-400/15 text-sky-300">Color Exclusives</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-sky-400/15 text-sky-300">Color Exclusives</span>
           </div>
           <p class="text-slate-300 leading-relaxed">
             Direct from manufacturers (anbernic.com, powkiddy.com, keepretro.com). Advertised base price looks low, but standard 4PX shipping adds <span class="text-white font-semibold">$12 to $15</span> per order with 12 to 20 day delivery. In the EU, occasional missing IOSS can trigger a €6 post handling fee.
           </p>
-          <div class="text-[11px] text-sky-300 font-semibold pt-1">
+          <div class="text-xs text-sky-300 font-semibold pt-1">
             Best for: Launch-day preorders, limited edition shell colors.
           </div>
         </div>
@@ -634,12 +648,12 @@
         <div class="bg-studio-950 p-4 rounded-xl border border-studio-border space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-purple-300 font-bold">3. Amazon DE &amp; DroiX EU</span>
-            <span class="text-[11px] px-1.5 py-0.5 rounded bg-purple-400/15 text-purple-300">Warranty &amp; Speed</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-purple-400/15 text-purple-300">Warranty &amp; Speed</span>
           </div>
           <p class="text-slate-300 leading-relaxed">
             Amazon DE and DroiX carry warehouse stock locally in Europe with 1 to 3 day delivery. Prices carry a <span class="text-white font-semibold">25% to 50% markup</span> over AliExpress, but provide full 30-day no-hassle return windows and statutory EU 2-year warranty protection.
           </p>
-          <div class="text-[11px] text-purple-300 font-semibold pt-1">
+          <div class="text-xs text-purple-300 font-semibold pt-1">
             Best for: Gifts, quick deadlines, hinge-check risk on RG35XX SP.
           </div>
         </div>
@@ -810,7 +824,7 @@
             <i class="fa-brands fa-youtube text-rose-500 text-sm"></i>
             <span class="text-xs font-mono font-bold text-white uppercase tracking-wider" id="modalReviewChannel">Retro Game Corps Review</span>
           </div>
-          <span class="text-[11px] font-mono text-emerald-400 font-semibold">Verified Authority</span>
+          <span class="text-xs font-mono text-emerald-400 font-semibold">Verified Authority</span>
         </div>
         <p id="modalReviewTitle" class="text-xs text-slate-300 font-medium"></p>
         <div class="flex flex-wrap items-center gap-2 pt-1" id="modalReviewLinks">
@@ -1929,6 +1943,7 @@
     const gridEl = document.getElementById('handheldGrid');
     const tableWrapperEl = document.getElementById('comparisonTableWrapper');
     const tableBodyEl = document.getElementById('comparisonTableBody');
+    const comparisonMobileCardsEl = document.getElementById('comparisonMobileCards');
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
     const sortSelect = document.getElementById('sortSelect');
@@ -2105,7 +2120,7 @@
               </div>
 
               <!-- Quick Hardware Strip -->
-              <div class="grid grid-cols-2 gap-2 pt-2 border-t border-studio-border/50 text-[11px] text-slate-300">
+              <div class="grid grid-cols-2 gap-2 pt-2 border-t border-studio-border/50 text-xs text-slate-300">
                 <span class="truncate"><i class="fa-solid fa-microchip text-slate-500 mr-1"></i>${item.chipset}</span>
                 <span class="truncate"><i class="fa-solid fa-tv text-slate-500 mr-1"></i>${item.display} (${item.aspect_ratio})</span>
               </div>
@@ -2113,7 +2128,7 @@
           </div>
 
           <!-- Price & Action Footer -->
-          <div class="pt-4 mt-4 border-t border-studio-border flex items-center justify-between gap-3">
+          <div class="pt-4 mt-4 border-t border-studio-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div class="text-xs font-mono text-slate-400">Choice / 11.11 Promo</div>
               <div class="font-mono font-bold text-emerald-400 text-base num-tabular">
@@ -2122,18 +2137,18 @@
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
               ${item.review_url ? `
-                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-300 border border-studio-border flex items-center gap-1.5 transition" title="Watch ${item.review_channel} Review">
+                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] min-w-[44px] px-2.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-300 border border-studio-border flex items-center justify-center gap-1.5 transition" title="Watch ${item.review_channel} Review">
                   <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
                   <span class="hidden sm:inline">Review</span>
                 </a>
               ` : ''}
               ${(item.verified_stores && item.verified_stores.length > 0) ? `
-                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-3 py-1.5 rounded-xl bg-amber-400 text-black hover:bg-amber-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm" title="View deals on ${item.verified_stores[0].name}">
+                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-amber-400 text-black hover:bg-amber-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm" title="View deals on ${item.verified_stores[0].name}">
                   <i class="fa-solid fa-cart-shopping text-xs"></i>
                   <span>Deals</span>
                 </a>
               ` : ''}
-              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[40px] px-3 py-1.5 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-1.5 transition">
+              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-1.5 transition">
                 <span>Specs</span>
                 <i class="fa-solid fa-arrow-right text-xs text-amber-400"></i>
               </button>
@@ -2147,6 +2162,8 @@
     // Render Table
     function renderTable(items) {
       tableBodyEl.innerHTML = '';
+      if (comparisonMobileCardsEl) comparisonMobileCardsEl.innerHTML = '';
+
       if (items.length === 0) {
         emptyStateEl.classList.remove('hidden');
         return;
@@ -2154,6 +2171,7 @@
       emptyStateEl.classList.add('hidden');
 
       items.forEach(item => {
+        // Desktop Table Row
         const tr = document.createElement('tr');
         tr.className = 'hover:bg-studio-850/60 transition-colors';
         tr.innerHTML = `
@@ -2164,31 +2182,91 @@
           <td class="py-3 px-3 text-slate-300">${item.display} (${item.aspect_ratio})</td>
           <td class="py-3 px-3">${renderRetroPips(item.chip_score, 5, 'bg-sky-400')}</td>
           <td class="py-3 px-3">${renderRetroPips(item.emulation_score, 5, 'bg-amber-400')}</td>
-          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-[11px] font-bold ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span></td>
-          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-[11px] font-bold ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span></td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span></td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span></td>
           <td class="py-3 px-3 text-emerald-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_choice)}</td>
           <td class="py-3 px-3 text-amber-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_1111)}</td>
           <td class="py-3 px-3 text-right">
             <div class="flex items-center justify-end gap-1.5">
               ${item.review_url ? `
-                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-2 py-1 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-300 border border-studio-border font-mono text-xs inline-flex items-center gap-1" title="Watch ${item.review_channel} Review">
+                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-300 border border-studio-border font-mono text-xs inline-flex items-center gap-1" title="Watch ${item.review_channel} Review">
                   <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
                   <span>Review</span>
                 </a>
               ` : ''}
               ${(item.verified_stores && item.verified_stores.length > 0) ? `
-                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-2.5 py-1 rounded-lg bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center gap-1 shadow-sm">
+                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-lg bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center gap-1 shadow-sm">
                   <i class="fa-solid fa-cart-shopping text-xs"></i>
                   <span>Deal</span>
                 </a>
               ` : ''}
-              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[36px] px-2.5 py-1 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-200 text-xs border border-studio-border font-mono">
+              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-200 text-xs border border-studio-border font-mono">
                 Specs
               </button>
             </div>
           </td>
         `;
         tableBodyEl.appendChild(tr);
+
+        // Mobile Stacked Comparison Card (<= 700px)
+        if (comparisonMobileCardsEl) {
+          const mCard = document.createElement('div');
+          mCard.className = 'p-4 rounded-xl bg-studio-950 border border-studio-border space-y-3';
+          mCard.innerHTML = `
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <img src="${item.image || 'assets/images/' + item.id + '.jpg'}" alt="" class="w-10 h-10 rounded-lg object-contain bg-studio-900 border border-studio-border p-1 shrink-0" onerror="this.style.display='none'">
+                <div class="min-w-0">
+                  <div class="font-bold text-white font-display text-sm truncate">${item.name}</div>
+                  <div class="text-xs text-slate-400 font-mono">${item.display} (${item.aspect_ratio})</div>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-xs font-mono text-emerald-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_choice)}</div>
+                <div class="text-xs font-mono text-amber-400 num-tabular">${fmtPrice(item.price_eur_ali_1111)}</div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-xs font-mono bg-studio-900/60 p-2.5 rounded-lg border border-studio-border/50">
+              <div>
+                <span class="text-slate-400 block text-xs">Chip Muscle</span>
+                ${renderRetroPips(item.chip_score, 5, 'bg-sky-400')}
+              </div>
+              <div>
+                <span class="text-slate-400 block text-xs">Emulation</span>
+                ${renderRetroPips(item.emulation_score, 5, 'bg-amber-400')}
+              </div>
+              <div class="pt-1 border-t border-studio-border/40">
+                <span class="text-slate-400 block text-xs">PICO-8</span>
+                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span>
+              </div>
+              <div class="pt-1 border-t border-studio-border/40">
+                <span class="text-slate-400 block text-xs">PortMaster</span>
+                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 pt-1">
+              ${item.review_url ? `
+                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-slate-300 border border-studio-border font-mono text-xs inline-flex items-center justify-center gap-1.5 grow" title="Watch ${item.review_channel} Review">
+                  <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
+                  <span>Review</span>
+                </a>
+              ` : ''}
+              ${(item.verified_stores && item.verified_stores.length > 0) ? `
+                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center justify-center gap-1.5 shadow-sm grow">
+                  <i class="fa-solid fa-cart-shopping text-xs"></i>
+                  <span>Deal</span>
+                </a>
+              ` : ''}
+              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-slate-200 text-xs border border-studio-border font-mono inline-flex items-center justify-center gap-1.5 grow">
+                <span>Specs</span>
+                <i class="fa-solid fa-arrow-right text-xs text-amber-400"></i>
+              </button>
+            </div>
+          `;
+          comparisonMobileCardsEl.appendChild(mCard);
+        }
       });
     }
 
@@ -2224,8 +2302,8 @@
 
       if (modalChipPips) modalChipPips.innerHTML = renderRetroPips(item.chip_score, 5, 'bg-sky-400');
       if (modalEmuPips) modalEmuPips.innerHTML = renderRetroPips(item.emulation_score, 5, 'bg-amber-400');
-      if (modalPicoPips) modalPicoPips.innerHTML = renderRetroPips(item.pico8_score, 5, 'bg-purple-400') + (item.pico8_tier ? `<span class="text-[10px] text-slate-400 font-mono block mt-0.5">${item.pico8_tier}</span>` : '');
-      if (modalPortPips) modalPortPips.innerHTML = renderRetroPips(item.portmaster_score, 5, 'bg-emerald-400') + (item.portmaster_tier ? `<span class="text-[10px] text-slate-400 font-mono block mt-0.5">${item.portmaster_tier}</span>` : '');
+      if (modalPicoPips) modalPicoPips.innerHTML = renderRetroPips(item.pico8_score, 5, 'bg-purple-400') + (item.pico8_tier ? `<span class="text-xs text-slate-400 font-mono block mt-0.5">${item.pico8_tier}</span>` : '');
+      if (modalPortPips) modalPortPips.innerHTML = renderRetroPips(item.portmaster_score, 5, 'bg-emerald-400') + (item.portmaster_tier ? `<span class="text-xs text-slate-400 font-mono block mt-0.5">${item.portmaster_tier}</span>` : '');
 
       modalPros.innerHTML = '';
       (item.pros || []).forEach(p => {
@@ -2247,15 +2325,15 @@
         let linksHtml = '';
         if (item.review_url) {
           linksHtml += `
-            <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-3 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/40 text-xs font-mono font-bold inline-flex items-center gap-1.5 shadow-sm">
-              <i class="fa-brands fa-youtube text-rose-400"></i>
+            <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3.5 py-2.5 rounded-xl bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/40 text-xs font-mono font-bold inline-flex items-center gap-1.5 shadow-sm">
+              <i class="fa-brands fa-youtube text-rose-400 text-sm"></i>
               <span>Watch Video Review</span>
             </a>
           `;
         }
         if (item.guide_url && item.guide_url !== 'https://retrogamecorps.com/') {
           linksHtml += `
-            <a href="${item.guide_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-3 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-200 border border-studio-border text-xs font-mono font-bold inline-flex items-center gap-1.5">
+            <a href="${item.guide_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3.5 py-2.5 rounded-xl bg-studio-900 hover:bg-studio-800 text-slate-200 border border-studio-border text-xs font-mono font-bold inline-flex items-center gap-1.5">
               <i class="fa-solid fa-book-open text-emerald-400"></i>
               <span>Written Setup Guide</span>
             </a>
@@ -2269,12 +2347,12 @@
 
       if (modalStoresContainer) {
         modalStoresContainer.innerHTML = (item.verified_stores || []).map(store => `
-          <a href="${store.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-3.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-800 text-slate-200 border border-studio-border text-xs font-mono font-semibold transition flex items-center justify-between gap-2 grow sm:grow-0">
+          <a href="${store.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3.5 py-2.5 rounded-xl bg-studio-950 hover:bg-studio-800 text-slate-200 border border-studio-border text-xs font-mono font-semibold transition flex items-center justify-between gap-2 grow sm:grow-0">
             <span class="flex items-center gap-1.5">
               <i class="fa-solid fa-arrow-up-right-from-square text-xs text-amber-400"></i>
               <span>${store.name}</span>
             </span>
-            ${store.badge ? `<span class="px-1.5 py-0.5 rounded text-[10px] bg-studio-900 text-emerald-400 border border-studio-border font-medium">${store.badge}</span>` : ''}
+            ${store.badge ? `<span class="px-2 py-0.5 rounded text-xs bg-studio-900 text-emerald-400 border border-studio-border font-medium">${store.badge}</span>` : ''}
           </a>
         `).join('');
       }
