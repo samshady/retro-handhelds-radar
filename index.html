@@ -79,6 +79,13 @@
         transition-duration: 0.01ms !important;
       }
     }
+    /* Explicit Typography Scale per impeccable */
+    h1 { font-size: 2.75rem; line-height: 1.15; }
+    h2 { font-size: 1.85rem; line-height: 1.25; }
+    h3 { font-size: 1.35rem; line-height: 1.35; }
+    h4 { font-size: 1.1rem; line-height: 1.4; }
+    body, p { font-size: 1rem; line-height: 1.55; }
+
     /* Tabular numeric figures for prices & spec columns */
     .num-tabular {
       font-variant-numeric: tabular-nums;
@@ -117,7 +124,7 @@
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h1 class="font-display font-bold text-lg sm:text-xl text-cat-text tracking-tight">Retro Handhelds Radar</h1>
+            <span class="font-display font-bold text-xl sm:text-2xl text-cat-text tracking-tight">Retro Handhelds Radar</span>
             <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-semibold bg-cat-mauve/15 text-cat-mauve border border-cat-mauve/30">2026 Edition</span>
           </div>
           <p class="text-xs text-cat-subtext0 hidden sm:block">Curated European buyer's benchmarks, PortMaster guides, and custom firmware ratings</p>
@@ -145,31 +152,31 @@
           <span>🇪🇺</span>
           <span>Verified for German and EU Delivery: VAT, Choice Days, and 11.11 Sales</span>
         </div>
-        <h2 class="text-2xl sm:text-4xl font-display font-extrabold tracking-tight text-cat-text">
+        <h1 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-cat-text leading-tight">
           Stop scrolling AliExpress clones. Here is what actually matters in your hands.
-        </h2>
+        </h1>
         <p class="text-sm sm:text-base text-cat-subtext0 leading-relaxed">
           I built this radar to cut through marketing hype. Whether you want a foolproof sub-€50 gift for a friend (with OnionOS save-state switching) or a sharp 4:3 machine for yourself up to PS1 and PortMaster, every device here is benchmarked on screen aspect ratio, true custom OS maturity, tactile button switches, and realistic European street pricing.
         </p>
       </div>
 
-      <!-- Quick Stats Strip -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 mt-6 border-t border-cat-surface0/60 font-mono text-xs">
-        <div class="bg-cat-surface0/40 rounded-xl p-3 border border-cat-surface0/40">
-          <div class="text-cat-subtext0 text-[11px]">Personal Top Pick (&lt;€70)</div>
-          <div class="text-cat-mauve font-bold text-sm mt-0.5">TrimUI Brick / RG35XX H</div>
+      <!-- Quick Stats Strip (Flattened with border dividers per impeccable) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 mt-6 border-t border-cat-surface0/60 font-mono text-xs">
+        <div class="space-y-1">
+          <div class="text-cat-subtext0 text-xs">Personal Top Pick (&lt;€70)</div>
+          <div class="text-cat-mauve font-bold text-sm">TrimUI Brick / RG35XX H</div>
         </div>
-        <div class="bg-cat-surface0/40 rounded-xl p-3 border border-cat-surface0/40">
-          <div class="text-cat-subtext0 text-[11px]">Best Beginner Gift (&lt;€50)</div>
-          <div class="text-cat-green font-bold text-sm mt-0.5">Miyoo Mini+ (OnionOS)</div>
+        <div class="space-y-1">
+          <div class="text-cat-subtext0 text-xs">Best Beginner Gift (&lt;€50)</div>
+          <div class="text-cat-green font-bold text-sm">Miyoo Mini+ (OnionOS)</div>
         </div>
-        <div class="bg-cat-surface0/40 rounded-xl p-3 border border-cat-surface0/40">
-          <div class="text-cat-subtext0 text-[11px]">PICO-8 & Square Native</div>
-          <div class="text-cat-peach font-bold text-sm mt-0.5">Powkiddy RGB30 (1:1 720p)</div>
+        <div class="space-y-1">
+          <div class="text-cat-subtext0 text-xs">PICO-8 & Square Native</div>
+          <div class="text-cat-peach font-bold text-sm">Powkiddy RGB30 (1:1 720p)</div>
         </div>
-        <div class="bg-cat-surface0/40 rounded-xl p-3 border border-cat-surface0/40">
-          <div class="text-cat-subtext0 text-[11px]">Widescreen PSP Value</div>
-          <div class="text-cat-blue font-bold text-sm mt-0.5">TrimUI Smart Pro (5" 720p)</div>
+        <div class="space-y-1">
+          <div class="text-cat-subtext0 text-xs">Widescreen PSP Value</div>
+          <div class="text-cat-blue font-bold text-sm">TrimUI Smart Pro (5" 720p)</div>
         </div>
       </div>
     </div>
@@ -256,7 +263,7 @@
   <section id="firmware-guide" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-cat-surface0">
     <div class="mb-8">
       <div class="section-stroke text-3xl font-display font-extrabold mb-1">01</div>
-      <h3 class="text-2xl font-display font-bold text-cat-text">Why Firmware is 80% of the Experience</h3>
+      <h2 class="text-2xl font-display font-bold text-cat-text">Why Firmware is 80% of the Experience</h2>
       <p class="text-sm text-cat-subtext0 mt-1">Stock SD cards shipped from AliExpress sellers are prone to failing. Here is which OS changes the machine.</p>
     </div>
 
@@ -267,7 +274,7 @@
           <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cat-mauve/20 text-cat-mauve border border-cat-mauve/30">muOS (MustardOS)</span>
           <span class="text-xs font-mono text-cat-subtext0">H700 Devices</span>
         </div>
-        <h4 class="font-display font-bold text-lg text-cat-text">Fast Boot and Folder Freedom</h4>
+        <h3 class="font-display font-bold text-lg text-cat-text">Fast Boot and Folder Freedom</h3>
         <p class="text-xs text-cat-subtext0 leading-relaxed">
           The de facto champion for Anbernic RG35XX H, SP, Plus, and 40XX. Replaces flashy box-art scraping lag with a lightning-fast 5-second boot, clean directory browser, and native 32-bit/64-bit PortMaster support for Celeste, Stardew Valley, and TMNT Shredder's Revenge.
         </p>
@@ -282,7 +289,7 @@
           <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cat-green/20 text-cat-green border border-cat-green/30">OnionOS</span>
           <span class="text-xs font-mono text-cat-subtext0">Miyoo Mini / Plus</span>
         </div>
-        <h4 class="font-display font-bold text-lg text-cat-text">The Game Switcher Miracle</h4>
+        <h3 class="font-display font-bold text-lg text-cat-text">The Game Switcher Miracle</h3>
         <p class="text-xs text-cat-subtext0 leading-relaxed">
           Tap the middle button and cycle through your last 10 games like iOS multitasking cards. OnionOS automatically saves state upon sleep or switching and resumes seamlessly. The reason the Miyoo Mini Plus remains the top beginner gift for friends.
         </p>
@@ -297,7 +304,7 @@
           <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cat-peach/20 text-cat-peach border border-cat-peach/30">CrossMix & NextUI</span>
           <span class="text-xs font-mono text-cat-subtext0">TrimUI Ecosystem</span>
         </div>
-        <h4 class="font-display font-bold text-lg text-cat-text">Modern Polish & Standalone Cores</h4>
+        <h3 class="font-display font-bold text-lg text-cat-text">Modern Polish & Standalone Cores</h3>
         <p class="text-xs text-cat-subtext0 leading-relaxed">
           Transforms the TrimUI Brick and Smart Pro. Unlocks high-performance standalone PSP and Dreamcast emulators, adds customizable FN hotkeys, beautiful retro cover art, and cleans up input lag completely.
         </p>
@@ -319,60 +326,60 @@
         <button id="closeModalBtn" class="tactile-btn min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-cat-surface0 text-cat-subtext0 hover:text-cat-text text-sm">✕</button>
       </div>
 
-      <!-- Tagline and Curator Take -->
-      <div class="space-y-2">
+      <!-- Tagline and Curator Take (Clean typography layout per impeccable) -->
+      <div class="space-y-3">
         <p id="modalTagline" class="text-sm font-medium text-cat-mauve italic"></p>
-        <div class="bg-cat-base rounded-xl p-4 border border-cat-surface0 text-xs sm:text-sm text-cat-subtext1 leading-relaxed">
-          <div class="font-mono text-[11px] text-cat-blue font-semibold mb-1">Sam's Curator Note:</div>
+        <div class="border-l-2 border-cat-blue pl-3 py-1 text-xs sm:text-sm text-cat-subtext1 leading-relaxed">
+          <div class="font-mono text-xs text-cat-blue font-semibold mb-1">Sam's Curator Note:</div>
           <p id="modalCuratorTake"></p>
         </div>
       </div>
 
-      <!-- Pricing Matrix -->
-      <div class="space-y-2">
-        <h4 class="text-xs font-mono uppercase tracking-wider text-cat-subtext0">European Pricing Radar</h4>
-        <div class="grid grid-cols-3 gap-2 text-center font-mono text-xs">
-          <div class="bg-cat-surface0/40 p-2.5 rounded-xl border border-cat-surface0">
-            <div class="text-cat-overlay0 text-[10px]">AliExpress Choice</div>
+      <!-- Pricing Matrix (Clean layout per impeccable) -->
+      <div class="space-y-2 pt-2 border-t border-cat-surface0">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-cat-subtext0">European Pricing Radar</h3>
+        <div class="grid grid-cols-3 gap-3 text-center font-mono text-xs">
+          <div>
+            <div class="text-cat-overlay0 text-xs">AliExpress Choice</div>
             <div id="modalPriceAliChoice" class="text-cat-green font-bold text-sm mt-0.5 num-tabular">€58.00</div>
           </div>
-          <div class="bg-cat-surface0/40 p-2.5 rounded-xl border border-cat-surface0">
-            <div class="text-cat-overlay0 text-[10px]">11.11 Promo Estimate</div>
+          <div>
+            <div class="text-cat-overlay0 text-xs">11.11 Promo Estimate</div>
             <div id="modalPrice1111" class="text-cat-peach font-bold text-sm mt-0.5 num-tabular">€48.00</div>
           </div>
-          <div class="bg-cat-surface0/40 p-2.5 rounded-xl border border-cat-surface0">
-            <div class="text-cat-overlay0 text-[10px]">EU Retail / Amazon</div>
+          <div>
+            <div class="text-cat-overlay0 text-xs">EU Retail / Amazon</div>
             <div id="modalPriceEuRetail" class="text-cat-subtext0 font-bold text-sm mt-0.5 num-tabular">€75.00</div>
           </div>
         </div>
       </div>
 
-      <!-- Specs Grid -->
-      <div class="space-y-2">
-        <h4 class="text-xs font-mono uppercase tracking-wider text-cat-subtext0">Hardware & Capabilities</h4>
-        <div class="grid grid-cols-2 gap-2 text-xs font-mono">
-          <div class="bg-cat-surface0/30 p-2.5 rounded-xl border border-cat-surface0/50">
-            <div class="text-cat-overlay0 text-[10px]">Display</div>
+      <!-- Specs Grid (Clean layout per impeccable) -->
+      <div class="space-y-2 pt-2 border-t border-cat-surface0">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-cat-subtext0">Hardware & Capabilities</h3>
+        <div class="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-mono">
+          <div>
+            <div class="text-cat-overlay0 text-xs">Display</div>
             <div id="modalDisplay" class="text-cat-text mt-0.5">3.2" 1024x768 (4:3)</div>
           </div>
-          <div class="bg-cat-surface0/30 p-2.5 rounded-xl border border-cat-surface0/50">
-            <div class="text-cat-overlay0 text-[10px]">Chipset & RAM</div>
+          <div>
+            <div class="text-cat-overlay0 text-xs">Chipset & RAM</div>
             <div id="modalChipset" class="text-cat-text mt-0.5">Allwinner A133P / 1GB</div>
           </div>
-          <div class="bg-cat-surface0/30 p-2.5 rounded-xl border border-cat-surface0/50">
-            <div class="text-cat-overlay0 text-[10px]">Emulation Ceiling</div>
+          <div>
+            <div class="text-cat-overlay0 text-xs">Emulation Ceiling</div>
             <div id="modalCeiling" class="text-cat-text mt-0.5">PS1 (Some N64/DC)</div>
           </div>
-          <div class="bg-cat-surface0/30 p-2.5 rounded-xl border border-cat-surface0/50">
-            <div class="text-cat-overlay0 text-[10px]">PortMaster Support</div>
+          <div>
+            <div class="text-cat-overlay0 text-xs">PortMaster Support</div>
             <div id="modalPortMaster" class="text-cat-text mt-0.5">Yes</div>
           </div>
-          <div class="bg-cat-surface0/30 p-2.5 rounded-xl border border-cat-surface0/50">
-            <div class="text-cat-overlay0 text-[10px]">Battery Life</div>
+          <div>
+            <div class="text-cat-overlay0 text-xs">Battery Life</div>
             <div id="modalBattery" class="text-cat-text mt-0.5">4 to 5 hours</div>
           </div>
-          <div class="bg-cat-surface0/30 p-2.5 rounded-xl border border-cat-surface0/50">
-            <div class="text-cat-overlay0 text-[10px]">Weight</div>
+          <div>
+            <div class="text-cat-overlay0 text-xs">Weight</div>
             <div id="modalWeight" class="text-cat-text mt-0.5">159g</div>
           </div>
         </div>
@@ -384,15 +391,15 @@
         <div id="modalFirmwareList" class="flex flex-wrap gap-1.5 text-xs font-mono"></div>
       </div>
 
-      <!-- Pros and Cons -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-        <div class="bg-cat-green/10 border border-cat-green/20 rounded-xl p-3.5 space-y-1.5">
+      <!-- Pros and Cons (Clean bordered sections per impeccable) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-2 border-t border-cat-surface0">
+        <div class="space-y-1.5">
           <div class="font-mono text-cat-green font-bold flex items-center gap-1">
             <span>✓</span> What Stands Out
           </div>
           <ul id="modalPros" class="space-y-1 text-cat-subtext1 list-disc list-inside"></ul>
         </div>
-        <div class="bg-cat-red/10 border border-cat-red/20 rounded-xl p-3.5 space-y-1.5">
+        <div class="space-y-1.5">
           <div class="font-mono text-cat-red font-bold flex items-center gap-1">
             <span>✗</span> Quirks & Compromises
           </div>
@@ -401,7 +408,7 @@
       </div>
 
       <!-- Community Reviewer Consensus -->
-      <div class="bg-cat-surface0/40 rounded-xl p-4 border border-cat-surface0 text-xs">
+      <div class="pt-2 border-t border-cat-surface0 text-xs">
         <div class="font-mono text-cat-peach font-semibold mb-1">Reviewer Consensus:</div>
         <p id="modalReviewerVerdict" class="text-cat-subtext0 leading-relaxed"></p>
       </div>
@@ -1208,22 +1215,22 @@
               <p class="text-xs text-cat-subtext0 line-clamp-2 mt-1">${item.tagline}</p>
             </div>
 
-            <!-- Specs Mini Matrix -->
-            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono pt-2 border-t border-cat-surface0/70">
-              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
-                <span class="text-cat-overlay0 block text-[10px]">Display</span>
+            <!-- Specs Mini Matrix (Flattened list per impeccable) -->
+            <div class="grid grid-cols-2 gap-x-3 gap-y-2 text-xs font-mono pt-3 border-t border-cat-surface0/70">
+              <div>
+                <span class="text-cat-overlay0 block text-xs">Display</span>
                 <span class="text-cat-text font-medium truncate block">${item.display}</span>
               </div>
-              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
-                <span class="text-cat-overlay0 block text-[10px]">Chipset</span>
+              <div>
+                <span class="text-cat-overlay0 block text-xs">Chipset</span>
                 <span class="text-cat-text font-medium truncate block">${item.chipset.split('(')[0].trim()}</span>
               </div>
-              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
-                <span class="text-cat-overlay0 block text-[10px]">Emulation</span>
+              <div>
+                <span class="text-cat-overlay0 block text-xs">Emulation</span>
                 <span class="text-cat-mauve font-medium truncate block">${item.emulation_ceiling}</span>
               </div>
-              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
-                <span class="text-cat-overlay0 block text-[10px]">PortMaster</span>
+              <div>
+                <span class="text-cat-overlay0 block text-xs">PortMaster</span>
                 <span class="text-cat-green font-medium truncate block">${item.portmaster_support.split(' ')[0]}</span>
               </div>
             </div>

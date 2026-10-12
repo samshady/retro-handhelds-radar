@@ -132,22 +132,22 @@
               <p class="text-xs text-cat-subtext0 line-clamp-2 mt-1">${item.tagline}</p>
             </div>
 
-            <!-- Specs Mini Matrix -->
-            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono pt-2 border-t border-cat-surface0/70">
-              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
-                <span class="text-cat-overlay0 block text-[10px]">Display</span>
+            <!-- Specs Mini Matrix (Flattened list per impeccable) -->
+            <div class="grid grid-cols-2 gap-x-3 gap-y-2 text-xs font-mono pt-3 border-t border-cat-surface0/70">
+              <div>
+                <span class="text-cat-overlay0 block text-xs">Display</span>
                 <span class="text-cat-text font-medium truncate block">${item.display}</span>
               </div>
-              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
-                <span class="text-cat-overlay0 block text-[10px]">Chipset</span>
+              <div>
+                <span class="text-cat-overlay0 block text-xs">Chipset</span>
                 <span class="text-cat-text font-medium truncate block">${item.chipset.split('(')[0].trim()}</span>
               </div>
-              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
-                <span class="text-cat-overlay0 block text-[10px]">Emulation</span>
+              <div>
+                <span class="text-cat-overlay0 block text-xs">Emulation</span>
                 <span class="text-cat-mauve font-medium truncate block">${item.emulation_ceiling}</span>
               </div>
-              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
-                <span class="text-cat-overlay0 block text-[10px]">PortMaster</span>
+              <div>
+                <span class="text-cat-overlay0 block text-xs">PortMaster</span>
                 <span class="text-cat-green font-medium truncate block">${item.portmaster_support.split(' ')[0]}</span>
               </div>
             </div>
