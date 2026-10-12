@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#181825"/>
+  <rect x="4" y="6" width="24" height="20" rx="4" fill="#313244" stroke="#cba6f7" stroke-width="1.5"/>
+  <!-- D-Pad -->
+  <rect x="7" y="14" width="6" height="2" rx="0.5" fill="#89b4fa"/>
+  <rect x="9" y="12" width="2" height="6" rx="0.5" fill="#89b4fa"/>
+  <!-- Screen Area -->
+  <rect x="14" y="9" width="10" height="8" rx="1" fill="#11111b" stroke="#45475a" stroke-width="0.8"/>
+  <!-- Action Buttons -->
+  <circle cx="21" cy="20" r="1.2" fill="#a6e3a1"/>
+  <circle cx="23.5" cy="18" r="1.2" fill="#fab387"/>
+</svg>

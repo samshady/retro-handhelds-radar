@@ -1,0 +1,374 @@
+  <script>
+    // Embedded dataset placeholder replaced at build time
+    const HANDHELDS_DATA = __JSON_DATA__;
+
+    let activeFilter = 'all';
+    let activePersona = 'all';
+    let searchQuery = '';
+    let isTableView = false;
+
+    // DOM Elements
+    const gridEl = document.getElementById('handheldGrid');
+    const tableWrapperEl = document.getElementById('comparisonTableWrapper');
+    const tableBodyEl = document.getElementById('comparisonTableBody');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const matchCountEl = document.getElementById('matchCount');
+    const viewToggleBtn = document.getElementById('viewToggleBtn');
+    const viewIcon = document.getElementById('viewIcon');
+    const viewText = document.getElementById('viewText');
+
+    // Modal Elements
+    const modalEl = document.getElementById('detailModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalDoneBtn = document.getElementById('modalDoneBtn');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalFormFactor = document.getElementById('modalFormFactor');
+    const modalTagline = document.getElementById('modalTagline');
+    const modalCuratorTake = document.getElementById('modalCuratorTake');
+    const modalPriceAliChoice = document.getElementById('modalPriceAliChoice');
+    const modalPrice1111 = document.getElementById('modalPrice1111');
+    const modalPriceEuRetail = document.getElementById('modalPriceEuRetail');
+    const modalDisplay = document.getElementById('modalDisplay');
+    const modalChipset = document.getElementById('modalChipset');
+    const modalCeiling = document.getElementById('modalCeiling');
+    const modalPortMaster = document.getElementById('modalPortMaster');
+    const modalBattery = document.getElementById('modalBattery');
+    const modalWeight = document.getElementById('modalWeight');
+    const modalFirmwareList = document.getElementById('modalFirmwareList');
+    const modalPros = document.getElementById('modalPros');
+    const modalCons = document.getElementById('modalCons');
+    const modalReviewerVerdict = document.getElementById('modalReviewerVerdict');
+
+    // Format EUR price
+    function fmtPrice(val) {
+      if (!val) return 'N/A';
+      return '€' + Number(val).toFixed(2);
+    }
+
+    // Filter Logic
+    function getFilteredData() {
+      return HANDHELDS_DATA.filter(item => {
+        // Form factor filter
+        if (activeFilter !== 'all') {
+          if (activeFilter === 'Vertical' && item.form_factor !== 'Vertical') return false;
+          if (activeFilter === 'Horizontal' && item.form_factor !== 'Horizontal') return false;
+          if (activeFilter === 'Clamshell' && item.form_factor !== 'Clamshell') return false;
+          if (activeFilter === 'Square' && !item.form_factor.includes('Square')) return false;
+          if (activeFilter === 'Micro' && !item.form_factor.includes('Micro')) return false;
+        }
+
+        // Persona filter
+        if (activePersona !== 'all') {
+          if (activePersona === 'friend' && !item.best_persona.includes('Friend')) return false;
+          if (activePersona === 'sweet-spot' && !item.best_persona.includes('Sweet Spot')) return false;
+          if (activePersona === 'clamshell' && !item.best_persona.includes('Clamshell')) return false;
+          if (activePersona === 'pico' && !item.best_persona.includes('PICO-8')) return false;
+          if (activePersona === 'widescreen' && !item.best_persona.includes('16:9')) return false;
+          if (activePersona === 'oled' && !item.best_persona.includes('OLED')) return false;
+        }
+
+        // Search query
+        if (searchQuery.trim() !== '') {
+          const q = searchQuery.toLowerCase();
+          const matches = (
+            item.name.toLowerCase().includes(q) ||
+            item.chipset.toLowerCase().includes(q) ||
+            item.display.toLowerCase().includes(q) ||
+            item.custom_firmware.some(fw => fw.toLowerCase().includes(q)) ||
+            item.tagline.toLowerCase().includes(q) ||
+            item.curator_take.toLowerCase().includes(q) ||
+            item.best_persona.toLowerCase().includes(q)
+          );
+          if (!matches) return false;
+        }
+
+        return true;
+      });
+    }
+
+    // Render Bento Grid
+    function renderGrid(items) {
+      gridEl.innerHTML = '';
+      if (items.length === 0) {
+        gridEl.innerHTML = `
+          <div class="col-span-full py-16 text-center space-y-3 bg-cat-mantle rounded-2xl border border-cat-surface0">
+            <div class="text-4xl">🔍</div>
+            <div class="text-base font-display font-bold text-cat-text">No handhelds match your active filters</div>
+            <div class="text-xs text-cat-subtext0">Try resetting the form factor or clear the search terms.</div>
+            <button onclick="resetFilters()" class="tactile-btn mt-2 px-4 py-2 rounded-xl bg-cat-mauve text-cat-crust font-mono text-xs font-semibold">Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'card-hover bg-cat-mantle border border-cat-surface0 rounded-2xl p-5 flex flex-col justify-between space-y-4';
+        
+        // Persona accent colors
+        let personaBadgeColor = 'bg-cat-surface0 text-cat-subtext1 border-cat-surface1';
+        if (item.best_persona.includes('Sweet Spot')) personaBadgeColor = 'bg-cat-mauve/20 text-cat-mauve border-cat-mauve/30';
+        if (item.best_persona.includes('Friend')) personaBadgeColor = 'bg-cat-green/20 text-cat-green border-cat-green/30';
+        if (item.best_persona.includes('Clamshell')) personaBadgeColor = 'bg-cat-peach/20 text-cat-peach border-cat-peach/30';
+        if (item.best_persona.includes('PICO-8')) personaBadgeColor = 'bg-cat-yellow/20 text-cat-yellow border-cat-yellow/30';
+        if (item.best_persona.includes('16:9')) personaBadgeColor = 'bg-cat-blue/20 text-cat-blue border-cat-blue/30';
+        if (item.best_persona.includes('OLED')) personaBadgeColor = 'bg-cat-pink/20 text-cat-pink border-cat-pink/30';
+
+        card.innerHTML = `
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono border ${personaBadgeColor}">
+                ${item.best_persona}
+              </span>
+              <span class="text-xs font-mono text-cat-subtext0 bg-cat-surface0/60 px-2 py-0.5 rounded border border-cat-surface0">
+                ${item.form_factor}
+              </span>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-display font-bold text-cat-text tracking-tight">${item.name}</h3>
+              <p class="text-xs text-cat-subtext0 line-clamp-2 mt-1">${item.tagline}</p>
+            </div>
+
+            <!-- Specs Mini Matrix -->
+            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono pt-2 border-t border-cat-surface0/70">
+              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
+                <span class="text-cat-overlay0 block text-[10px]">Display</span>
+                <span class="text-cat-text font-medium truncate block">${item.display}</span>
+              </div>
+              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
+                <span class="text-cat-overlay0 block text-[10px]">Chipset</span>
+                <span class="text-cat-text font-medium truncate block">${item.chipset.split('(')[0].trim()}</span>
+              </div>
+              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
+                <span class="text-cat-overlay0 block text-[10px]">Emulation</span>
+                <span class="text-cat-mauve font-medium truncate block">${item.emulation_ceiling}</span>
+              </div>
+              <div class="bg-cat-base/60 p-2 rounded-lg border border-cat-surface0/40">
+                <span class="text-cat-overlay0 block text-[10px]">PortMaster</span>
+                <span class="text-cat-green font-medium truncate block">${item.portmaster_support.split(' ')[0]}</span>
+              </div>
+            </div>
+
+            <!-- Firmware Pills -->
+            <div class="flex flex-wrap gap-1 text-[10px] font-mono pt-1">
+              ${item.custom_firmware.slice(0, 3).map(fw => `<span class="px-1.5 py-0.5 rounded bg-cat-surface0 text-cat-subtext0">${fw}</span>`).join('')}
+              ${item.custom_firmware.length > 3 ? `<span class="px-1.5 py-0.5 rounded bg-cat-surface0 text-cat-overlay0">+${item.custom_firmware.length - 3}</span>` : ''}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-cat-surface0 flex items-center justify-between gap-3">
+            <div>
+              <div class="text-[10px] font-mono text-cat-overlay0">Ali Choice / 11.11</div>
+              <div class="font-mono font-bold text-cat-green text-sm num-tabular">
+                ${fmtPrice(item.price_eur_ali_choice)} <span class="text-[11px] font-normal text-cat-peach">(${fmtPrice(item.price_eur_ali_1111)})</span>
+              </div>
+            </div>
+            <button onclick="openModal('${item.id}')" class="tactile-btn min-h-[44px] px-3.5 py-2 rounded-xl bg-cat-surface0 hover:bg-cat-mauve hover:text-cat-crust text-xs font-mono text-cat-text border border-cat-surface1 flex items-center gap-1.5">
+              <span>Inspect</span>
+              <span>→</span>
+            </button>
+          </div>
+        `;
+        gridEl.appendChild(card);
+      });
+    }
+
+    // Render Table
+    function renderTable(items) {
+      tableBodyEl.innerHTML = '';
+      items.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-cat-surface0/30 transition-colors';
+        tr.innerHTML = `
+          <td class="py-3 px-3 font-bold text-cat-text font-display">${item.name}</td>
+          <td class="py-3 px-3 text-cat-subtext0">${item.form_factor}</td>
+          <td class="py-3 px-3 text-cat-subtext1">${item.display}</td>
+          <td class="py-3 px-3 text-cat-subtext0">${item.chipset.split('(')[0].trim()} (${item.ram})</td>
+          <td class="py-3 px-3 text-cat-mauve">${item.emulation_ceiling}</td>
+          <td class="py-3 px-3 text-cat-subtext0">${item.custom_firmware[0] || 'Stock'}</td>
+          <td class="py-3 px-3 text-cat-green font-bold num-tabular">${fmtPrice(item.price_eur_ali_choice)}</td>
+          <td class="py-3 px-3 text-cat-peach font-bold num-tabular">${fmtPrice(item.price_eur_ali_1111)}</td>
+          <td class="py-3 px-3 text-cat-subtext1">${item.portmaster_support.split(' ')[0]}</td>
+          <td class="py-3 px-3">
+            <button onclick="openModal('${item.id}')" class="tactile-btn min-h-[36px] px-2.5 py-1 rounded-lg bg-cat-surface0 hover:bg-cat-mauve hover:text-cat-crust text-cat-text text-xs">
+              View
+            </button>
+          </td>
+        `;
+        tableBodyEl.appendChild(tr);
+      });
+    }
+
+    // Sync UI updates
+    function updateUI() {
+      const items = getFilteredData();
+      matchCountEl.textContent = items.length;
+      if (isTableView) {
+        renderTable(items);
+      } else {
+        renderGrid(items);
+      }
+    }
+
+    // Modal Details Handler
+    function openModal(id) {
+      const item = HANDHELDS_DATA.find(h => h.id === id);
+      if (!item) return;
+
+      modalTitle.textContent = item.name;
+      modalFormFactor.textContent = item.form_factor;
+      modalTagline.textContent = item.tagline;
+      modalCuratorTake.textContent = item.curator_take;
+      modalPriceAliChoice.textContent = fmtPrice(item.price_eur_ali_choice);
+      modalPrice1111.textContent = fmtPrice(item.price_eur_ali_1111);
+      modalPriceEuRetail.textContent = fmtPrice(item.price_eur_eu_retail);
+      modalDisplay.textContent = item.display;
+      modalChipset.textContent = `${item.chipset} • ${item.ram}`;
+      modalCeiling.textContent = item.emulation_ceiling;
+      modalPortMaster.textContent = item.portmaster_support;
+      modalBattery.textContent = item.battery_life_hours;
+      modalWeight.textContent = `${item.weight_grams}g`;
+      modalReviewerVerdict.textContent = item.reviewer_verdict;
+
+      // Firmware Pills
+      modalFirmwareList.innerHTML = '';
+      item.custom_firmware.forEach(fw => {
+        const pill = document.createElement('span');
+        pill.className = 'px-2 py-1 rounded-md bg-cat-surface0 text-cat-mauve border border-cat-surface1';
+        pill.textContent = fw;
+        modalFirmwareList.appendChild(pill);
+      });
+
+      // Pros List
+      modalPros.innerHTML = '';
+      item.pros.forEach(pro => {
+        const li = document.createElement('li');
+        li.textContent = pro;
+        modalPros.appendChild(li);
+      });
+
+      // Cons List
+      modalCons.innerHTML = '';
+      item.cons.forEach(con => {
+        const li = document.createElement('li');
+        li.textContent = con;
+        modalCons.appendChild(li);
+      });
+
+      modalEl.classList.remove('hidden');
+      setTimeout(() => {
+        modalContent.classList.remove('translate-x-full');
+      }, 10);
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeModal() {
+      modalContent.classList.add('translate-x-full');
+      setTimeout(() => {
+        modalEl.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }, 300);
+    }
+
+    function resetFilters() {
+      activeFilter = 'all';
+      activePersona = 'all';
+      searchQuery = '';
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.form-factor-btn').forEach(btn => {
+        btn.classList.toggle('bg-cat-mauve', btn.dataset.filter === 'all');
+        btn.classList.toggle('text-cat-crust', btn.dataset.filter === 'all');
+        btn.classList.toggle('border-cat-mauve', btn.dataset.filter === 'all');
+      });
+      document.querySelectorAll('.persona-btn').forEach(btn => {
+        btn.classList.toggle('bg-cat-surface0', btn.dataset.persona === 'all');
+        btn.classList.toggle('text-cat-text', btn.dataset.persona === 'all');
+      });
+
+      updateUI();
+    }
+
+    // Event Listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      // Search
+      searchInput.addEventListener('input', e => {
+        searchQuery = e.target.value;
+        clearSearchBtn.classList.toggle('hidden', searchQuery === '');
+        updateUI();
+      });
+
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        clearSearchBtn.classList.add('hidden');
+        updateUI();
+      });
+
+      // Form factor buttons
+      document.querySelectorAll('.form-factor-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.form-factor-btn').forEach(b => {
+            b.classList.remove('bg-cat-mauve', 'text-cat-crust', 'border-cat-mauve');
+            b.classList.add('bg-cat-mantle', 'text-cat-subtext0', 'border-cat-surface0');
+          });
+          btn.classList.add('bg-cat-mauve', 'text-cat-crust', 'border-cat-mauve');
+          btn.classList.remove('bg-cat-mantle', 'text-cat-subtext0', 'border-cat-surface0');
+          activeFilter = btn.dataset.filter;
+          updateUI();
+        });
+      });
+
+      // Persona buttons
+      document.querySelectorAll('.persona-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.persona-btn').forEach(b => {
+            b.classList.remove('bg-cat-surface0', 'text-cat-text', 'border-cat-surface1');
+            b.classList.add('bg-cat-mantle', 'text-cat-subtext0', 'border-cat-surface0');
+          });
+          btn.classList.add('bg-cat-surface0', 'text-cat-text', 'border-cat-surface1');
+          btn.classList.remove('bg-cat-mantle', 'text-cat-subtext0', 'border-cat-surface0');
+          activePersona = btn.dataset.persona;
+          updateUI();
+        });
+      });
+
+      // Toggle View Button
+      viewToggleBtn.addEventListener('click', () => {
+        isTableView = !isTableView;
+        if (isTableView) {
+          gridEl.classList.add('hidden');
+          tableWrapperEl.classList.remove('hidden');
+          viewIcon.textContent = '🔲';
+          viewText.textContent = 'Grid View';
+        } else {
+          gridEl.classList.remove('hidden');
+          tableWrapperEl.classList.add('hidden');
+          viewIcon.textContent = '📊';
+          viewText.textContent = 'Compare Table';
+        }
+        updateUI();
+      });
+
+      // Modal Triggers
+      closeModalBtn.addEventListener('click', closeModal);
+      modalDoneBtn.addEventListener('click', closeModal);
+      modalEl.addEventListener('click', e => {
+        if (e.target === modalEl) closeModal();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !modalEl.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
+
+      // Initial Render
+      updateUI();
+    });
+  </script>
+</body>
+</html>

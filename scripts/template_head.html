@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Handhelds Radar (2026) | Sam's Buyer's Guide & Spec Matrix</title>
+  <meta name="description" content="A curated European buyer's guide, live price radar, and specification matrix for retro gaming handhelds, custom firmwares (muOS, OnionOS, CrossMix), and PortMaster support.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <!-- Typography per sam-web-design: Bricolage Grotesque (display) + Inter (body) + JetBrains Mono (specs) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Bricolage Grotesque"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            // Catppuccin Mocha theme tokens per sam-web-design
+            cat: {
+              crust: '#11111b',
+              mantle: '#181825',
+              base: '#1e1e2e',
+              surface0: '#313244',
+              surface1: '#45475a',
+              surface2: '#585b70',
+              overlay0: '#6c7086',
+              text: '#cdd6f4',
+              subtext0: '#a6adc8',
+              subtext1: '#bac2de',
+              mauve: '#cba6f7',
+              pink: '#f5c2e7',
+              red: '#f38ba8',
+              peach: '#fab387',
+              yellow: '#f9e2af',
+              green: '#a6e3a1',
+              teal: '#94e2d5',
+              sky: '#89dceb',
+              blue: '#89b4fa',
+              lavender: '#b4befe',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Tactile physics & accessibility guards per sam-web-design */
+    .tactile-btn {
+      transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+      touch-action: manipulation;
+    }
+    .tactile-btn:hover {
+      transform: translateY(-2px);
+    }
+    .tactile-btn:active {
+      transform: scale(0.97);
+    }
+    .card-hover {
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.45);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    /* Tabular numeric figures for prices & spec columns */
+    .num-tabular {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Hollow section header stroke */
+    .section-stroke {
+      -webkit-text-stroke: 1.5px #cba6f7;
+      color: transparent;
+      font-variant-numeric: tabular-nums;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #181825;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #45475a;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #585b70;
+    }
+  </style>
+</head>
+<body class="bg-cat-crust text-cat-text font-sans antialiased selection:bg-cat-mauve selection:text-cat-crust min-h-screen">
