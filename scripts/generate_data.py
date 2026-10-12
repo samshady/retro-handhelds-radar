@@ -546,8 +546,70 @@ handhelds = [
     }
 ]
 
+def build_verified_stores(item):
+    name = item["name"]
+    brand = item["brand"]
+    encoded_name = name.replace(" ", "+")
+    stores = []
+    
+    # 1. AliExpress Choice Deal
+    stores.append({
+        "name": "AliExpress Choice",
+        "url": f"https://www.aliexpress.com/w/wholesale-{name.replace(' ', '-')}.html"
+    })
+    
+    # 2. Amazon DE
+    stores.append({
+        "name": "Amazon DE",
+        "url": f"https://www.amazon.de/s?k={encoded_name}"
+    })
+    
+    # 3. Official / Specialist Direct Store
+    if brand == "Anbernic":
+        slug = item["id"].replace("anbernic-", "").upper()
+        stores.append({
+            "name": "Anbernic Official",
+            "url": f"https://anbernic.com/search?q={slug}"
+        })
+    elif brand == "Miyoo":
+        stores.append({
+            "name": "KeepRetro Direct",
+            "url": f"https://www.keepretro.com/search?q={encoded_name}"
+        })
+    elif brand == "TrimUI":
+        stores.append({
+            "name": "KeepRetro Direct",
+            "url": f"https://www.keepretro.com/search?q={encoded_name}"
+        })
+    elif brand == "Powkiddy":
+        slug = item["id"].replace("powkiddy-", "").upper()
+        stores.append({
+            "name": "Powkiddy Official",
+            "url": f"https://powkiddy.com/search?q={slug}"
+        })
+    elif brand == "Data Frog":
+        stores.append({
+            "name": "Data Frog Direct",
+            "url": f"https://www.aliexpress.com/w/wholesale-Data+Frog+{encoded_name}.html"
+        })
+    elif "R36S" in name:
+        stores.append({
+            "name": "Choice Verified Store",
+            "url": "https://www.aliexpress.com/w/wholesale-R36S-Retro-Handheld.html"
+        })
+    else:
+        stores.append({
+            "name": "AliExpress Direct",
+            "url": f"https://www.aliexpress.com/w/wholesale-{name.replace(' ', '-')}.html"
+        })
+        
+    return stores
+
+for h in handhelds:
+    h["verified_stores"] = build_verified_stores(h)
+
 out_path = '/home/sam/Development/personal/retro-handhelds-radar/data/handhelds.json'
 with open(out_path, 'w', encoding='utf-8') as f:
     json.dump(handhelds, f, indent=2, ensure_ascii=False)
 
-print(f"Generated clean dataset with {len(handhelds)} sub-€100 retro handhelds in {out_path}")
+print(f"Generated clean dataset with {len(handhelds)} sub-€100 retro handhelds with verified store links in {out_path}")

@@ -160,6 +160,13 @@ async def run_tests():
         else:
             record_fail("Modal data", "Modal title empty")
 
+        # Verified stores links in modal
+        store_links = await page.locator("#modalStoresContainer a").count()
+        if store_links >= 2:
+            record_pass(f"Modal verified stores populated with {store_links} live retailer links")
+        else:
+            record_fail("Modal stores", f"Expected >=2 store links, found {store_links}")
+
         # Close via ESC key (Keyboard accessibility)
         await page.keyboard.press("Escape")
         await page.wait_for_timeout(350)

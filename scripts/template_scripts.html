@@ -41,6 +41,7 @@
     const modalBattery = document.getElementById('modalBattery');
     const modalPros = document.getElementById('modalPros');
     const modalCons = document.getElementById('modalCons');
+    const modalStoresContainer = document.getElementById('modalStoresContainer');
 
     function fmtPrice(val) {
       if (!val) return 'N/A';
@@ -169,10 +170,18 @@
                 ${fmtPrice(item.price_eur_ali_choice)} <span class="text-xs font-normal text-amber-400">(${fmtPrice(item.price_eur_ali_1111)})</span>
               </div>
             </div>
-            <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-amber-400 hover:text-black text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-1.5 transition">
-              <span>Inspect</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
+            <div class="flex items-center gap-2 shrink-0">
+              ${(item.verified_stores && item.verified_stores.length > 0) ? `
+                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-3 py-1.5 rounded-xl bg-amber-400 text-black hover:bg-amber-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm" title="View deals on ${item.verified_stores[0].name}">
+                  <i class="fa-solid fa-cart-shopping text-xs"></i>
+                  <span>Offers</span>
+                </a>
+              ` : ''}
+              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[40px] px-3 py-1.5 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-1.5 transition">
+                <span>Specs</span>
+                <i class="fa-solid fa-arrow-right text-xs text-amber-400"></i>
+              </button>
+            </div>
           </div>
         `;
         gridEl.appendChild(card);
@@ -204,9 +213,17 @@
           <td class="py-3 px-3 text-emerald-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_choice)}</td>
           <td class="py-3 px-3 text-amber-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_1111)}</td>
           <td class="py-3 px-3 text-right">
-            <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[36px] px-3 py-1 rounded-lg bg-studio-900 hover:bg-amber-400 hover:text-black text-slate-200 text-xs border border-studio-border">
-              View
-            </button>
+            <div class="flex items-center justify-end gap-2">
+              ${(item.verified_stores && item.verified_stores.length > 0) ? `
+                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-2.5 py-1 rounded-lg bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center gap-1 shadow-sm">
+                  <i class="fa-solid fa-cart-shopping text-xs"></i>
+                  <span>Deal</span>
+                </a>
+              ` : ''}
+              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[36px] px-2.5 py-1 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-200 text-xs border border-studio-border font-mono">
+                Specs
+              </button>
+            </div>
           </td>
         `;
         tableBodyEl.appendChild(tr);
@@ -256,6 +273,15 @@
         li.textContent = c;
         modalCons.appendChild(li);
       });
+
+      if (modalStoresContainer) {
+        modalStoresContainer.innerHTML = (item.verified_stores || []).map(store => `
+          <a href="${store.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile px-3.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-800 text-slate-200 border border-studio-border text-xs font-mono font-semibold transition flex items-center gap-2">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-amber-400"></i>
+            <span>${store.name}</span>
+          </a>
+        `).join('');
+      }
 
       modalEl.classList.remove('hidden');
       setTimeout(() => {
