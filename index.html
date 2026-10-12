@@ -121,6 +121,11 @@
       z-index: 9999;
       box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.55);
     }
+    @media (max-width: 640px) {
+      body.crt-mode::after {
+        box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.45);
+      }
+    }
 
     /* Retro Pixel and Arcade Motif */
     .retro-badge {
@@ -174,11 +179,11 @@
       </div>
 
       <nav class="flex items-center space-x-2 shrink-0">
-        <button type="button" id="crtToggleBtn" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl bg-amber-400/20 text-xs font-mono text-amber-300 border border-amber-400/40 flex items-center justify-center gap-1.5" title="Toggle retro CRT scanlines overlay">
+        <button type="button" id="crtToggleBtn" aria-label="Toggle retro CRT scanlines overlay" aria-pressed="true" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl bg-amber-400/20 text-xs font-mono text-amber-300 border border-amber-400/40 flex items-center justify-center gap-1.5" title="Toggle retro CRT scanlines overlay">
           <i class="fa-solid fa-tv text-amber-400"></i>
           <span id="crtToggleText" class="hidden sm:inline">CRT Mode: ON</span>
         </button>
-        <button type="button" id="viewToggleBtn" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-200 border border-studio-border flex items-center justify-center gap-2">
+        <button type="button" id="viewToggleBtn" aria-label="Toggle compare table view" aria-pressed="false" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-850 text-xs font-mono text-slate-200 border border-studio-border flex items-center justify-center gap-2">
           <i id="viewIcon" class="fa-solid fa-table-list text-amber-400"></i>
           <span id="viewText" class="hidden sm:inline">Compare Table</span>
         </button>
@@ -199,7 +204,7 @@
   </header>
 
   <!-- HERO SECTION: TIGHT, SCANNABLE, PRODUCT-FIRST -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4" aria-label="Benchmark overview">
     <div class="studio-card rounded-2xl p-6 sm:p-7 relative overflow-hidden">
       <div class="max-w-3xl space-y-3">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-amber-400/10 text-amber-300 border border-amber-400/20">
@@ -225,7 +230,7 @@
           <span class="text-emerald-400 font-bold text-sm">Miyoo Mini+ (OnionOS)</span>
         </div>
         <div>
-          <span class="text-slate-400 block text-xs">1:1 Square & PICO-8</span>
+          <span class="text-slate-400 block text-xs">1:1 Square &amp; PICO-8</span>
           <span class="text-sky-400 font-bold text-sm">Powkiddy RGB30 (720p)</span>
         </div>
         <div>
@@ -236,8 +241,8 @@
     </div>
   </section>
 
-  <!-- CONTROLS & FILTER BAR (GENEROUS PADDING, ZERO CUTOFF) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sticky top-[73px] z-30 bg-studio-950/95 backdrop-blur-md border-b border-studio-border/60">
+  <!-- CONTROLS & FILTER BAR (STICKY ON DESKTOP, NATURAL SCROLL ON MOBILE) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:sticky sm:top-[73px] z-30 bg-studio-950/95 backdrop-blur-md border-b border-studio-border/60" aria-label="Handheld search and filters">
     <div class="space-y-2.5">
       <!-- Search bar and View Filters -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -249,9 +254,10 @@
             type="text"
             id="searchInput"
             placeholder="Search by device, chipset, OS (e.g. TrimUI, muOS, H700, 1024x768, PICO-8)..."
-            class="w-full pl-10 pr-10 py-2.5 min-h-[44px] rounded-xl bg-studio-900 border border-studio-border text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400 transition"
+            aria-label="Search handhelds by device, chipset, or OS"
+            class="w-full pl-10 pr-10 py-2.5 min-h-[44px] rounded-xl bg-studio-900 border border-studio-border text-white placeholder-slate-400 text-sm focus:outline-none focus:border-amber-400 transition"
           >
-          <button id="clearSearchBtn" class="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-white text-xs hidden" aria-label="Clear search">
+          <button type="button" id="clearSearchBtn" class="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-white text-xs hidden" aria-label="Clear search">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
@@ -259,7 +265,7 @@
         <div class="flex items-center gap-2">
           <!-- Sort Selector -->
           <div class="relative shrink-0">
-            <select id="sortSelect" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 border border-studio-border text-xs font-mono text-slate-200 focus:outline-none focus:border-amber-400 cursor-pointer">
+            <select id="sortSelect" aria-label="Sort handhelds by" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 border border-studio-border text-xs font-mono text-slate-200 focus:outline-none focus:border-amber-400 cursor-pointer">
               <option value="price-asc">Price: Lowest First</option>
               <option value="price-desc">Price: Highest First</option>
               <option value="emu-desc">Emulation Tier: Highest First</option>
@@ -276,23 +282,31 @@
       <!-- Filter Pills (Scroll container with vertical headroom so no pill gets cut off) -->
       <div class="filter-scroll-container flex items-center gap-2 text-xs font-mono">
         <span class="text-slate-400 text-xs shrink-0 font-medium">Filter:</span>
-        <button data-filter="all" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-amber-400 text-black font-bold border-amber-400 shrink-0">All 15 Handhelds</button>
-        <button data-filter="portmaster" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-gamepad text-emerald-400 mr-1.5"></i>PortMaster 64-bit</button>
-        <button data-filter="pico8" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-cube text-purple-400 mr-1.5"></i>Native PICO-8</button>
-        <button data-filter="Vertical" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Vertical</button>
-        <button data-filter="Horizontal" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Horizontal</button>
-        <button data-filter="Clamshell" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Clamshell</button>
-        <button data-filter="Square" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">1:1 Square</button>
+        <button type="button" data-filter="all" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-amber-400 text-black font-bold border-amber-400 shrink-0">All 15 Handhelds</button>
+        <button type="button" data-filter="portmaster" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-gamepad text-emerald-400 mr-1.5"></i>PortMaster 64-bit</button>
+        <button type="button" data-filter="pico8" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-cube text-purple-400 mr-1.5"></i>Native PICO-8</button>
+        <button type="button" data-filter="Vertical" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Vertical</button>
+        <button type="button" data-filter="Horizontal" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Horizontal</button>
+        <button type="button" data-filter="Clamshell" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Clamshell</button>
+        <button type="button" data-filter="Square" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">1:1 Square</button>
       </div>
     </div>
   </section>
 
   <!-- MAIN CATALOG VIEW -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div id="resultsCount" class="text-xs font-mono text-slate-400 mb-5 flex items-center justify-between">
+    <h2 class="sr-only">Handheld Comparison Catalog</h2>
+    <div id="resultsCount" aria-live="polite" aria-atomic="true" class="text-xs font-mono text-slate-400 mb-5 flex items-center justify-between">
       <span>Showing <span id="matchCount" class="text-amber-400 font-bold">15</span> handhelds under €100</span>
-      <span class="text-slate-500 hidden sm:inline">AliExpress Choice &amp; 11.11 estimated promo pricing</span>
+      <span class="text-slate-400 hidden sm:inline">AliExpress Choice &amp; 11.11 estimated promo pricing</span>
     </div>
+
+    <noscript>
+      <div class="studio-card p-6 rounded-2xl text-center space-y-3 mb-6">
+        <p class="text-amber-400 font-bold text-base">JavaScript is disabled or unavailable.</p>
+        <p class="text-xs text-slate-300">Browse the static Master Guide below for full handheld specs, SD card setup workflows, and community firmware recommendations.</p>
+      </div>
+    </noscript>
 
     <!-- Cards Grid -->
     <div id="handheldGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -302,7 +316,7 @@
     <!-- Comparison View (Hidden by default, transforms to stacked cards on mobile <= 700px) -->
     <div id="comparisonTableWrapper" class="hidden studio-card rounded-2xl shadow-xl p-4">
       <!-- Desktop Table (md and above) -->
-      <div class="hidden md:block overflow-x-auto">
+      <section class="hidden md:block overflow-x-auto focus:outline-none focus:ring-1 focus:ring-amber-400 rounded-xl" tabindex="0" aria-label="Handheld comparison matrix table">
         <table class="w-full text-left text-xs text-slate-200">
           <thead class="border-b border-studio-border text-slate-400 font-mono">
             <tr>
@@ -321,7 +335,7 @@
             <!-- Rows rendered via JavaScript -->
           </tbody>
         </table>
-      </div>
+      </section>
 
       <!-- Mobile Stacked Comparison Cards (below md / <= 700px) -->
       <div id="comparisonMobileCards" class="block md:hidden space-y-3">
@@ -531,7 +545,7 @@
         Community firmwares use a dedicated modifier key: either the central <span class="text-amber-300 font-mono font-semibold">Menu (M / F)</span> button, or the <span class="text-sky-300 font-mono font-semibold">Select</span> button on devices lacking a menu key.
       </p>
 
-      <div class="overflow-x-auto">
+      <section class="overflow-x-auto focus:outline-none focus:ring-1 focus:ring-amber-400 rounded-xl" tabindex="0" aria-label="Universal In-Game Hotkeys Reference Table">
         <table class="w-full text-left text-xs font-mono text-slate-200">
           <thead class="border-b border-studio-border text-slate-400">
             <tr>
@@ -586,7 +600,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </section>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 text-xs font-mono">
         <div class="bg-studio-950 p-3 rounded-xl border border-studio-border">
@@ -707,14 +721,14 @@
   </section>
 
   <!-- DETAIL DRAWER MODAL -->
-  <div id="detailModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex justify-end" aria-modal="true" role="dialog">
+  <div id="detailModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex justify-end" aria-modal="true" role="dialog" aria-labelledby="modalTitle">
     <div id="modalContent" class="w-full max-w-xl bg-studio-900 border-l border-studio-border h-full overflow-y-auto p-6 sm:p-7 space-y-5 shadow-2xl transition-transform duration-300 translate-x-full">
       <div class="flex items-center justify-between pb-4 border-b border-studio-border">
         <div>
           <span id="modalFormFactor" class="text-xs font-mono px-2 py-0.5 rounded bg-studio-800 text-amber-300">Vertical</span>
           <h3 id="modalTitle" class="text-2xl font-display font-extrabold text-white mt-1">Device Name</h3>
         </div>
-        <button id="closeModalBtn" class="btn-tactile min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-studio-800 text-slate-300 hover:text-white" aria-label="Close dialog">
+        <button type="button" id="closeModalBtn" class="btn-tactile min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-studio-800 text-slate-300 hover:text-white" aria-label="Close dialog">
           <i class="fa-solid fa-xmark text-sm"></i>
         </button>
       </div>
@@ -850,7 +864,7 @@
         </div>
       </div>
 
-      <div class="pt-3">
+      <div class="sticky bottom-0 pt-3 pb-1 bg-studio-900 border-t border-studio-border mt-4">
         <button type="button" id="modalDoneBtn" class="btn-tactile w-full min-h-[44px] py-3 rounded-xl bg-amber-400 text-black font-display font-bold text-sm shadow-md">
           Close Spec Sheet
         </button>
@@ -2091,7 +2105,7 @@
             <!-- Title & Tagline -->
             <div>
               <div class="flex items-baseline justify-between gap-2">
-                <h3 class="text-xl font-display font-bold text-white group-hover:text-amber-300 transition-colors">
+                <h3 class="text-xl font-display font-bold text-white group-hover:text-amber-300 transition-colors cursor-pointer" onclick="openModal('${item.id}')">
                   ${item.name}
                 </h3>
                 <span class="text-xs font-mono text-slate-400 shrink-0">${item.brand}</span>
@@ -2122,8 +2136,8 @@
 
               <!-- Quick Hardware Strip -->
               <div class="grid grid-cols-2 gap-2 pt-2 border-t border-studio-border/50 text-xs text-slate-300">
-                <span class="truncate"><i class="fa-solid fa-microchip text-slate-500 mr-1"></i>${item.chipset}</span>
-                <span class="truncate"><i class="fa-solid fa-tv text-slate-500 mr-1"></i>${item.display} (${item.aspect_ratio})</span>
+                <span class="truncate"><i class="fa-solid fa-microchip text-slate-400 mr-1"></i>${item.chipset}</span>
+                <span class="truncate"><i class="fa-solid fa-tv text-slate-400 mr-1"></i>${item.display} (${item.aspect_ratio})</span>
               </div>
             </div>
           </div>
@@ -2183,25 +2197,25 @@
           <td class="py-3 px-3 text-slate-300">${item.display} (${item.aspect_ratio})</td>
           <td class="py-3 px-3">${renderRetroPips(item.chip_score, 5, 'bg-sky-400')}</td>
           <td class="py-3 px-3">${renderRetroPips(item.emulation_score, 5, 'bg-amber-400')}</td>
-          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span></td>
-          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span></td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-400 border border-studio-border/60'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span></td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-400 border border-studio-border/60'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span></td>
           <td class="py-3 px-3 text-emerald-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_choice)}</td>
           <td class="py-3 px-3 text-amber-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_1111)}</td>
           <td class="py-3 px-3 text-right">
             <div class="flex items-center justify-end gap-1.5">
               ${item.review_url ? `
-                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-300 border border-studio-border font-mono text-xs inline-flex items-center gap-1" title="Watch ${item.review_channel} Review">
+                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-slate-300 border border-studio-border font-mono text-xs inline-flex items-center gap-1.5" title="Watch ${item.review_channel} Review">
                   <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
                   <span>Review</span>
                 </a>
               ` : ''}
               ${(item.verified_stores && item.verified_stores.length > 0) ? `
-                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-lg bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center gap-1 shadow-sm">
+                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 shadow-sm">
                   <i class="fa-solid fa-cart-shopping text-xs"></i>
                   <span>Deal</span>
                 </a>
               ` : ''}
-              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-200 text-xs border border-studio-border font-mono">
+              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-slate-200 text-xs border border-studio-border font-mono">
                 Specs
               </button>
             </div>
@@ -2218,7 +2232,7 @@
               <div class="flex items-center gap-2.5 min-w-0">
                 <img src="${item.image || 'assets/images/' + item.id + '.jpg'}" alt="" class="w-10 h-10 rounded-lg object-contain bg-studio-900 border border-studio-border p-1 shrink-0" onerror="this.style.display='none'">
                 <div class="min-w-0">
-                  <div class="font-bold text-white font-display text-sm truncate">${item.name}</div>
+                  <div class="font-bold text-white font-display text-sm truncate cursor-pointer hover:underline" onclick="openModal('${item.id}')">${item.name}</div>
                   <div class="text-xs text-slate-400 font-mono">${item.display} (${item.aspect_ratio})</div>
                 </div>
               </div>
@@ -2239,11 +2253,11 @@
               </div>
               <div class="pt-1 border-t border-studio-border/40">
                 <span class="text-slate-400 block text-xs">PICO-8</span>
-                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span>
+                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-400 border border-studio-border/60'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span>
               </div>
               <div class="pt-1 border-t border-studio-border/40">
                 <span class="text-slate-400 block text-xs">PortMaster</span>
-                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span>
+                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-400 border border-studio-border/60'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span>
               </div>
             </div>
 
@@ -2281,9 +2295,13 @@
       }
     }
 
+    let previousActiveElement = null;
+
     function openModal(id) {
       const item = HANDHELDS_DATA.find(h => h.id === id);
       if (!item) return;
+
+      previousActiveElement = document.activeElement;
 
       modalTitle.textContent = item.name;
       modalFormFactor.textContent = item.form_factor;
@@ -2358,10 +2376,14 @@
         `).join('');
       }
 
+      const mainEl = document.querySelector('main');
+      if (mainEl) mainEl.setAttribute('aria-hidden', 'true');
+
       modalEl.classList.remove('hidden');
       setTimeout(() => {
         modalContent.classList.remove('translate-x-full');
-      }, 10);
+        if (closeModalBtn) closeModalBtn.focus();
+      }, 20);
       document.body.classList.add('overflow-hidden');
     }
 
@@ -2370,6 +2392,11 @@
       setTimeout(() => {
         modalEl.classList.add('hidden');
         document.body.classList.remove('overflow-hidden');
+        const mainEl = document.querySelector('main');
+        if (mainEl) mainEl.removeAttribute('aria-hidden');
+        if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+          previousActiveElement.focus();
+        }
       }, 250);
     }
 
@@ -2428,6 +2455,8 @@
       // Toggle Table / Grid
       viewToggleBtn.addEventListener('click', () => {
         isTableView = !isTableView;
+        viewToggleBtn.setAttribute('aria-pressed', isTableView ? 'true' : 'false');
+        viewToggleBtn.setAttribute('aria-label', isTableView ? 'Switch to Grid View' : 'Switch to Compare Table View');
         if (isTableView) {
           gridEl.classList.add('hidden');
           tableWrapperEl.classList.remove('hidden');
@@ -2447,11 +2476,35 @@
       modalEl.addEventListener('click', e => {
         if (e.target === modalEl) closeModal();
       });
+
+      // Modal focus trap listener
+      modalContent.addEventListener('keydown', e => {
+        if (e.key === 'Tab') {
+          const focusable = modalContent.querySelectorAll('button:not([disabled]), a[href]:not([disabled]), input:not([disabled]), select:not([disabled])');
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            last.focus();
+            e.preventDefault();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            first.focus();
+            e.preventDefault();
+          }
+        }
+      });
+
+      // Global keyboard shortcuts (Escape to close modal, "/" to focus search)
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && !modalEl.classList.contains('hidden')) {
           closeModal();
+        } else if (e.key === '/' && document.activeElement !== searchInput && modalEl.classList.contains('hidden')) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
         }
       });
+
       // CRT Scanline Mode Toggle with localStorage persistence (Default: ON)
       const crtText = document.getElementById('crtToggleText');
       try {
@@ -2462,6 +2515,7 @@
           if (crtToggleBtn) {
             crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
             crtToggleBtn.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
+            crtToggleBtn.setAttribute('aria-pressed', 'true');
           }
           if (crtText) crtText.textContent = 'CRT Mode: ON';
         } else {
@@ -2469,6 +2523,7 @@
           if (crtToggleBtn) {
             crtToggleBtn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
             crtToggleBtn.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
+            crtToggleBtn.setAttribute('aria-pressed', 'false');
           }
           if (crtText) crtText.textContent = 'CRT Mode: OFF';
         }
@@ -2479,6 +2534,7 @@
       if (crtToggleBtn) {
         crtToggleBtn.addEventListener('click', () => {
           const isCrt = document.body.classList.toggle('crt-mode');
+          crtToggleBtn.setAttribute('aria-pressed', isCrt ? 'true' : 'false');
           try {
             if (isCrt) {
               localStorage.setItem('retro_crt_mode', 'enabled');

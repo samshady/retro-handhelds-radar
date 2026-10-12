@@ -158,7 +158,7 @@
             <!-- Title & Tagline -->
             <div>
               <div class="flex items-baseline justify-between gap-2">
-                <h3 class="text-xl font-display font-bold text-white group-hover:text-amber-300 transition-colors">
+                <h3 class="text-xl font-display font-bold text-white group-hover:text-amber-300 transition-colors cursor-pointer" onclick="openModal('${item.id}')">
                   ${item.name}
                 </h3>
                 <span class="text-xs font-mono text-slate-400 shrink-0">${item.brand}</span>
@@ -189,8 +189,8 @@
 
               <!-- Quick Hardware Strip -->
               <div class="grid grid-cols-2 gap-2 pt-2 border-t border-studio-border/50 text-xs text-slate-300">
-                <span class="truncate"><i class="fa-solid fa-microchip text-slate-500 mr-1"></i>${item.chipset}</span>
-                <span class="truncate"><i class="fa-solid fa-tv text-slate-500 mr-1"></i>${item.display} (${item.aspect_ratio})</span>
+                <span class="truncate"><i class="fa-solid fa-microchip text-slate-400 mr-1"></i>${item.chipset}</span>
+                <span class="truncate"><i class="fa-solid fa-tv text-slate-400 mr-1"></i>${item.display} (${item.aspect_ratio})</span>
               </div>
             </div>
           </div>
@@ -250,25 +250,25 @@
           <td class="py-3 px-3 text-slate-300">${item.display} (${item.aspect_ratio})</td>
           <td class="py-3 px-3">${renderRetroPips(item.chip_score, 5, 'bg-sky-400')}</td>
           <td class="py-3 px-3">${renderRetroPips(item.emulation_score, 5, 'bg-amber-400')}</td>
-          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span></td>
-          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span></td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-400 border border-studio-border/60'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span></td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-400 border border-studio-border/60'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span></td>
           <td class="py-3 px-3 text-emerald-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_choice)}</td>
           <td class="py-3 px-3 text-amber-400 font-bold num-tabular">${fmtPrice(item.price_eur_ali_1111)}</td>
           <td class="py-3 px-3 text-right">
             <div class="flex items-center justify-end gap-1.5">
               ${item.review_url ? `
-                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-300 border border-studio-border font-mono text-xs inline-flex items-center gap-1" title="Watch ${item.review_channel} Review">
+                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-slate-300 border border-studio-border font-mono text-xs inline-flex items-center gap-1.5" title="Watch ${item.review_channel} Review">
                   <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
                   <span>Review</span>
                 </a>
               ` : ''}
               ${(item.verified_stores && item.verified_stores.length > 0) ? `
-                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-lg bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center gap-1 shadow-sm">
+                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center gap-1.5 shadow-sm">
                   <i class="fa-solid fa-cart-shopping text-xs"></i>
                   <span>Deal</span>
                 </a>
               ` : ''}
-              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[40px] px-2.5 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-800 text-slate-200 text-xs border border-studio-border font-mono">
+              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-slate-200 text-xs border border-studio-border font-mono">
                 Specs
               </button>
             </div>
@@ -285,7 +285,7 @@
               <div class="flex items-center gap-2.5 min-w-0">
                 <img src="${item.image || 'assets/images/' + item.id + '.jpg'}" alt="" class="w-10 h-10 rounded-lg object-contain bg-studio-900 border border-studio-border p-1 shrink-0" onerror="this.style.display='none'">
                 <div class="min-w-0">
-                  <div class="font-bold text-white font-display text-sm truncate">${item.name}</div>
+                  <div class="font-bold text-white font-display text-sm truncate cursor-pointer hover:underline" onclick="openModal('${item.id}')">${item.name}</div>
                   <div class="text-xs text-slate-400 font-mono">${item.display} (${item.aspect_ratio})</div>
                 </div>
               </div>
@@ -306,11 +306,11 @@
               </div>
               <div class="pt-1 border-t border-studio-border/40">
                 <span class="text-slate-400 block text-xs">PICO-8</span>
-                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span>
+                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.pico8_score >= 4 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : item.pico8_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-400 border border-studio-border/60'}">${item.pico8_score >= 5 ? 'Splore' : item.pico8_score === 4 ? 'Native' : item.pico8_score === 3 ? 'Fake08' : 'No'}</span>
               </div>
               <div class="pt-1 border-t border-studio-border/40">
                 <span class="text-slate-400 block text-xs">PortMaster</span>
-                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-500'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span>
+                <span class="px-2 py-0.5 rounded text-xs font-bold inline-block mt-0.5 ${item.portmaster_score >= 4 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : item.portmaster_score === 3 ? 'bg-studio-800 text-slate-300 border border-studio-border' : 'bg-studio-900 text-slate-400 border border-studio-border/60'}">${item.portmaster_score >= 4 ? '64-bit' : item.portmaster_score === 3 ? 'Light' : 'No'}</span>
               </div>
             </div>
 
@@ -348,9 +348,13 @@
       }
     }
 
+    let previousActiveElement = null;
+
     function openModal(id) {
       const item = HANDHELDS_DATA.find(h => h.id === id);
       if (!item) return;
+
+      previousActiveElement = document.activeElement;
 
       modalTitle.textContent = item.name;
       modalFormFactor.textContent = item.form_factor;
@@ -425,10 +429,14 @@
         `).join('');
       }
 
+      const mainEl = document.querySelector('main');
+      if (mainEl) mainEl.setAttribute('aria-hidden', 'true');
+
       modalEl.classList.remove('hidden');
       setTimeout(() => {
         modalContent.classList.remove('translate-x-full');
-      }, 10);
+        if (closeModalBtn) closeModalBtn.focus();
+      }, 20);
       document.body.classList.add('overflow-hidden');
     }
 
@@ -437,6 +445,11 @@
       setTimeout(() => {
         modalEl.classList.add('hidden');
         document.body.classList.remove('overflow-hidden');
+        const mainEl = document.querySelector('main');
+        if (mainEl) mainEl.removeAttribute('aria-hidden');
+        if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+          previousActiveElement.focus();
+        }
       }, 250);
     }
 
@@ -495,6 +508,8 @@
       // Toggle Table / Grid
       viewToggleBtn.addEventListener('click', () => {
         isTableView = !isTableView;
+        viewToggleBtn.setAttribute('aria-pressed', isTableView ? 'true' : 'false');
+        viewToggleBtn.setAttribute('aria-label', isTableView ? 'Switch to Grid View' : 'Switch to Compare Table View');
         if (isTableView) {
           gridEl.classList.add('hidden');
           tableWrapperEl.classList.remove('hidden');
@@ -514,11 +529,35 @@
       modalEl.addEventListener('click', e => {
         if (e.target === modalEl) closeModal();
       });
+
+      // Modal focus trap listener
+      modalContent.addEventListener('keydown', e => {
+        if (e.key === 'Tab') {
+          const focusable = modalContent.querySelectorAll('button:not([disabled]), a[href]:not([disabled]), input:not([disabled]), select:not([disabled])');
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            last.focus();
+            e.preventDefault();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            first.focus();
+            e.preventDefault();
+          }
+        }
+      });
+
+      // Global keyboard shortcuts (Escape to close modal, "/" to focus search)
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && !modalEl.classList.contains('hidden')) {
           closeModal();
+        } else if (e.key === '/' && document.activeElement !== searchInput && modalEl.classList.contains('hidden')) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
         }
       });
+
       // CRT Scanline Mode Toggle with localStorage persistence (Default: ON)
       const crtText = document.getElementById('crtToggleText');
       try {
@@ -529,6 +568,7 @@
           if (crtToggleBtn) {
             crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
             crtToggleBtn.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
+            crtToggleBtn.setAttribute('aria-pressed', 'true');
           }
           if (crtText) crtText.textContent = 'CRT Mode: ON';
         } else {
@@ -536,6 +576,7 @@
           if (crtToggleBtn) {
             crtToggleBtn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
             crtToggleBtn.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
+            crtToggleBtn.setAttribute('aria-pressed', 'false');
           }
           if (crtText) crtText.textContent = 'CRT Mode: OFF';
         }
@@ -546,6 +587,7 @@
       if (crtToggleBtn) {
         crtToggleBtn.addEventListener('click', () => {
           const isCrt = document.body.classList.toggle('crt-mode');
+          crtToggleBtn.setAttribute('aria-pressed', isCrt ? 'true' : 'false');
           try {
             if (isCrt) {
               localStorage.setItem('retro_crt_mode', 'enabled');

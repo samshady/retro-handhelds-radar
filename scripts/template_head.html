@@ -121,6 +121,11 @@
       z-index: 9999;
       box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.55);
     }
+    @media (max-width: 640px) {
+      body.crt-mode::after {
+        box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.45);
+      }
+    }
 
     /* Retro Pixel and Arcade Motif */
     .retro-badge {
