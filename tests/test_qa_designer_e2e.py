@@ -217,14 +217,14 @@ async def run_tests():
         else:
             record_fail("ESC dismiss", "Modal remained open")
 
-        # CRT Scanlines Toggle test
+        # CRT Scanlines Toggle test (CRT mode is enabled by default)
         has_crt_before = await page.evaluate("() => document.body.classList.contains('crt-mode')")
         await page.click("#crtToggleBtn")
         has_crt_after = await page.evaluate("() => document.body.classList.contains('crt-mode')")
         await page.click("#crtToggleBtn")
         has_crt_restored = await page.evaluate("() => document.body.classList.contains('crt-mode')")
-        if not has_crt_before and has_crt_after and not has_crt_restored:
-            record_pass("CRT Scanline mode button toggles body.crt-mode state accurately")
+        if has_crt_before and not has_crt_after and has_crt_restored:
+            record_pass("CRT Scanline mode button toggles body.crt-mode state accurately (Default ON -> OFF -> ON)")
         else:
             record_fail("CRT mode toggle", f"Before={has_crt_before}, After={has_crt_after}, Restored={has_crt_restored}")
 

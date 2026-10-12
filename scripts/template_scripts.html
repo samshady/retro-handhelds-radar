@@ -519,15 +519,28 @@
           closeModal();
         }
       });
-      // CRT Scanline Mode Toggle with localStorage persistence
+      // CRT Scanline Mode Toggle with localStorage persistence (Default: ON)
+      const crtText = document.getElementById('crtToggleText');
       try {
         const savedCrt = localStorage.getItem('retro_crt_mode');
-        if (savedCrt === 'enabled') {
+        const isCrt = savedCrt !== 'disabled';
+        if (isCrt) {
           document.body.classList.add('crt-mode');
-          if (crtToggleBtn) crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+          if (crtToggleBtn) {
+            crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+            crtToggleBtn.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
+          }
+          if (crtText) crtText.textContent = 'CRT Mode: ON';
+        } else {
+          document.body.classList.remove('crt-mode');
+          if (crtToggleBtn) {
+            crtToggleBtn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+            crtToggleBtn.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
+          }
+          if (crtText) crtText.textContent = 'CRT Mode: OFF';
         }
       } catch (e) {
-        // Handle localStorage disabled/sandboxed environments gracefully
+        document.body.classList.add('crt-mode');
       }
 
       if (crtToggleBtn) {
@@ -537,9 +550,13 @@
             if (isCrt) {
               localStorage.setItem('retro_crt_mode', 'enabled');
               crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+              crtToggleBtn.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
+              if (crtText) crtText.textContent = 'CRT Mode: ON';
             } else {
               localStorage.setItem('retro_crt_mode', 'disabled');
               crtToggleBtn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+              crtToggleBtn.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
+              if (crtText) crtText.textContent = 'CRT Mode: OFF';
             }
           } catch (e) {}
         });
