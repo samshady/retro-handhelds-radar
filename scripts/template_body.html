@@ -134,8 +134,15 @@
   <!-- MAIN CATALOG VIEW -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
     <h2 class="sr-only">Handheld Comparison Catalog</h2>
-    <div id="resultsCount" aria-live="polite" aria-atomic="true" class="text-xs font-mono text-slate-400 mb-5 flex items-center justify-between">
-      <span>Showing <span id="matchCount" class="text-amber-400 font-bold">15</span> handhelds under €100</span>
+    <div id="resultsCount" aria-live="polite" aria-atomic="true" class="text-xs font-mono text-slate-400 mb-5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3 flex-wrap">
+        <span>Showing <span id="matchCount" class="text-amber-400 font-bold">15</span> handhelds under &euro;100</span>
+        <!-- Filter Bar CRT Toggle -->
+        <button type="button" id="filterCrtBtn" aria-label="Toggle retro CRT scanlines overlay" class="btn-tactile min-h-[38px] px-3 py-1.5 rounded-lg bg-amber-400/15 hover:bg-amber-400/25 text-amber-300 border border-amber-400/40 flex items-center gap-1.5 text-xs font-mono font-bold cursor-pointer transition-all">
+          <i class="fa-solid fa-tv text-amber-400"></i>
+          <span id="filterCrtText">CRT Mode: ON</span>
+        </button>
+      </div>
       <span class="text-slate-400 hidden sm:inline">AliExpress Choice &amp; 11.11 estimated promo pricing</span>
     </div>
 
@@ -725,7 +732,13 @@
     </div>
   </footer>
 
-  <!-- Floating Back to Top Button -->
-  <button id="back-to-top-btn" type="button" aria-label="Scroll back to top" title="Scroll back to top" class="fixed bottom-5 right-5 z-40 w-11 h-11 rounded-full bg-studio-900/90 hover:bg-studio-800 text-slate-300 hover:text-amber-400 border border-studio-border hover:border-amber-400/50 shadow-2xl backdrop-blur-md flex items-center justify-center btn-tactile transition-all duration-300 opacity-0 pointer-events-none translate-y-3 cursor-pointer">
-    <i class="fa-solid fa-arrow-up text-sm"></i>
-  </button>
+  <!-- Floating Action Dock: Quick CRT Mode & Back to Top -->
+  <aside class="fixed bottom-5 right-5 z-40 flex flex-col gap-2.5 items-end" id="floating-dock" aria-label="Quick Navigation and CRT Controls">
+    <button id="dockCrtBtn" type="button" aria-label="Toggle retro CRT scanlines overlay" title="Toggle retro CRT scanlines overlay" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2.5 rounded-full bg-studio-900/95 hover:bg-studio-800 text-amber-300 border border-amber-400/40 hover:border-amber-400/70 shadow-2xl backdrop-blur-md flex items-center justify-center gap-2 text-xs font-mono font-bold cursor-pointer transition-all">
+      <i class="fa-solid fa-tv text-amber-400"></i>
+      <span id="dockCrtText">CRT: ON</span>
+    </button>
+    <button id="back-to-top-btn" type="button" aria-label="Scroll back to top" title="Scroll back to top" class="w-11 h-11 rounded-full bg-studio-900/90 hover:bg-studio-800 text-slate-300 hover:text-amber-400 border border-studio-border hover:border-amber-400/50 shadow-2xl backdrop-blur-md flex items-center justify-center btn-tactile transition-all duration-300 opacity-0 pointer-events-none translate-y-3 cursor-pointer">
+      <i class="fa-solid fa-arrow-up text-sm"></i>
+    </button>
+  </aside>

@@ -560,49 +560,68 @@
 
       // CRT Scanline Mode Toggle with localStorage persistence (Default: ON)
       const crtText = document.getElementById('crtToggleText');
+      const filterCrtBtn = document.getElementById('filterCrtBtn');
+      const filterCrtText = document.getElementById('filterCrtText');
+      const dockCrtBtn = document.getElementById('dockCrtBtn');
+      const dockCrtText = document.getElementById('dockCrtText');
+
+      function updateCrtUI(isCrt) {
+        document.body.classList.toggle('crt-mode', isCrt);
+
+        if (crtToggleBtn) {
+          crtToggleBtn.setAttribute('aria-pressed', isCrt ? 'true' : 'false');
+          if (isCrt) {
+            crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+            crtToggleBtn.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
+          } else {
+            crtToggleBtn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+            crtToggleBtn.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
+          }
+        }
+        if (crtText) crtText.textContent = `CRT Mode: ${isCrt ? 'ON' : 'OFF'}`;
+
+        if (filterCrtBtn) {
+          if (isCrt) {
+            filterCrtBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+            filterCrtBtn.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
+          } else {
+            filterCrtBtn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+            filterCrtBtn.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
+          }
+        }
+        if (filterCrtText) filterCrtText.textContent = `CRT Mode: ${isCrt ? 'ON' : 'OFF'}`;
+
+        if (dockCrtBtn) {
+          if (isCrt) {
+            dockCrtBtn.classList.add('text-amber-300', 'border-amber-400/60');
+            dockCrtBtn.classList.remove('text-slate-400', 'border-studio-border');
+          } else {
+            dockCrtBtn.classList.remove('text-amber-300', 'border-amber-400/60');
+            dockCrtBtn.classList.add('text-slate-400', 'border-studio-border');
+          }
+        }
+        if (dockCrtText) dockCrtText.textContent = `CRT: ${isCrt ? 'ON' : 'OFF'}`;
+      }
+
+      function toggleCrt() {
+        const isCrt = !document.body.classList.contains('crt-mode');
+        updateCrtUI(isCrt);
+        try {
+          localStorage.setItem('retro_crt_mode', isCrt ? 'enabled' : 'disabled');
+        } catch (e) {}
+      }
+
       try {
         const savedCrt = localStorage.getItem('retro_crt_mode');
         const isCrt = savedCrt !== 'disabled';
-        if (isCrt) {
-          document.body.classList.add('crt-mode');
-          if (crtToggleBtn) {
-            crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
-            crtToggleBtn.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
-            crtToggleBtn.setAttribute('aria-pressed', 'true');
-          }
-          if (crtText) crtText.textContent = 'CRT Mode: ON';
-        } else {
-          document.body.classList.remove('crt-mode');
-          if (crtToggleBtn) {
-            crtToggleBtn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
-            crtToggleBtn.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
-            crtToggleBtn.setAttribute('aria-pressed', 'false');
-          }
-          if (crtText) crtText.textContent = 'CRT Mode: OFF';
-        }
+        updateCrtUI(isCrt);
       } catch (e) {
-        document.body.classList.add('crt-mode');
+        updateCrtUI(true);
       }
 
-      if (crtToggleBtn) {
-        crtToggleBtn.addEventListener('click', () => {
-          const isCrt = document.body.classList.toggle('crt-mode');
-          crtToggleBtn.setAttribute('aria-pressed', isCrt ? 'true' : 'false');
-          try {
-            if (isCrt) {
-              localStorage.setItem('retro_crt_mode', 'enabled');
-              crtToggleBtn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
-              crtToggleBtn.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
-              if (crtText) crtText.textContent = 'CRT Mode: ON';
-            } else {
-              localStorage.setItem('retro_crt_mode', 'disabled');
-              crtToggleBtn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
-              crtToggleBtn.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
-              if (crtText) crtText.textContent = 'CRT Mode: OFF';
-            }
-          } catch (e) {}
-        });
-      }
+      if (crtToggleBtn) crtToggleBtn.addEventListener('click', toggleCrt);
+      if (filterCrtBtn) filterCrtBtn.addEventListener('click', toggleCrt);
+      if (dockCrtBtn) dockCrtBtn.addEventListener('click', toggleCrt);
 
       // Back to Top button scroll detection & smooth scroll
       const backToTopBtn = document.getElementById('back-to-top-btn');
