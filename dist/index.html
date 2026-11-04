@@ -282,7 +282,7 @@
       <!-- Filter Pills (Scroll container with vertical headroom so no pill gets cut off) -->
       <div class="filter-scroll-container flex items-center gap-2 text-xs font-mono">
         <span class="text-slate-400 text-xs shrink-0 font-medium">Filter:</span>
-        <button type="button" data-filter="all" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-amber-400 text-black font-bold border-amber-400 shrink-0">All 15 Handhelds</button>
+        <button type="button" data-filter="all" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-amber-400 text-black font-bold border-amber-400 shrink-0">All 16 Handhelds</button>
         <button type="button" data-filter="portmaster" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-gamepad text-emerald-400 mr-1.5"></i>PortMaster 64-bit</button>
         <button type="button" data-filter="pico8" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0"><i class="fa-solid fa-cube text-purple-400 mr-1.5"></i>Native PICO-8</button>
         <button type="button" data-filter="Vertical" class="form-filter-btn btn-tactile min-h-[44px] px-4 py-2 rounded-lg border bg-studio-900 text-slate-300 border-studio-border hover:border-slate-500 shrink-0">Vertical</button>
@@ -298,7 +298,7 @@
     <h2 class="sr-only">Handheld Comparison Catalog</h2>
     <div id="resultsCount" aria-live="polite" aria-atomic="true" class="text-xs font-mono text-slate-400 mb-5 flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center gap-3 flex-wrap">
-        <span>Showing <span id="matchCount" class="text-amber-400 font-bold">15</span> handhelds under &euro;100</span>
+        <span>Showing <span id="matchCount" class="text-amber-400 font-bold">16</span> handhelds under &euro;100</span>
         <!-- Filter Bar CRT Toggle -->
         <button type="button" id="filterCrtBtn" aria-label="Toggle retro CRT scanlines overlay" class="btn-tactile min-h-[38px] px-3 py-1.5 rounded-lg bg-amber-400/15 hover:bg-amber-400/25 text-amber-300 border border-amber-400/40 flex items-center gap-1.5 text-xs font-mono font-bold cursor-pointer transition-all">
           <i class="fa-solid fa-tv text-amber-400"></i>
@@ -1765,6 +1765,77 @@
     "portmaster_tier": "ArkOS 64-bit Dual Stick Ports",
     "display_score": 4,
     "display_tier": "640x480 4:3 IPS (Budget King Vertical)"
+  },
+  {
+    "id": "r46s",
+    "name": "R46S",
+    "brand": "Generic / Open Source",
+    "release_year": "2024-2025",
+    "form_factor": "Vertical",
+    "chipset": "Rockchip RK3566",
+    "cpu_detail": "Quad-core Cortex-A55 1.8GHz",
+    "ram": "1GB LPDDR4",
+    "display": "4.0\" IPS",
+    "resolution": "720x720",
+    "aspect_ratio": "1:1 Square",
+    "ppi": 254,
+    "emulation_ceiling": "PICO-8 native, PS1, N64, Dreamcast, GB/GBC",
+    "recommended_os": "ArkOS",
+    "custom_firmware": [
+      "ArkOS",
+      "TheRA"
+    ],
+    "price_eur_ali_choice": 49.0,
+    "price_eur_ali_1111": 39.0,
+    "price_eur_retail": 65.0,
+    "portmaster": "Full 64-bit PortMaster",
+    "pico8": "Native 1:1 pixel perfect",
+    "battery": "3500 mAh (4 to 5h)",
+    "controls": "Dual analog sticks, D-pad, dual microSD slots",
+    "image": "assets/images/r46s.jpg",
+    "tagline": "Vertical 1:1 square console combining RK3566 with 720x720 PICO-8 scaling.",
+    "pros": [
+      "Crisp 4-inch 720x720 1:1 display perfect for Game Boy, NES, and PICO-8",
+      "Upgraded RK3566 chipset provides solid ArkOS PortMaster support",
+      "Vertical form factor with dual analog thumbsticks and dual microSD slots"
+    ],
+    "cons": [
+      "Budget plastic shell and stiff face buttons compared to Anbernic models",
+      "Single speaker placement yields mediocre audio output",
+      "Pricing sits close to the more polished Powkiddy RGB30 and Anbernic RG40XX"
+    ],
+    "verdict": "A niche vertical 1:1 square option for PICO-8 and Game Boy fans on a tight budget.",
+    "review_title": "R46S Handheld Review: Low Budget 1:1 Square Screen",
+    "review_channel": "Retro Handhelds Community",
+    "review_url": "https://www.youtube.com/watch?v=4y0Tl-OcH7k",
+    "guide_url": "https://droix.net/blogs/r46s-handheld-gaming-console-now-available/",
+    "best_store": "AliExpress Choice",
+    "buying_advice": "Check AliExpress Choice or KeepRetro to ensure you receive genuine RK3566 board hardware with EU IOSS customs clearance.",
+    "verified_stores": [
+      {
+        "name": "AliExpress Choice",
+        "badge": "Best Value (IOSS VAT)",
+        "url": "https://www.aliexpress.com/w/wholesale-R46S-handheld.html"
+      },
+      {
+        "name": "DroiX EU",
+        "badge": "EU Stock / 2-Year Warranty",
+        "url": "https://droix.eu/product/r46s-handheld-gaming-console/"
+      },
+      {
+        "name": "Amazon DE",
+        "badge": "Prime / Easy Return",
+        "url": "https://www.amazon.de/s?k=R46S+Handheld"
+      }
+    ],
+    "chip_score": 4,
+    "emulation_score": 4,
+    "pico8_score": 5,
+    "pico8_tier": "Native Splore Benchmark (1:1 Perfection)",
+    "portmaster_score": 4,
+    "portmaster_tier": "ArkOS 64-bit Dual Stick Ports",
+    "display_score": 5,
+    "display_tier": "720x720 1:1 IPS (PICO-8, GB, GBC, Arcade)"
   },
   {
     "id": "konkr-pocket-block",
