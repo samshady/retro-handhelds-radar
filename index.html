@@ -2162,6 +2162,11 @@
       emptyStateEl.classList.add('hidden');
 
       items.forEach(item => {
+        const stores = item.verified_stores || [];
+        const aliStore = stores.find(s => s.name && s.name.toLowerCase().includes('ali')) || (stores.length > 0 ? stores[0] : null);
+        const amazonStore = stores.find(s => s.name && s.name.toLowerCase().includes('amazon'));
+        const directStore = stores.find(s => s !== aliStore && s !== amazonStore);
+
         const card = document.createElement('article');
         card.className = 'studio-card rounded-2xl p-5 flex flex-col justify-between group';
 
@@ -2231,37 +2236,93 @@
             </div>
           </div>
 
-          <!-- Price & Action Footer -->
-          <div class="pt-4 mt-4 border-t border-studio-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <div class="text-xs font-mono text-slate-400">Choice / 11.11 Promo</div>
-              <div class="font-mono font-bold text-emerald-400 text-base num-tabular">
-                ${fmtPrice(item.price_eur_ali_choice)} <span class="text-xs font-normal text-amber-400">(${fmtPrice(item.price_eur_ali_1111)})</span>
+          <!-- Pricing & Action Footer -->
+          <div class="mt-5 pt-4 border-t border-studio-border/80 space-y-3">
+            <!-- Price Comparison Header -->
+            <div class="flex items-baseline justify-between gap-2">
+              <div>
+                <span class="text-[11px] font-mono text-emerald-400 uppercase font-bold tracking-wider block">11.11 Promo Floor</span>
+                <div class="text-2xl font-display font-black text-emerald-400 num-tabular leading-tight">
+                  ${fmtPrice(item.price_eur_ali_1111)}
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center justify-end gap-1.5 font-mono text-xs">
+                <span class="px-2 py-1 rounded-md bg-studio-950 border border-studio-border text-slate-300" title="AliExpress Choice Standard Price">
+                  Choice: <strong class="text-white">${fmtPrice(item.price_eur_ali_choice)}</strong>
+                </span>
+                ${item.price_eur_retail ? `
+                  <span class="px-2 py-1 rounded-md bg-studio-950 border border-studio-border text-slate-400 line-through" title="Standard EU Retail / Importer Price">
+                    Retail: ${fmtPrice(item.price_eur_retail)}
+                  </span>
+                ` : ''}
               </div>
             </div>
-            <div class="flex items-center gap-1.5 shrink-0">
-              ${item.review_url ? `
-                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] min-w-[44px] px-2.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-300 border border-studio-border flex items-center justify-center gap-1.5 transition" title="Watch ${item.review_channel} Review">
-                  <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
-                  <span class="hidden sm:inline">Review</span>
+
+            <!-- Primary Hero Buy Button (AliExpress Choice Floor Deal) -->
+            ${aliStore ? `
+              <a href="${aliStore.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition" title="View deals on ${aliStore.name}">
+                <i class="fa-solid fa-cart-shopping text-sm"></i>
+                <span>Ali Choice Deal (${fmtPrice(item.price_eur_ali_1111)})</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[11px] opacity-75 ml-0.5"></i>
+              </a>
+            ` : ''}
+
+            <!-- Direct Store Buying Links & Action Grid (>=44px touch targets) -->
+            <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+              ${directStore ? `
+                <a href="${directStore.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-850 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate" title="Shop on ${directStore.name}">
+                  <i class="fa-solid fa-store text-sky-400 text-xs shrink-0"></i>
+                  <span class="truncate">${directStore.name.replace(' Direct', '').replace(' Official', '')}</span>
                 </a>
-              ` : ''}
-              ${(item.verified_stores && item.verified_stores.length > 0) ? `
-                <a href="${item.verified_stores[0].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-amber-400 text-black hover:bg-amber-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm" title="View deals on ${item.verified_stores[0].name}">
-                  <i class="fa-solid fa-cart-shopping text-xs"></i>
-                  <span>Ali Choice</span>
+              ` : (amazonStore ? `
+                <a href="${amazonStore.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-850 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate" title="Shop on Amazon.de">
+                  <i class="fa-brands fa-amazon text-amber-400 text-xs shrink-0"></i>
+                  <span class="truncate">Amazon DE</span>
                 </a>
-              ` : ''}
-              ${(item.verified_stores && item.verified_stores.length > 1) ? `
-                <a href="${item.verified_stores[1].url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-1.5 transition" title="Shop on ${item.verified_stores[1].name}">
-                  <i class="fa-solid fa-store text-sky-400 text-xs"></i>
-                  <span class="hidden sm:inline">${item.verified_stores[1].name.replace(' Direct', '').replace(' Official', '')}</span>
+              ` : `
+                <div class="min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950/40 text-slate-500 border border-studio-border/40 flex items-center justify-center gap-1.5 text-[11px] truncate">
+                  <i class="fa-solid fa-shield-halved text-slate-600 text-xs shrink-0"></i>
+                  <span class="truncate">Verified Choice</span>
+                </div>
+              `)}
+
+              ${(directStore && amazonStore) ? `
+                <a href="${amazonStore.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-850 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate" title="Shop on Amazon.de">
+                  <i class="fa-brands fa-amazon text-amber-400 text-xs shrink-0"></i>
+                  <span class="truncate">Amazon DE</span>
                 </a>
+              ` : (item.review_url ? `
+                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-850 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate" title="Watch ${item.review_channel} Review on YouTube">
+                  <i class="fa-brands fa-youtube text-rose-500 text-xs shrink-0"></i>
+                  <span class="truncate">Review</span>
+                </a>
+              ` : `
+                <div class="min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950/40 text-slate-500 border border-studio-border/40 flex items-center justify-center gap-1.5 text-[11px] truncate">
+                  <i class="fa-solid fa-check text-emerald-500 text-xs shrink-0"></i>
+                  <span class="truncate">In Stock</span>
+                </div>
+              `)}
+
+              ${(directStore && amazonStore && item.review_url) ? `
+                <a href="${item.review_url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-850 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate" title="Watch ${item.review_channel} Review on YouTube">
+                  <i class="fa-brands fa-youtube text-rose-500 text-xs shrink-0"></i>
+                  <span class="truncate">Review</span>
+                </a>
+              ` : `
+                <button type="button" onclick="openModal('${item.id}')" class="${(directStore && amazonStore) ? '' : 'col-span-2 '}btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-850 hover:bg-studio-800 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate">
+                  <i class="fa-solid fa-circle-info text-amber-400 text-xs shrink-0"></i>
+                  <span>Specs &amp; OS</span>
+                  <i class="fa-solid fa-arrow-right text-[11px] text-amber-400 ml-0.5"></i>
+                </button>
+              `}
+
+              ${(directStore && amazonStore && item.review_url) ? `
+                <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-850 hover:bg-studio-800 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate">
+                  <i class="fa-solid fa-circle-info text-amber-400 text-xs shrink-0"></i>
+                  <span class="truncate">Specs &amp; OS</span>
+                  <i class="fa-solid fa-arrow-right text-[11px] text-amber-400 ml-0.5"></i>
+                </button>
               ` : ''}
-              <button type="button" onclick="openModal('${item.id}')" class="btn-tactile min-h-[44px] px-3 py-2 rounded-xl bg-studio-900 hover:bg-studio-800 text-xs font-mono text-slate-200 border border-studio-border flex items-center gap-1.5 transition">
-                <span>Specs</span>
-                <i class="fa-solid fa-arrow-right text-xs text-amber-400"></i>
-              </button>
             </div>
           </div>
         `;
